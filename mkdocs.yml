@@ -1,0 +1,11 @@
+site_name: Erlang LS
+repo_name: erlang-ls/erlang_ls
+repo_url: https://github.com/erlang-ls/erlang_ls
+edit_uri: ''
+theme:
+  name: 'material'
+  palette:
+    primary: 'red'
+    accent: 'red'
+nav:
+  - Erlang LS: index.md
