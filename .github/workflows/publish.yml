@@ -12,7 +12,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build
-      run: ./build.sh
+      run: mkdocs build -s
   publish:
     needs: build
     runs-on: ubuntu-latest
