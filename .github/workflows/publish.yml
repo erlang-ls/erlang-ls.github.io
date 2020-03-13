@@ -16,5 +16,6 @@ jobs:
   publish:
     needs: build
     runs-on: ubuntu-latest
+    steps:
     - name: Publish
       run: ./publish.sh
