@@ -9,6 +9,7 @@ theme:
     accent: 'red'
 nav:
   - Erlang LS: index.md
+  - Features: features.md
   - Editors:
       - Emacs: editors/emacs.md
       - VSCode: editors/vscode.md
