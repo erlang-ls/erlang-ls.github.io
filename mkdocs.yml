@@ -8,7 +8,7 @@ theme:
     primary: 'red'
     accent: 'red'
 nav:
-  - Erlang LS: index.md
+  - Overview: index.md
   - Features: features.md
   - Editors:
       - Emacs: editors/emacs.md
