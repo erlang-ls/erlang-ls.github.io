@@ -31,18 +31,18 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
     
     
       
-        <title>IntelliJ - Erlang LS</title>
+        <title>Features - Erlang LS</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
       
       
         
@@ -51,7 +51,7 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -60,7 +60,7 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
     
     
@@ -85,7 +85,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#intellij" tabindex="0" class="md-skip">
+      <a href="#features" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -94,7 +94,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="Erlang LS" aria-label="Erlang LS" class="md-header-nav__button md-logo">
+        <a href=".." title="Erlang LS" aria-label="Erlang LS" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -111,7 +111,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                IntelliJ
+                Features
               
             </span>
           
@@ -186,7 +186,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../.." title="Erlang LS" class="md-nav__button md-logo">
+    <a href=".." title="Erlang LS" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
@@ -222,20 +222,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Erlang LS" class="md-nav__link">
+    <a href=".." title="Erlang LS" class="md-nav__link">
       Erlang LS
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../features/" title="Features" class="md-nav__link">
-      Features
     </a>
   </li>
 
@@ -247,9 +235,141 @@
   
 
 
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--active">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Features
+      </label>
+    
+    <a href="./" title="Features" class="md-nav__link md-nav__link--active">
+      Features
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#code-completion" class="md-nav__link">
+    Code Completion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go-to-definition" class="md-nav__link">
+    Go To Definition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go-to-implementation-for-otp-behaviours" class="md-nav__link">
+    Go To Implementation for OTP Behaviours
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signature-suggestions" class="md-nav__link">
+    Signature Suggestions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiler-diagnostics" class="md-nav__link">
+    Compiler Diagnostics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialyzer-diagnostics" class="md-nav__link">
+    Dialyzer Diagnostics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elvis-diagnostics" class="md-nav__link">
+    Elvis Diagnostics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edoc" class="md-nav__link">
+    Edoc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigation-for-included-files" class="md-nav__link">
+    Navigation for Included Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#findpeek-references" class="md-nav__link">
+    Find/Peek References
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outline" class="md-nav__link">
+    Outline
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workspace-symbols" class="md-nav__link">
+    Workspace Symbols
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#folding" class="md-nav__link">
+    Folding
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Editors
@@ -267,7 +387,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../emacs/" title="Emacs" class="md-nav__link">
+    <a href="../editors/emacs/" title="Emacs" class="md-nav__link">
       Emacs
     </a>
   </li>
@@ -279,7 +399,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../vscode/" title="VSCode" class="md-nav__link">
+    <a href="../editors/vscode/" title="VSCode" class="md-nav__link">
       VSCode
     </a>
   </li>
@@ -291,7 +411,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../sublime3/" title="Sublime Text 3" class="md-nav__link">
+    <a href="../editors/sublime3/" title="Sublime Text 3" class="md-nav__link">
       Sublime Text 3
     </a>
   </li>
@@ -301,56 +421,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        IntelliJ
-      </label>
-    
-    <a href="./" title="IntelliJ" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../editors/intellij/" title="IntelliJ" class="md-nav__link">
       IntelliJ
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    Troubleshooting
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -360,7 +435,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../vim/" title="Vim" class="md-nav__link">
+    <a href="../editors/vim/" title="Vim" class="md-nav__link">
       Vim
     </a>
   </li>
@@ -372,7 +447,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../theia/" title="Theia IDE" class="md-nav__link">
+    <a href="../editors/theia/" title="Theia IDE" class="md-nav__link">
       Theia IDE
     </a>
   </li>
@@ -404,15 +479,92 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
+  <a href="#code-completion" class="md-nav__link">
+    Code Completion
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    Troubleshooting
+  <a href="#go-to-definition" class="md-nav__link">
+    Go To Definition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go-to-implementation-for-otp-behaviours" class="md-nav__link">
+    Go To Implementation for OTP Behaviours
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signature-suggestions" class="md-nav__link">
+    Signature Suggestions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiler-diagnostics" class="md-nav__link">
+    Compiler Diagnostics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialyzer-diagnostics" class="md-nav__link">
+    Dialyzer Diagnostics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elvis-diagnostics" class="md-nav__link">
+    Elvis Diagnostics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edoc" class="md-nav__link">
+    Edoc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigation-for-included-files" class="md-nav__link">
+    Navigation for Included Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#findpeek-references" class="md-nav__link">
+    Find/Peek References
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outline" class="md-nav__link">
+    Outline
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workspace-symbols" class="md-nav__link">
+    Workspace Symbols
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#folding" class="md-nav__link">
+    Folding
   </a>
   
 </li>
@@ -434,56 +586,54 @@
               
                 
                 
-                <h1 id="intellij">IntelliJ</h1>
-<h2 id="setup">Setup</h2>
-<blockquote>
-<p><strong>WARNING</strong>: The current version of the IntelliJ LSP plugin (1.5.4)
-is quite limited, so not all of the Erlang Language Server
-capabilities are available in IntelliJ.</p>
-</blockquote>
-<p>First of all, ensure you have the <a href="https://github.com/gtache/intellij-lsp">LSP
-Support</a> plugin installed. If
-you don't, you can simply navigate to:</p>
-<pre><code>Preferences &gt; Plugins &gt; Browse Repositories
-</code></pre>
-<p>Search for "LSP Support" and install the respective plugin.</p>
-<p>Restart IntelliJ, then navigate to:</p>
-<pre><code>Preferences &gt; Languages and Frameworks &gt; Language Server Protocol &gt; Server Definitions
-</code></pre>
-<p>There you can instruct IntelliJ on how to start the server. Select
-<code>Raw Command</code>, set <code>erl;hrl</code> as the extension, then add as the
-command:</p>
-<pre><code>/ABSOLUTE/PATH/TO/erlang_ls/_build/debug/bin/erlang_ls --transport stdio
-</code></pre>
-<p>Ensure you use an absolute path. The plugin does not seem to
-understand the <code>~</code> symbol. For the above command to work, IntelliJ
-requires the <code>PATH</code> variable to be correctly configured to include
-Erlang 20+. To circumvent this issues on Mac OS, the best way is to
-start IntelliJ from the terminal (i.e. via the <code>idea</code> command) and not
-via Spotlight.</p>
-<p>To visualize documentation and type specs while hovering a function,
-ensure the <em>Show quick documentation on mouse move</em> option is enabled
-in your IntelliJ preferences:</p>
-<pre><code>Preferences &gt; Editor &gt; General
-</code></pre>
-<p>There, you can also set a delay in milliseconds.</p>
-<p>For more information about how to configure the IntelliJ LSP Client,
-please refer to the project <a href="https://github.com/gtache/intellij-lsp">GitHub
-page</a>.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p>In some cases, the IntelliJ LSP client may not be able to connect to
-the server. In such cases, the first step is to enable logging:</p>
-<pre><code>Preferences &gt; Languages and Frameworks &gt; Language Server Protocol
-</code></pre>
-<p>Check the <em>Log servers communications</em> check-box there.</p>
-<p>After restarting IntelliJ, you will notice an extra <code>lsp</code> directory
-created inside your Erlang project. This directory contains the
-<code>error</code> and <code>output</code> logs, which should give you a hint about what is
-going on.</p>
-<p>An alternative source of information is represented by the IntelliJ
-logs:</p>
-<pre><code>Help &gt; Show Logs
-</code></pre>
+                <h1 id="features">Features</h1>
+<h2 id="code-completion">Code Completion</h2>
+<p>Get context-aware code completions for function names, macros,
+records, variable names and more.</p>
+<p><img alt="Code Completion" src="https://github.com/erlang-ls/docs/raw/master/png/01-code-completion.png" /></p>
+<h2 id="go-to-definition">Go To Definition</h2>
+<p>Navigate to the definition of a function, macro, record or type.</p>
+<p><img alt="Go To Definition" src="https://github.com/erlang-ls/docs/raw/master/gif/02-go-to-definition.gif" /></p>
+<h2 id="go-to-implementation-for-otp-behaviours">Go To Implementation for OTP Behaviours</h2>
+<p>Hovering a <code>gen_server:start_link</code> call? Jump to the respective <code>init</code>
+function with a single keystroke.</p>
+<p><img alt="Go To Implementation" src="https://github.com/erlang-ls/docs/raw/master/gif/03-go-to-implementation.gif" /></p>
+<h2 id="signature-suggestions">Signature Suggestions</h2>
+<p>Never remember the order of the <code>lists:keytake/3</code> arguments? You are
+not alone. We got you covered.</p>
+<p><img alt="Signature Suggestions" src="https://github.com/erlang-ls/docs/raw/master/gif/04-signature-suggestions.gif" /></p>
+<h2 id="compiler-diagnostics">Compiler Diagnostics</h2>
+<p>Display warnings and errors from the compiler. Inline.</p>
+<p><img alt="Compiler Diagnostics" src="https://github.com/erlang-ls/docs/raw/master/png/05-compiler-diagnostics.png" /></p>
+<h2 id="dialyzer-diagnostics">Dialyzer Diagnostics</h2>
+<p>It has never been so easy to make Dialyzer happy.</p>
+<p><img alt="Dialyzer Diagnostics" src="https://github.com/erlang-ls/docs/raw/master/png/06-dialyzer-diagnostics.png" /></p>
+<h2 id="elvis-diagnostics">Elvis Diagnostics</h2>
+<p>Display <a href="https://github.com/inaka/elvis">Elvis</a> style suggestions
+inline. No more nit-picking comments from colleagues!</p>
+<p><img alt="Elvis Diagnostics" src="https://github.com/erlang-ls/docs/raw/master/png/07-elvis-diagnostics.png" /></p>
+<h2 id="edoc">Edoc</h2>
+<p>Hover a local or remote function to see its <code>edoc</code>. You will miss this
+feature so much when edocs are not available that you will start
+writing them!</p>
+<p><img alt="Edoc" src="https://github.com/erlang-ls/docs/raw/master/gif/08-edoc.gif" /></p>
+<h2 id="navigation-for-included-files">Navigation for Included Files</h2>
+<p>Navigate to included files with a single click.</p>
+<p><img alt="Included Files" src="https://github.com/erlang-ls/docs/raw/master/gif/09-included-files.gif" /></p>
+<h2 id="findpeek-references">Find/Peek References</h2>
+<p>Who is calling this function? Figure it out without leaving the
+current context.</p>
+<p><img alt="Peek References" src="https://github.com/erlang-ls/docs/raw/master/png/11-peek-references.png" /></p>
+<h2 id="outline">Outline</h2>
+<p>Get a nice outline of your module on the side and jump between
+functions.</p>
+<p><img alt="Outline" src="https://github.com/erlang-ls/docs/raw/master/png/12-outline.png" /></p>
+<h2 id="workspace-symbols">Workspace Symbols</h2>
+<p>Jump to the module you're looking for, in no time.</p>
+<p><img alt="Workspace Symbols" src="https://github.com/erlang-ls/docs/raw/master/png/13-workspace-symbols.png" /></p>
+<h2 id="folding">Folding</h2>
+<p>Focus on what's important, fold the rest.</p>
+<p><img alt="Folding" src="https://github.com/erlang-ls/docs/raw/master/png/14-folding.png" /></p>
                 
                   
                 
@@ -505,7 +655,7 @@ logs:</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../sublime3/" title="Sublime Text 3" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." title="Erlang LS" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -514,19 +664,19 @@ logs:</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Sublime Text 3
+                Erlang LS
               </span>
             </div>
           </a>
         
         
-          <a href="../vim/" title="Vim" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../editors/emacs/" title="Emacs" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Vim
+                Emacs
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -554,9 +704,9 @@ logs:</p>
       
     </div>
     
-      <script src="../../assets/javascripts/application.df00da5d.js"></script>
+      <script src="../assets/javascripts/application.df00da5d.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
     
   </body>
