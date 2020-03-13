@@ -1,4 +1,4 @@
-#!/usr/bin/env sh -ex
+#!/usr/bin/env bash -ex
 
 REMOTE=${REMOTE:-origin}
 BRANCH=master
