@@ -1,8 +1,8 @@
 name: Build
 on:
   push:
-    branches:
-      - '*'
+    branches-ignore:
+      - 'mkdocs'
 jobs:
   build:
     runs-on: ubuntu-latest
