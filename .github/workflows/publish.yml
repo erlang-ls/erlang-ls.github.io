@@ -12,4 +12,4 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Publish
-      run: make publish
+      run: ./publish.sh
