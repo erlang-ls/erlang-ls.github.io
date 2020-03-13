@@ -17,3 +17,4 @@ nav:
       - IntelliJ: editors/intellij.md
       - Vim: editors/vim.md
       - Theia IDE: editors/theia.md
+  - Troubleshooting: troubleshooting.md
