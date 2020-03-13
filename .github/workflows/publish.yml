@@ -30,8 +30,13 @@ jobs:
         name: site
         path: site
     - name: Publish
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./site
-        publish_branch: master
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        GH_NAME: ${{ secrets.GH_NAME }}
+        GH_EMAIL: ${{ secrets.GH_EMAIL }}
+      run: |
+        REMOTE="https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}"
+        git config --global user.name "${GH_NAME}"
+        git config --global user.email "${GH_EMAIL}"
+        git remote set-url origin ${REMOTE}
+        ./publish.sh
