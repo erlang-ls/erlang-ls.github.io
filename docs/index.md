@@ -1,3 +1,3 @@
 # Welcome to Erlang LS
 
-This is a CI test
+This is not a CI test
