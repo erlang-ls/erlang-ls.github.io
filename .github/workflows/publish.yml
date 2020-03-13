@@ -30,4 +30,8 @@ jobs:
         name: site
         path: site
     - name: Publish
-      run: ./publish.sh
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site
+        publish_branch: master
