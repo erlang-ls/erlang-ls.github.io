@@ -1,0 +1,15 @@
+name: Publish
+on:
+  push:
+    branches:
+      - 'mkdocs'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: squidfunk/mkdocs-material
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Publish
+      run: make publish
