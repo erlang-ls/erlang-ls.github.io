@@ -18,3 +18,4 @@ nav:
       - Vim: editors/vim.md
       - Theia IDE: editors/theia.md
   - Troubleshooting: troubleshooting.md
+  - Internals: internals.md
