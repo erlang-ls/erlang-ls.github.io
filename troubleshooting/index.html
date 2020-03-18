@@ -369,8 +369,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#debug-mode" class="md-nav__link">
-    Debug Mode
+  <a href="#attaching-to-the-language-server-via-a-remote-shell" class="md-nav__link">
+    Attaching to the Language Server via a Remote Shell
   </a>
   
 </li>
@@ -426,8 +426,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#debug-mode" class="md-nav__link">
-    Debug Mode
+  <a href="#attaching-to-the-language-server-via-a-remote-shell" class="md-nav__link">
+    Attaching to the Language Server via a Remote Shell
   </a>
   
 </li>
@@ -457,14 +457,7 @@
                 
                 
                 <h1 id="troubleshooting">Troubleshooting</h1>
-<h2 id="debug-mode">Debug Mode</h2>
-<p>It is possible to compile and start the language server in <em>debug mode</em>:</p>
-<pre><code>rebar3 as debug escriptize
-</code></pre>
-<p>Ensure you update your <code>PATH</code> to include the new executable which now
-resides in:</p>
-<pre><code>/path/to/erlang_ls/_build/debug/bin/erlang_ls
-</code></pre>
+<h2 id="attaching-to-the-language-server-via-a-remote-shell">Attaching to the Language Server via a Remote Shell</h2>
 <p>Once an instance of the server is running, find the name of the node in
 the <a href="#logs">logs</a> or by running <code>epmd -names</code>. It will look something like:</p>
 <pre><code>$ epmd -names
@@ -475,12 +468,11 @@ name erlang_ls_62880311918 at port 50819
 <pre><code>erl -sname debug -remsh erlang_ls_62880311918@`HOSTNAME`
 </code></pre>
 <p>The <a href="https://github.com/massemanet/redbug">redbug</a> application is
-included in <em>debug mode</em>, so feel free to use it.</p>
+included in the escript, so feel free to use it.</p>
 <h2 id="logging">Logging</h2>
-<p>When the escript is built using the <code>debug</code> profile as above, logging
-will be enabled and the logs will be written to your platform's log
-directory (i.e. the return value from <code>filename:basedir(user_log,
-"erlang_ls")</code>), in a file named <code>server.log</code>.</p>
+<p>Logs are written to your platform's log directory (i.e. the return
+value from <code>filename:basedir(user_log, "erlang_ls")</code>), in a file named
+<code>server.log</code>.</p>
 <p>It's possible to customize the logging directory by using the
 <code>--log-dir</code> option when starting the server.</p>
 <p>It's also possible to specify the verbosity of the logs by using the
@@ -488,8 +480,6 @@ directory (i.e. the return value from <code>filename:basedir(user_log,
 <code>warning</code> and <code>error</code> levels, <a href="https://github.com/erlang-lager/lager#syslog-style-loglevel-comparison-flags">syslog style loglevel comparison
 flags</a>
 can also be used.</p>
-<p>When the <code>escript</code> is built in the <code>default</code> mode (i.e. <code>rebar3 escript</code>),
-no log files are generated, unless the <code>--log-dir</code> option is provided.</p>
                 
                   
                 
