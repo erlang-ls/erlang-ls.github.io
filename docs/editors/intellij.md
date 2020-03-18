@@ -22,7 +22,7 @@ There you can instruct IntelliJ on how to start the server. Select
 `Raw Command`, set `erl;hrl` as the extension, then add as the
 command:
 
-    /ABSOLUTE/PATH/TO/erlang_ls/_build/debug/bin/erlang_ls --transport stdio
+    /ABSOLUTE/PATH/TO/erlang_ls/_build/default/bin/erlang_ls --transport stdio
 
 Ensure you use an absolute path. The plugin does not seem to
 understand the `~` symbol. For the above command to work, IntelliJ
