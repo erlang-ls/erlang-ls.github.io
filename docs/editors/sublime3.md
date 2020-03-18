@@ -23,7 +23,10 @@ Add an Erlang client by adding the following configuration to the
               "scopes"    : [ "source.erlang" ],
               "syntaxes"  : ["Packages/Erlang/Erlang.sublime-syntax"]
             }
-        }
+        },
+      // Allow up to 30 secs to `erlang_ls` to respond to `initialize`
+      // (it requires less, but just to be on the safe side)
+      "initialize_timeout": 30
     }
 
 That's it. Open a new Erlang project and enjoy Erlang LS.
