@@ -1,6 +1,6 @@
 site_name: Erlang LS
 repo_name: erlang-ls/erlang_ls
-repo_url: https://github.com/erlang-ls/erlang-ls.github.io
+repo_url: https://github.com/erlang-ls/erlang_ls
 edit_uri: ''
 theme:
   name: 'material'
