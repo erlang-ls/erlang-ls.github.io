@@ -8,7 +8,7 @@
 ## Setup
 
 The following instructions should enable Erlang language server integration via
-the [https://github.com/neoclide/coc.nvim](Coc system) (an intellisense engine
+the [Coc system](https://github.com/neoclide/coc.nvim) (an intellisense engine
 for both Vim and Neovim). There is a [plugin for Coc which interacts with
 erlang_ls](https://github.com/hyhugh/coc-erlang_ls).
 
