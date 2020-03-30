@@ -346,6 +346,26 @@
     Setup
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vim-plugins" class="md-nav__link">
+    Vim plugins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coc-plugin-and-configuration" class="md-nav__link">
+    Coc plugin and configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -425,6 +445,26 @@
     Setup
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vim-plugins" class="md-nav__link">
+    Vim plugins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coc-plugin-and-configuration" class="md-nav__link">
+    Coc plugin and configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -445,25 +485,50 @@
                 
                 
                 <h1 id="vim-neovim">Vim / NeoVim</h1>
+<blockquote>
+<p><strong>NOTE</strong>: Neovim has recently included a <a href="https://neovim.io/doc/user/lsp.html">native Language
+Server</a>, though it is not yet available
+over in many distributed versions (e.g. <code>brew</code>). Once the native solution is
+verified to work well, we will update this documentation to reflect the setup.</p>
+</blockquote>
 <h2 id="setup">Setup</h2>
-<p>For <a href="https://github.com/junegunn/vim-plug">vim-plug</a> users, install
-<a href="https://github.com/neoclide/coc.nvim">Coc</a> and its plugin
-<a href="https://github.com/hyhugh/coc-erlang_ls">coc-erlang_ls</a> by entering the
-following in your <code>init.vim</code> or <code>.vimrc</code> plugin section:</p>
-<pre><code class="vim">&quot; Use release branch (Recommend)
+<p>The following instructions should enable Erlang language server integration via
+the <a href="https://github.com/neoclide/coc.nvim">Coc system</a> (an intellisense engine
+for both Vim and Neovim). There is a <a href="https://github.com/hyhugh/coc-erlang_ls">plugin for Coc which interacts with
+erlang_ls</a>.</p>
+<h3 id="vim-plugins">Vim plugins</h3>
+<p>For <a href="https://github.com/junegunn/vim-plug">vim-plug</a> users, install Coc and its
+plugin coc-erlang_ls by entering the following in your <code>init.vim</code> or <code>.vimrc</code>
+plugin section:</p>
+<pre><code class="vim">&quot; Use release branch (Recommended)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'hyhugh/coc-erlang_ls', {'do': 'yarn install --frozen-lockfile'}
 </code></pre>
 
 <p>You should ensure your <code>yarn</code> has frozen-lockfile support (current version
-distributed by <code>brew</code> does not). Then restart vim and run <code>:PlugInstall</code>. If
-the erlang_ls server is running, and you have <a href="https://github.com/hyhugh/coc-erlang_ls#config">configured the CoC
-plugin</a>, then when vim starts
-you should see the message that Coc has connected to it:</p>
-<pre><code class="vim">[coc.nvim] coc-erlang_ls is ready
+distributed by <code>brew</code> does not). Then restart vim and run <code>:PlugInstall</code>.</p>
+<h3 id="coc-plugin-and-configuration">Coc plugin and configuration</h3>
+<p>Configure Coc by editing <code>coc-settings.json</code>, easily done in vim by issuing the
+command:</p>
+<pre><code class="vim">:CocConfig
 </code></pre>
 
-<p>For suggestions on configuring Coc see its <a href="https://github.com/neoclide/coc.nvim#example-vim-configuration">example configuration
+<p>If you installed <code>erlang_ls</code> to its default location then the following config
+should suffice:</p>
+<pre><code class="vim">{
+  &quot;erlang_ls.erlang_ls_path&quot;: &quot;/usr/local/bin/erlang_ls&quot;,
+  &quot;erlang_ls.trace.server&quot;: &quot;off&quot;
+}
+</code></pre>
+
+<p>When vim starts editing a file of filetype <code>erlang</code>, if the erlang_ls server
+can be started and connected to, you should see something like the following
+message from Coc:</p>
+<pre><code class="vim">[coc.nvim] Erlang LS (in erlang_ls), version: X.Y.Z+build.REF
+</code></pre>
+
+<p>For suggestions on configuring Coc and possible key-bindings see its <a href="https://github.com/neoclide/coc.nvim#example-vim-configuration">example
+configuration
 documentation</a>.</p>
                 
                   
