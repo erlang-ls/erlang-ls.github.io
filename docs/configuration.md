@@ -1,5 +1,7 @@
 # Configuration
 
+## The `erlang_ls.config` file
+
 It is possible to customize the behaviour of the `erlang_ls` server
 via a configuration file, named `erlang_ls.config`. The
 `erlang_ls.config` file should be placed in the root directory of a
