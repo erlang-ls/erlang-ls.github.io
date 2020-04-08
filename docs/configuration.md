@@ -13,9 +13,19 @@ A sample `erlang_ls.config` file would look like the following:
 otp_path: "/path/to/otp/lib/erlang"
 deps_dirs:
   - "lib/*"
+diagnostics:
+  enabled:
+    - xref
+  disabled:
+    - dialyzer
 include_dirs:
   - "include"
   - "_build/default/lib"
+lenses:
+  enabled:
+    - ct-run-test
+  disabled:
+    - show-behaviour-usages
 macros:
   - name: DEFINED_WITH_VALUE
     value: 42
@@ -33,17 +43,70 @@ The following customizations are possible:
 | apps\_dirs         | List of directories containing project applications. It supports wildcards.                                                               |
 | code\_reload       | Whether or not an rpc call should be made to a remote node to compile and reload a module                                                 |
 | deps\_dirs         | List of directories containing dependencies. It supports wildcards.                                                                       |
+| diagnostics        | Customize the list of active diagnostics                                                                                                  |
 | include\_dirs      | List of directories provided to the compiler as include dirs. It supports wildcards.                                                      |
+| lenses             | Customize the list of active code lenses                                                                                                  |
 | macros             | List of cusom macros to be passed to the compiler, expressed as a name/value pair. If the value is omitted or is invalid, 'true' is used. |
 | otp\_apps\_exclude | List of OTP applications that will not be indexed (default: megaco, diameter, snmp, wx)                                                   |
 | otp\_path          | Path to the OTP installation                                                                                                              |
 | plt\_path          | Path to the dialyzer PLT file. When none is provided the dialyzer diagnostics will not be available.                                      |
+
+### Diagnostics
+
+When a file is open or saved, a list of _diagnostics_ are run in the
+background, reporting eventual issues with the code base to the
+editor. The following diagnostics are available:
+
+| Diagnostic Name | Purpose                                                                              |
+|-----------------|--------------------------------------------------------------------------------------|
+| compiler        | Report in-line warnings and errors from the Erlang [compiler][compiler]              |
+| dialyzer        | Use the [dialyzer][dialyzer] static analysis tool to find discrepancies in your code |
+| elvis           | Use [elvis][elvis] to review the style of your Erlang code                           |
+| xref            | Use information from the Erlang LS Database to find out about undefined functions    |
+
+Currently, all of the available diagnostics are enabled by default.
+
+It is possible to customize diagnostics for a specific project. For example:
+
+```
+diagnostics:
+  disabled:
+    - dialyzer
+    - xref
+```
+
+## Automatic Code Reloading
 
 The `code_reload` takes the following options:
 
 | Parameter | Description                                                          |
 |-----------|----------------------------------------------------------------------|
 | node      | The node to be called for code reloading. Example erlang_ls@hostname |
+
+## Code Lenses
+
+_Code Lenses_ are also available in Erlang LS. The following lenses
+are available in Erlang LS:
+
+| Code Lens Name        | Purpose                                                                              |
+|-----------------------|--------------------------------------------------------------------------------------|
+| ct-run-test           | Display a _run_ button next to a Common Test testcase                                |
+| server-info           | Display some Erlang LS server information on the top of each module. For debug only. |
+| show-behaviour-usages | Show the number of modules implementing a behaviour                                  |
+
+The following lenses are enabled by default:
+
+* show-behaviour-usages
+
+It is possible to customize lenses for a specific project. For example:
+
+```
+lenses:
+  enabled:
+    - ct-run-test
+  disabled:
+    - show-behaviour-usages
+```
 
 ## Global Configuration
 
@@ -65,3 +128,7 @@ Normally, the location of the _User Config_ directory is:
 
 Thus on Linux, for example, the full path to the default configuation file
 would be `/home/USER/.config/erlang_ls/erlang_ls.config`
+
+[compiler]:https://erlang.org/doc/man/compile.html
+[dialyzer]:http://erlang.org/doc/apps/dialyzer/dialyzer_chapter.html
+[elvis]:https://github.com/inaka/elvis
