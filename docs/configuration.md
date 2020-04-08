@@ -5,25 +5,6 @@ via a configuration file, named `erlang_ls.config`. The
 `erlang_ls.config` file should be placed in the root directory of a
 given project to store the configuration for that project.
 
-It is also possible to store a system-wide default configuration in an
-`erlang_ls.config` file located in the _User Config_ directory. The
-exact location of the _User Config_ directory depends on the operating
-system used and it can be identified by executing the following
-command on an Erlang shell:
-
-    > filename:basedir(user_config, "erlang_ls").
-
-Normally, the location of the _User Config_ directory is:
-
-| Operating System | User Config Directory                               |
-|------------------|-----------------------------------------------------|
-| Linux            | /home/USER/.config/erlang\_ls                       |
-| OS X             | /Users/USER/Library/Application\ Support/erlang\_ls |
-| Windows          | c:/Users/USER/AppData/Local/erlang\_ls              |
-
-Thus on Linux, for example, the full path to the default configuation file
-would be `/home/USER/.config/erlang_ls/erlang_ls.config`
-
 A sample `erlang_ls.config` file would look like the following:
 
 ```yaml
@@ -61,3 +42,24 @@ The `code_reload` takes the following options:
 | Parameter | Description                                                          |
 |-----------|----------------------------------------------------------------------|
 | node      | The node to be called for code reloading. Example erlang_ls@hostname |
+
+## Global Configuration
+
+It is also possible to store a system-wide default configuration in an
+`erlang_ls.config` file located in the _User Config_ directory. The
+exact location of the _User Config_ directory depends on the operating
+system used and it can be identified by executing the following
+command on an Erlang shell:
+
+    > filename:basedir(user_config, "erlang_ls").
+
+Normally, the location of the _User Config_ directory is:
+
+| Operating System | User Config Directory                               |
+|------------------|-----------------------------------------------------|
+| Linux            | /home/USER/.config/erlang\_ls                       |
+| OS X             | /Users/USER/Library/Application\ Support/erlang\_ls |
+| Windows          | c:/Users/USER/AppData/Local/erlang\_ls              |
+
+Thus on Linux, for example, the full path to the default configuation file
+would be `/home/USER/.config/erlang_ls/erlang_ls.config`
