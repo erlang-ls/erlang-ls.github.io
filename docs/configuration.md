@@ -30,14 +30,14 @@ The following customizations are possible:
 
 | Parameter          | Description                                                                                                                               |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| otp\_path          | Path to the OTP installation                                                                                                              |
-| plt\_path          | Path to the dialyzer PLT file. When none is provided the dialyzer diagnostics will not be available.                                      |
-| deps\_dirs         | List of directories containing dependencies. It supports wildcards.                                                                       |
 | apps\_dirs         | List of directories containing project applications. It supports wildcards.                                                               |
+| code\_reload       | Whether or not an rpc call should be made to a remote node to compile and reload a module                                                 |
+| deps\_dirs         | List of directories containing dependencies. It supports wildcards.                                                                       |
 | include\_dirs      | List of directories provided to the compiler as include dirs. It supports wildcards.                                                      |
 | macros             | List of cusom macros to be passed to the compiler, expressed as a name/value pair. If the value is omitted or is invalid, 'true' is used. |
 | otp\_apps\_exclude | List of OTP applications that will not be indexed (default: megaco, diameter, snmp, wx)                                                   |
-| code\_reload       | Whether or not an rpc call should be made to a remote node to compile and reload a module                                                 |
+| otp\_path          | Path to the OTP installation                                                                                                              |
+| plt\_path          | Path to the dialyzer PLT file. When none is provided the dialyzer diagnostics will not be available.                                      |
 
 The `code_reload` takes the following options:
 
