@@ -28,7 +28,7 @@ This can be achieved, for example, by using the
 [exec-path-from-shell](https://github.com/purcell/exec-path-from-shell)
 Emacs package.
 
-##Troubleshooting
+## Troubleshooting
 
 If things do not work as expected, we advise you to start Emacs with
 only the configuration from the provided sample file, using the
@@ -59,3 +59,15 @@ Finally, to enable logging on the client-side, just:
 ```elisp
 (setq lsp-log-io t)
 ```
+
+## Tips and Tricks
+
+### Shortcuts for code lenses and quick actions
+
+You can run `M-x lsp-avy-lens` to show _letters_ next to code
+lenses. You can then press those letters to trigger the respective
+action.
+
+If your `sideline` is enabled (`(setq lsp-ui-sideline-enable t)`), you
+can also use `M-x lsp-execute-code-action` to trigger quick-fix
+actions.
