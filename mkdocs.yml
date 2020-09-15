@@ -18,6 +18,7 @@ nav:
       - Vim: editors/vim.md
       - Theia IDE: editors/theia.md
   - Configuration: configuration.md
+  - Talks: talks.md
   - Articles:
       - OTP 23 Brings Docs: articles/otp-23-bring-docs.md
   - Troubleshooting: troubleshooting.md
