@@ -24,3 +24,5 @@ nav:
       - OTP 23 Brings Docs: articles/otp-23-bring-docs.md
   - Troubleshooting: troubleshooting.md
   - Internals: internals.md
+markdown_extensions:
+  - admonition
