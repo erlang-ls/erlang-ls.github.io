@@ -12,6 +12,7 @@ nav:
   - Features: features.md
   - Editors:
       - Emacs: editors/emacs.md
+      - Spacemacs: editors/spacemacs.md
       - VSCode: editors/vscode.md
       - Sublime Text 3: editors/sublime3.md
       - IntelliJ: editors/intellij.md
