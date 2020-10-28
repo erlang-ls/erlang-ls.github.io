@@ -13,7 +13,7 @@
     
     
       
-        <title>VSCode - Erlang LS</title>
+        <title>Spacemacs - Erlang LS</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vscode" class="md-skip">
+        <a href="#spacemacs" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              VSCode
+              Spacemacs
             
           </span>
         </div>
@@ -247,18 +247,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../spacemacs/" class="md-nav__link">
-      Spacemacs
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -270,12 +258,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        VSCode
+        Spacemacs
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      VSCode
+      Spacemacs
     </a>
     
       
@@ -302,6 +290,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vscode/" class="md-nav__link">
+      VSCode
+    </a>
   </li>
 
         
@@ -487,17 +487,31 @@
               
                 
                 
-                <h1 id="vscode">VSCode</h1>
+                <h1 id="spacemacs">Spacemacs</h1>
 <h2 id="setup">Setup</h2>
-<p>The Erlang Language Server is available in VSCode via a <a href="https://github.com/erlang-ls/vscode">dedicated
-extension</a>.</p>
-<p>To try it out, simply open VSCode and install the extension via the
-Marketplace:</p>
-<pre><code>Preferences &gt; Extensions
+<p>The <code>develop</code> branch includes an Erlang layer with support for the
+Language Server Protocol using Erlang LS as backend.</p>
+<p><a href="https://github.com/syl20bnr/spacemacs/tree/develop/layers/%2Blang/erlang">Here</a>
+you can find information about installation and configuration, as well
+as supported features.</p>
+<p>Both, <code>lsp</code> and <code>erlang-mode</code> variables, can be configured when
+setting up <code>dotspacemacs-configuration-layers</code>, e.g:</p>
+<pre><code class="language-elisp">dotspacemacs-configuration-layers
+'(
+;...
+lsp
+(erlang :variables
+        erlang-backend 'lsp
+        erlang-root-dir &quot;&lt;path to&gt;/otp_22/lib/erlang&quot;
+        erlang-man-root-dir &quot;&lt;path to&gt;/otp_22_kred/lib/erlang/man&quot;
+        erlang-fill-column 100
+        company-minimum-prefix-length 1
+        company-idle-delay 0.3
+        lsp-ui-doc-position 'bottom)
+;...
+)
+
 </code></pre>
-<p>Look for the <code>erlang-ls</code> extension and install it. That's it.</p>
-<p>Remember that the Erlang Language Server requires Erlang/OTP 21 or
-higher to run, so ensure that OTP 21+ is available in your <code>PATH</code>.</p>
                 
               
               
@@ -516,7 +530,7 @@ higher to run, so ensure that OTP 21+ is available in your <code>PATH</code>.</p
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../spacemacs/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../emacs/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -525,19 +539,19 @@ higher to run, so ensure that OTP 21+ is available in your <code>PATH</code>.</p
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Spacemacs
+                Emacs
               </div>
             </div>
           </a>
         
         
-          <a href="../sublime3/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../vscode/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Sublime Text 3
+                VSCode
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
