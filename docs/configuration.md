@@ -15,7 +15,7 @@ deps_dirs:
   - "lib/*"
 diagnostics:
   enabled:
-    - xref
+    - crossref
   disabled:
     - dialyzer
 include_dirs:
@@ -62,7 +62,7 @@ editor. The following diagnostics are available:
 | compiler        | Report in-line warnings and errors from the Erlang [compiler][compiler]              |
 | dialyzer        | Use the [dialyzer][dialyzer] static analysis tool to find discrepancies in your code |
 | elvis           | Use [elvis][elvis] to review the style of your Erlang code                           |
-| xref            | Use information from the Erlang LS Database to find out about undefined functions    |
+| crossref        | Use information from the Erlang LS Database to find out about undefined functions    |
 
 Currently, all of the available diagnostics are enabled by default.
 
@@ -72,7 +72,7 @@ It is possible to customize diagnostics for a specific project. For example:
 diagnostics:
   disabled:
     - dialyzer
-    - xref
+    - crossref
 ```
 
 ## Automatic Code Reloading
