@@ -21,6 +21,7 @@ nav:
   - Configuration: configuration.md
   - Talks: talks.md
   - Articles:
+      - Snippets are here: articles/snippets-are-here.md
       - OTP 23 Brings Docs: articles/otp-23-bring-docs.md
   - Troubleshooting: troubleshooting.md
   - Internals: internals.md
