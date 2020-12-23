@@ -2,8 +2,35 @@
 
 ## Setup
 
-Using the _Command Palette_, select `Package Control: Install Package`
-and install the `LSP` package.
+### Install the Erlang LS Language Server
+
+To install Erlang LS:
+
+```
+git clone https://github.com/erlang-ls
+cd erlang_ls
+rebar3 escriptize
+```
+
+This will create an Erlang _escript_ in:
+
+```
+_build/default/bin/erlang_ls
+```
+
+Try running Erlang LS with the `--version` flag to verify everything
+works as expected:
+
+```
+_build/default/bin/erlang_ls --version
+```
+
+Ensure `erlang_ls` is in your `PATH`.
+
+### Install the LSP Client for Sublime Text 3
+
+Using the _Command Palette_ from the _Tools_ menu, select `Package
+Control: Install Package` and install the `LSP` package.
 
 After that is done, go to:
 
@@ -17,7 +44,7 @@ Add an Erlang client by adding the following configuration to the
         {
           "erlang-ls":
             {
-              "command"   : [ "/path/to/my/erlang_ls", "--transport", "stdio" ],
+              "command"   : [ "erlang_ls", "--transport", "stdio" ],
               "enabled"   : true,
               "languageId": "erlang",
               "scopes"    : [ "source.erlang" ],
@@ -32,6 +59,18 @@ Add an Erlang client by adding the following configuration to the
 That's it. Open a new Erlang project and enjoy Erlang LS.
 
 ## Troubleshooting
+
+### Ensure Erlang LS is in your PATH
+
+To be able to use Erlang LS, the `erlang_ls` escript needs to be in your path.
+
+!!! info "Are You a macOS User?"
+
+    If you are a _macOS_ user, you may consider using the following plugin
+    to ensure your PATH is correctly used by Sublime Text 3:
+    <https://github.com/int3h/SublimeFixMacPath>
+
+### Enabling logging
 
 In case of issues, you can enable extra logging for the `LSP` package
 by adding the following configuration to your `LSP.sublime-settings -
