@@ -85,3 +85,7 @@ Jump to the module you're looking for, in no time.
 Focus on what's important, fold the rest.
 
 ![Folding](https://github.com/erlang-ls/docs/raw/master/png/14-folding.png)
+
+## Snippets
+
+![Snippets](https://github.com/erlang-ls/docs/raw/master/gif/15-snippets.gif)
