@@ -83,7 +83,7 @@ _code lens_, the feature can be disabled via the `erlang_ls.config`
 file, using the following configuration:
 
     lenses:
-      enabled:
+      disabled:
         - suggest-spec
 
 To make this possible, we had to fork the `typer` program from
