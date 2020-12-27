@@ -88,4 +88,12 @@ Focus on what's important, fold the rest.
 
 ## Snippets
 
+Quickly insert parametrized, reusable pieces of code.
+
 ![Snippets](https://github.com/erlang-ls/docs/raw/master/gif/15-snippets.gif)
+
+## Suggest Type Specs
+
+Annotate your Erlang programs with type information.
+
+![Suggest Specs](https://github.com/erlang-ls/docs/raw/master/gif/16-suggest-specs.gif)
