@@ -70,7 +70,7 @@ from the text editor.
     later update it, please refer to the Dialyzer [User
     Guide](https://erlang.org/doc/apps/dialyzer/dialyzer_chapter.html#the-persistent-lookup-table).
 
-Whenever a function lacks type specifications, you will see a `Suggest
+Whenever a function lacks type specifications, you will see a `Add
 spec` code lens next to the function definition. By clicking on the
 lens (or by using a keyboard shortcut), Erlang LS will attempt at
 suggesting type specifications for your function. This is what the procedure
