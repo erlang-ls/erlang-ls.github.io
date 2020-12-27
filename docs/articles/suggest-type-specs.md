@@ -56,13 +56,35 @@ Erlang LS today leverages both _Dialyzer_ and _Typer_ to make it
 possible for the programmer to generate type specifications directly
 from the text editor.
 
-Whenever a function lacks type specifications, you will see a `Add
+!!! warning "First Time Setup"
+
+    To do its job, Dialyzer (and therefore Erlang LS) makes use of a _Persistent Lookup Table_
+    (a.k.a. _PLT_). This table needs to be generated before you can use
+    this feature in Erlang LS. Generating a _PLT_ is a simple operation
+    that can be achieved via:
+
+        dialyzer --build_plt --apps erts kernel stdlib
+
+    Where you can of course customize the provided list of
+    applications. For more information about creating a PLT and how to
+    later update it, please refer to the Dialyzer [User
+    Guide](https://erlang.org/doc/apps/dialyzer/dialyzer_chapter.html#the-persistent-lookup-table).
+
+Whenever a function lacks type specifications, you will see a `Suggest
 spec` code lens next to the function definition. By clicking on the
 lens (or by using a keyboard shortcut), Erlang LS will attempt at
 suggesting type specifications for your function. This is what the procedure
 looks like in Emacs:
 
 ![Suggest Specs](https://github.com/erlang-ls/docs/raw/master/gif/16-suggest-specs.gif)
+
+This feature is enabled by default in Erlang LS. Like for any other
+_code lens_, the feature can be disabled via the `erlang_ls.config`
+file, using the following configuration:
+
+    lenses:
+      enabled:
+        - suggest-spec
 
 To make this possible, we had to fork the `typer` program from
 Erlang/OTP, mostly because the tool was designed as a separate
