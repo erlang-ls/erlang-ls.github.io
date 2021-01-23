@@ -1,0 +1,1184 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.5">
+    
+    
+      
+        <title>How To: Diagnostics - Erlang LS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.15aa0b43.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.75751829.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-diagnostics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Erlang LS" class="md-header-nav__button md-logo" aria-label="Erlang LS">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Erlang LS
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              How To: Diagnostics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/erlang-ls/erlang_ls" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    erlang-ls/erlang_ls
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Erlang LS" class="md-nav__button md-logo" aria-label="Erlang LS">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Erlang LS
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/erlang-ls/erlang_ls" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    erlang-ls/erlang_ls
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        Editors
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Editors" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Editors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/emacs/" class="md-nav__link">
+        Emacs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/spacemacs/" class="md-nav__link">
+        Spacemacs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/vscode/" class="md-nav__link">
+        VSCode
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/sublime3/" class="md-nav__link">
+        Sublime Text 3
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/intellij/" class="md-nav__link">
+        IntelliJ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/vim/" class="md-nav__link">
+        Vim
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/theia/" class="md-nav__link">
+        Theia IDE
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../talks/" class="md-nav__link">
+        Talks
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      
+      <label class="md-nav__link" for="nav-6">
+        Articles
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Articles" data-md-level="1">
+        <label class="md-nav__title" for="nav-6">
+          <span class="md-nav__icon md-icon"></span>
+          Articles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          How To: Diagnostics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        How To: Diagnostics
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-goal" class="md-nav__link">
+    The goal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-new-diagnostics-backend" class="md-nav__link">
+    Adding a New Diagnostics Backend
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding a New Diagnostics Backend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-is_default0-callback" class="md-nav__link">
+    The is_default/0 callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-sources0-callback" class="md-nav__link">
+    The sources/0 callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-run1-function" class="md-nav__link">
+    The run/1 function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registering-the-backend" class="md-nav__link">
+    Registering the backend
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-test-driven-development-tdd-approach" class="md-nav__link">
+    Using a Test-Driven-Development (TDD) approach
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-for-unused-macros" class="md-nav__link">
+    Looking for Unused Macros
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-complete-backend" class="md-nav__link">
+    The Complete Backend
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suggest-type-specs/" class="md-nav__link">
+        Suggesting Type Specs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets-are-here/" class="md-nav__link">
+        Snippets are here
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../otp-23-bring-docs/" class="md-nav__link">
+        OTP 23 Brings Docs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../internals/" class="md-nav__link">
+        Internals
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-goal" class="md-nav__link">
+    The goal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-new-diagnostics-backend" class="md-nav__link">
+    Adding a New Diagnostics Backend
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding a New Diagnostics Backend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-is_default0-callback" class="md-nav__link">
+    The is_default/0 callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-sources0-callback" class="md-nav__link">
+    The sources/0 callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-run1-function" class="md-nav__link">
+    The run/1 function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registering-the-backend" class="md-nav__link">
+    Registering the backend
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-test-driven-development-tdd-approach" class="md-nav__link">
+    Using a Test-Driven-Development (TDD) approach
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-for-unused-macros" class="md-nav__link">
+    Looking for Unused Macros
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-complete-backend" class="md-nav__link">
+    The Complete Backend
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="how-to-diagnostics">How To: Diagnostics</h1>
+<p>A couple of days ago, NextRoll announced
+<a href="https://github.com/AdRoll/rebar3_hank">rebar3_hank</a>, a <em>"powerful but
+simple tool to detect dead code around your Erlang codebase (and kill
+it with fire!)"</em>. In their <a href="https://tech.nextroll.com/blog/dev/2021/01/06/erlang-rebar3-hank.html">original
+post</a>
+the authors mentioned the overlap between <em>rebar3_hank</em> and some of
+the features provided by <em>Erlang LS</em>, such as detection of unused
+included files.</p>
+<p>Intrigued by the new tool, I decided to look deeper into it, to check
+whether <em>rebar3_hank</em> could be integrated with the <em>diagnostics
+framework</em> in Erlang LS, to avoid duplicated efforts within the Erlang
+Community.</p>
+<p>Both <em>rebar3_hank</em> and <em>Erlang LS</em> create <em>diagnostics</em> based on
+source code, but there are a few differences. For example,
+<em>rebar3_hank</em> acts on a project's code base as a whole, while Erlang
+LS operates on individual Erlang modules and their strict
+dependencies. Also, <em>rebar3_hank</em> is intended to be used as a CLI via
+a rebar3 plugin, while Erlang LS is a server which integrates with
+your IDE via the LSP protocol.</p>
+<p>It was immediately clear that an integration between both tools would
+require a certain degree of refactoring. The ideas of <em>rebar3_hank</em>
+were quite interesting, though, and most of them would be easily
+implementable in Erlang LS. So, I decided to port one of them,
+<a href="https://github.com/AdRoll/rebar3_hank/blob/main/src/rules/unused_macros.erl">detection of unused
+macros</a>,
+and to take this opportunity to explain the process of contributing a
+new diagnostics backend to Erlang LS.</p>
+<blockquote>
+<p>If you always wanted to contribute to Erlang LS, but you didn't know
+where to start, this post is for you. Let's start.</p>
+</blockquote>
+<h2 id="the-goal">The goal</h2>
+<p>Given an Erlang module, we would like to be notified with a warning if
+a macro is defined, but not used.</p>
+<p><img alt="Detecting Unused Macros in Erlang LS" src="../../images/unused-macros.png?raw=true" title="Detecting Unused Macros in Erlang LS" /></p>
+<p>How can we make it happen?</p>
+<h2 id="adding-a-new-diagnostics-backend">Adding a New Diagnostics Backend</h2>
+<p>The first thing we need to do is to define a new Erlang module which
+implements the <code>els_diagnostics</code> behaviour. By convention, all
+diagnostics modules are named <code>els_[BACKEND]_diagnostics.erl</code> where
+<code>[BACKEND]</code>, in our case, will be <code>unused_macros</code>. So, the final name
+of the module will be <code>els_unused_macros_diagnostics.erl</code>. Let's open
+a new text file and add the following:</p>
+<pre><code>-module(els_unused_macros_diagnostics).
+-behaviour(els_diagnostics).
+</code></pre>
+<p>The <code>els_diagnostics</code> behaviour requires three callback functions to
+be implemented:</p>
+<pre><code>-callback is_default() -&gt; boolean().
+-callback source()     -&gt; binary().
+-callback run(uri())   -&gt; [diagnostic()].
+</code></pre>
+<p>So let's add the following exports to the module. We will implement
+all functions in a second.</p>
+<pre><code>-export([ is_default/0
+        , source/0
+        , run/1
+        ]).
+</code></pre>
+<h3 id="the-is_default0-callback">The <code>is_default/0</code> callback</h3>
+<p>The <code>is_default/0</code> callback is used to specify if the current backend
+should be enabled by default or not. In our case, we want the new
+backend to be enabled by default, so we say:</p>
+<pre><code>is_default() -&gt; true.
+</code></pre>
+<p>Should the end user decide to disable this backend, she can just add
+to her <code>erlang_ls.config</code> the following option:</p>
+<pre><code>diagnostics:
+  disabled:
+    unused_macros
+</code></pre>
+<h3 id="the-sources0-callback">The <code>sources/0</code> callback</h3>
+<p>Let's now implement our second callback function, <code>source/0</code>. This
+function returns the human-friendly name for the backend, which is
+rendered by the IDE (see the <code>UnusedMacros</code> text in the above
+screenshot):</p>
+<pre><code>source() -&gt; &lt;&lt;"UnusedMacros"&gt;&gt;.
+</code></pre>
+<h3 id="the-run1-function">The <code>run/1</code> function</h3>
+<p>The last callback function we need to implement is where the
+interesting stuff happens.</p>
+<p>The <code>run/1</code> function takes a single parameter, the <code>Uri</code> of the Erlang
+module for which diagnostics are run. By default, diagnostics are
+calculated <em>OnOpen</em> (when the module is firstly accessed in the IDE)
+and <em>OnSave</em> (whenever the module is saved from the IDE).</p>
+<p>The function returns a list of <em>diagnostics</em> for the module which will
+be rendered by the IDE, in a format specified by the <a href="https://microsoft.github.io/language-server-protocol/specifications/specification-current/">LSP
+protocol</a>. Diagnostics
+can be of four types:</p>
+<ul>
+<li>Hint</li>
+<li>Info</li>
+<li>Warning</li>
+<li>Error</li>
+</ul>
+<p>For the time being, let's return an empty list.</p>
+<pre><code>run(_Uri) -&gt; [].
+</code></pre>
+<h3 id="registering-the-backend">Registering the backend</h3>
+<p>There's one more thing we need to do before we can use our backend in
+Erlang LS. We need to <em>register</em> it among the available backends. We
+can do this by adding an entry to the list of available diagnostics in
+the <code>els_diagnostics</code> module:</p>
+<pre><code>available_diagnostics() -&gt;
+  [ &lt;&lt;"compiler"&gt;&gt;
+  , &lt;&lt;"crossref"&gt;&gt;
+  , &lt;&lt;"dialyzer"&gt;&gt;
+  , &lt;&lt;"elvis"&gt;&gt;
+  , &lt;&lt;"unused_includes"&gt;&gt;
+  , &lt;&lt;"unused_macros"&gt;&gt; %% Here is our new shiny diagnostics backend!
+].
+</code></pre>
+<h2 id="using-a-test-driven-development-tdd-approach">Using a Test-Driven-Development (TDD) approach</h2>
+<p>At this point, we could jump in and start implementing the body of our
+<code>run/1</code> function. Then, to try if things are working as expected, we
+could:</p>
+<ul>
+<li>Rebuild our version of Erlang LS as an <em>escript</em></li>
+<li>Open a new file in our IDE</li>
+<li>Restart Erlang LS</li>
+<li>Add an unused macro to our new file</li>
+<li>Save the file</li>
+<li>Ensure that a warning is produced <em>on save</em></li>
+<li>Check Erlang LS logs to see why things don't work the way we expect</li>
+<li>Rinse and repeat</li>
+</ul>
+<p>This approach may even work, but it would slow down our feedback loop
+drastically and it would make the whole experience of contributing to
+Erlang LS painful.</p>
+<p>Luckily, there's a better way: starting with a test case. After
+all, if we are planning to contribute our new backend, we will be
+required to add a test case anyway.</p>
+<p>How do we implement a test case for such a feature, though? That
+sounds like a lot of work and we don't know where to
+start. Here is where the <em>Erlang LS testing framework</em> comes into play.</p>
+<p>The first thing we need to do is to add a <em>minimal example</em> to the
+Erlang LS test application (which for historical reasons is named
+<em>code_navigation</em> and should be renamed). You can find it
+in the <code>priv</code> directory of the project.</p>
+<p>Our minimal example could look like this:</p>
+<pre><code>$ cat priv/code_navigation/src/diagnostics_unused_macros.erl
+-module(diagnostics_unused_macros).
+
+-export([main/0]).
+
+-define(USED_MACRO, used_macro).
+-define(UNUSED_MACRO, unused_macro).
+
+main() -&gt;
+  ?USED_MACRO.
+</code></pre>
+<p>In the above code, we define two macros and we use only one of
+them. We therefore expect a warning on line 6 for the <code>UNUSED_MACRO</code>.</p>
+<p>We also need to register our minimal example into the Erlang LS
+testing framework. For that, we add a line to the list of <code>sources</code> in
+the <code>els_test_utils</code> module:</p>
+<pre><code>sources() -&gt;
+  [ ...
+  , diagnostics_unused_macros
+  , ...
+  ]
+</code></pre>
+<p>Now, we can focus on the actual test case. Since it's a <em>diagnostics</em>
+test, we can extend the already existing <code>els_diagnostics_SUITE</code>
+module. The test suite leverages the <em>Common Test</em> framework in
+Erlang/OTP, so please refer to the <a href="http://erlang.org/doc/apps/common_test/basics_chapter.html">official
+documentation</a>
+if you are not familiar with it.</p>
+<p>First, we export the new testcase, which we call <code>unused_macros</code>:</p>
+<pre><code>-export([ ...
+        , unused_macros/1
+        . ...
+        ])
+</code></pre>
+<p>Then, we can implement the body of our new testcase:</p>
+<pre><code>unused_macros(Config) -&gt;
+  Uri = ?config(diagnostics_unused_macros_uri, Config),
+  els_mock_diagnostics:subscribe(),
+  ok = els_client:did_save(Uri),
+  Diagnostics = els_mock_diagnostics:wait_until_complete(),
+  Expected = [ #{ message =&gt; &lt;&lt;"Unused macro: UNUSED_MACRO"&gt;&gt;
+                , range =&gt;
+                    #{ 'end' =&gt; #{ character =&gt; 20
+                                 , line =&gt; 5
+                                 }
+                     , start =&gt; #{ character =&gt; 8
+                                 , line =&gt; 5
+                                 }
+                     }
+                , severity =&gt; ?DIAGNOSTIC_WARNING
+                , source =&gt; &lt;&lt;"UnusedMacros"&gt;&gt;
+                }
+             ],
+  ?assertEqual(Expected, Diagnostics),
+  ok.
+</code></pre>
+<p>Lot of things are happening here, so let's go through the code
+together, starting from the beginning:</p>
+<pre><code>Uri = ?config(diagnostics_unused_macros_uri, Config),
+</code></pre>
+<p>Here we fetch the <em>Uri</em> of the Erlang module containing our minimal
+example from the Common Test <code>Config</code>. This feels a bit magic, since
+we never populated that variable anywhere. What's going on?</p>
+<p>Remember that we registered our new testing module in the <code>sources/1</code>
+function above? That caused the Erlang LS testing framework not just
+to index that file, but also to create a couple of handy variables
+which can be used when writing test cases. <code>[MODULE_NAME]_uri</code> is one
+of these variables. Another one is <code>[MODULE_NAME]_text</code>, which
+contains the actual source code of the module. But let's continue with
+our testcase for now:</p>
+<pre><code>els_mock_diagnostics:subscribe(),
+</code></pre>
+<p>Since we want to test a new diagnostics backend, we subscribe to the
+stream of <code>diagnostics</code>, so that we can intercept and validate
+them. Again, we use a utility function which the Erlang LS testing
+framework provides.</p>
+<pre><code>ok = els_client:did_save(Uri),
+Diagnostics = els_mock_diagnostics:wait_until_complete(),
+</code></pre>
+<p>We then simulate an IDE saving the file and wait until the diagnostics
+(which are calculated asynchronously) are completed.</p>
+<pre><code>Expected = [ #{ message =&gt; &lt;&lt;"Unused macro: UNUSED_MACRO"&gt;&gt;
+              , range =&gt;
+                  #{ 'end' =&gt; #{ character =&gt; 20
+                               , line =&gt; 5
+                               }
+                   , start =&gt; #{ character =&gt; 8
+                               , line =&gt; 5
+                               }
+                   }
+              , severity =&gt; ?DIAGNOSTIC_WARNING
+              , source =&gt; &lt;&lt;"UnusedMacros"&gt;&gt;
+              }
+           ],
+?assertEqual(Expected, Diagnostics),
+ok.
+</code></pre>
+<p>Here we verify that a <em>warning</em> message is generated by our backend
+(notice the <code>source</code> attribute). The warning message is expected on
+line 6, between characters 8 and 20 (which correspond to the location
+of the macro <em>name</em>).</p>
+<p>The <code>?DIAGNOSTIC_WARNING</code> macro is defined in the <code>erlang_ls.hrl</code>
+header file, so let's include it below the <code>export</code> list:</p>
+<pre><code>-include("erlang_ls.hrl").
+</code></pre>
+<p>Let's now execute our test case and check the result. Notice how we
+need to specify a <code>group</code> for the testcase, since all Erlang LS tests
+can be run for the two LSP supported <em>transports</em> (<em>TCP</em> and <em>stdio</em>).</p>
+<pre><code>$ rebar3 ct --suite els_diagnostics_SUITE --case unused_macros --group tcp
+===&gt; Verifying dependencies...
+===&gt; Analyzing applications...
+===&gt; Compiling erlang_ls
+===&gt; Running Common Test suites...
+%%% els_diagnostics_SUITE:
+[...]
+expected: [#{message =&gt; &lt;&lt;"Unused macro: UNUSED_MACRO"&gt;&gt;,
+             range =&gt;
+               #{'end' =&gt; #{character =&gt; 20,line =&gt; 5},
+                 start =&gt; #{character =&gt; 8,line =&gt; 5}},
+             severity =&gt; 2,source =&gt; &lt;&lt;"UnusedMacros"&gt;&gt;}]
+got: []
+line: 582
+</code></pre>
+<p>Not surpringly, the testcase fails, since we haven't implemented our
+<code>run/1</code> function yet, but we are returning an hard-coded empty
+list. Let's fix that now.</p>
+<h2 id="looking-for-unused-macros">Looking for Unused Macros</h2>
+<p>We can finally jump to interesting bit of this tutorial, implementing
+a detection mechanism for unused macros. As usual, let's first look at
+the whole code and then explain its behaviour.</p>
+<pre><code>run(Uri) -&gt;
+  {ok, [Document]} = els_dt_document:lookup(Uri),
+  UnusedMacros = find_unused_macros(Document),
+  [make_diagnostic(Macro) || Macro &lt;- UnusedMacros].
+</code></pre>
+<p>First, we query the Erlang LS database by <em>Uri</em>. Then, we invoke the
+<code>find_unused_macros/1</code> function - which we still need to implement -
+on the returned <em>document</em>. For each identified <em>Macro</em>, we produce a
+<em>diagnostic</em>, in the format expected by the LSP protocol. Again, we
+still need to implement our <code>make_diagnostic/1</code> function.</p>
+<p>Let's now focus on the <code>find_unused_macros/1</code> function. The goal of the
+function is to identify unused macros within a given <em>document</em>:</p>
+<pre><code>find_unused_macros(Document) -&gt;
+  Definitions = els_dt_document:pois(Document, [define]),
+  Usages = els_dt_document:pois(Document, [macro]),
+  UsagesIds = [Id || #{id := Id} &lt;- Usages],
+  [POI || #{id := Id} = POI &lt;- Definitions, not lists:member(Id, UsagesIds)].
+</code></pre>
+<p>Again, lot of things happening here, so let's go through the code line by line.</p>
+<p>First, we identify all the macro definitions, identified by the <code>define</code> key:</p>
+<pre><code>  Definitions = els_dt_document:pois(Document, [define]),
+</code></pre>
+<p>Then, we identify all the macro usages, identifie by the <code>macro</code> key:</p>
+<pre><code>  Usages = els_dt_document:pois(Document, [macro]),
+</code></pre>
+<p>You can refer to the <code>els_parser</code> module in Erlang LS for details
+about <em>POIs</em> (<em>Points of Interests</em>) and available keys.</p>
+<p>For each macro usage, we extract the respective <code>id</code> and we return the
+list of macro definitions which do not have a corresponding usage:</p>
+<pre><code>  UsagesIds = [Id || #{id := Id} &lt;- Usages],
+  [POI || #{id := Id} = POI &lt;- Definitions, not lists:member(Id, UsagesIds)].
+</code></pre>
+<p>The last missing bit is the <code>make_diagnostic/1</code> function, which will
+convert each <em>POI</em> into a <em>diagnostic</em>:</p>
+<pre><code>make_diagnostic(#{id := Id, range := POIRange} = _POI) -&gt;
+  Range = els_protocol:range(POIRange),
+  MacroName = atom_to_binary(Id, utf8),
+  Message = &lt;&lt;"Unused macro: ", MacroName/binary&gt;&gt;,
+  Severity = ?DIAGNOSTIC_WARNING,
+  Source = source(),
+  els_diagnostics:make_diagnostic(Range, Message, Severity, Source).
+</code></pre>
+<p>This function is essentially a wrapper around around the utility
+function <code>els_diagnostics:make_diagnostic/4</code>. Let's analyze it in detail.</p>
+<pre><code>  Range = els_protocol:range(POIRange),
+</code></pre>
+<p>Here we convert the <em>range</em> of the <em>POI</em> (the unused macro definition)
+in the format required by the LSP protocol, using a helper function
+provided by Erlang LS.</p>
+<pre><code>  MacroName = atom_to_binary(Id, utf8),
+  Message = &lt;&lt;"Unused macro: ", MacroName/binary&gt;&gt;,
+</code></pre>
+<p>We then build the diagnostic <em>message</em> using the <em>id</em> (the name) of
+the offending macro.</p>
+<pre><code>  Severity = ?DIAGNOSTIC_WARNING,
+</code></pre>
+<p>We specify <em>warning</em> as the <em>severity</em> of the message.</p>
+<pre><code>  Source = source(),
+</code></pre>
+<p>We invoke the <code>source/0</code> function to specify the <em>source</em> of the
+diagnostic (for rendering purposes in the IDE).</p>
+<pre><code>  els_diagnostics:make_diagnostic(Range, Message, Severity, Source).
+</code></pre>
+<p>We finally invoke the <code>els_diagnostics:make_diagnostic/4</code> function
+with the constructed arguments to produce a <em>diagnostic</em>.</p>
+<p>That should be it. Let's try to execute the testcase again:</p>
+<pre><code>$ rebar3 ct --suite els_diagnostics_SUITE --case unused_macros --group tcp
+===&gt; Verifying dependencies...
+===&gt; Analyzing applications...
+===&gt; Compiling erlang_ls
+===&gt; Running Common Test suites...
+%%% els_diagnostics_SUITE:
+All 1 tests passed.
+</code></pre>
+<p><strong>Success!</strong> Tests now pass and we are able to identify unused macros in Erlang LS!</p>
+<h2 id="the-complete-backend">The Complete Backend</h2>
+<p>Here is the full implementation of the backend, for reference:</p>
+<pre><code>-module(els_unused_macros_diagnostics).
+-behaviour(els_diagnostics).
+
+-export([ is_default/0
+        , source/0
+        , run/1
+        ]).
+
+-include("erlang_ls.hrl").
+
+is_default() -&gt; true.
+
+source() -&gt; &lt;&lt;"UnusedMacros"&gt;&gt;.
+
+run(Uri) -&gt;
+  {ok, [Document]} = els_dt_document:lookup(Uri),
+  UnusedMacros = find_unused_macros(Document),
+  [make_diagnostic(Macro) || Macro &lt;- UnusedMacros].
+
+find_unused_macros(Document) -&gt;
+  Definitions = els_dt_document:pois(Document, [define]),
+  Usages = els_dt_document:pois(Document, [macro]),
+  UsagesIds = [Id || #{id := Id} &lt;- Usages],
+  [POI || #{id := Id} = POI &lt;- Definitions, not lists:member(Id, UsagesIds)].
+
+make_diagnostic(#{id := Id, range := POIRange} = _POI) -&gt;
+  Range = els_protocol:range(POIRange),
+  MacroName = atom_to_binary(Id, utf8),
+  Message = &lt;&lt;"Unused macro: ", MacroName/binary&gt;&gt;,
+  Severity = ?DIAGNOSTIC_WARNING,
+  Source = source(),
+  els_diagnostics:make_diagnostic(Range, Message, Severity, Source).
+</code></pre>
+<p>Of course, the implementation above is quite minimalistic and could be
+improved in many ways, but at this point you should get the idea of
+what it means to implement a new diagnostics backend for Erlang LS.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The above backend is already integrated in Erlang LS, but as an opt-in
+backend. You can see the whole contribution at:</p>
+<p><a href="https://github.com/erlang-ls/erlang_ls/pull/867/files">https://github.com/erlang-ls/erlang_ls/pull/867/files</a></p>
+<p>Contributing to an open source can be a daunting experience,
+especially when you do not have an infinite amount of time available.
+I hope that this little tutorial can help you in that direction and
+I'm looking forward to the brilliant things that you can contribute to
+Erlang LS.</p>
+<p>Have fun!</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../talks/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Talks
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../suggest-type-specs/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Suggesting Type Specs
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.93c04032.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
