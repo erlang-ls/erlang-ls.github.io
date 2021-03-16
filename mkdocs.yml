@@ -21,6 +21,7 @@ nav:
   - Configuration: configuration.md
   - Talks: talks.md
   - Articles:
+      - "How To: Code Lenses": articles/tutorial-code-lenses.md
       - "How To: Diagnostics": articles/tutorial-implementing-diagnostics.md
       - Suggesting Type Specs: articles/suggest-type-specs.md
       - Snippets are here: articles/snippets-are-here.md
