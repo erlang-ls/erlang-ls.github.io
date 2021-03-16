@@ -1,0 +1,1261 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+    
+    
+      
+        <title>How To: Code Lenses - Erlang LS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2c0c5eaf.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-code-lenses" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Erlang LS" class="md-header__button md-logo" aria-label="Erlang LS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Erlang LS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              How To: Code Lenses
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/erlang-ls/erlang_ls" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    erlang-ls/erlang_ls
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Erlang LS" class="md-nav__button md-logo" aria-label="Erlang LS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Erlang LS
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/erlang-ls/erlang_ls" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    erlang-ls/erlang_ls
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Editors
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Editors" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Editors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/emacs/" class="md-nav__link">
+        Emacs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/spacemacs/" class="md-nav__link">
+        Spacemacs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/vscode/" class="md-nav__link">
+        VSCode
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/sublime3/" class="md-nav__link">
+        Sublime Text 3
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/intellij/" class="md-nav__link">
+        IntelliJ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/vim/" class="md-nav__link">
+        Vim
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editors/theia/" class="md-nav__link">
+        Theia IDE
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../talks/" class="md-nav__link">
+        Talks
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      <label class="md-nav__link" for="__nav_6">
+        Articles
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Articles" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Articles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          How To: Code Lenses
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        How To: Code Lenses
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-goal" class="md-nav__link">
+    The Goal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-code-lens-anyway" class="md-nav__link">
+    What is a Code Lens, anyway?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-a-new-code-lens-backend" class="md-nav__link">
+    Implementing a New Code Lens Backend
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementing a New Code Lens Backend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-is_default0-callback" class="md-nav__link">
+    The is_default/0 callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-pois1-callback" class="md-nav__link">
+    The pois/1 callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-command3-callback" class="md-nav__link">
+    The command/3 callback
+  </a>
+  
+    <nav class="md-nav" aria-label="The command/3 callback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-command" class="md-nav__link">
+    The Command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-title" class="md-nav__link">
+    The Title
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commandid-and-commandargs" class="md-nav__link">
+    CommandId and CommandArgs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registering-the-code-lens" class="md-nav__link">
+    Registering the code lens
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-tests" class="md-nav__link">
+    Adding tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-test-module" class="md-nav__link">
+    Creating a test module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registering-the-new-testing-module" class="md-nav__link">
+    Registering the new testing module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-a-testcase" class="md-nav__link">
+    Writing a testcase
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-callbacks" class="md-nav__link">
+    Optional Callbacks
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional Callbacks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-init1-callback" class="md-nav__link">
+    The init/1 callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-precondition1-callback" class="md-nav__link">
+    The precondition/1 callback
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-implementing-diagnostics/" class="md-nav__link">
+        How To: Diagnostics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suggest-type-specs/" class="md-nav__link">
+        Suggesting Type Specs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets-are-here/" class="md-nav__link">
+        Snippets are here
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../otp-23-bring-docs/" class="md-nav__link">
+        OTP 23 Brings Docs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../internals/" class="md-nav__link">
+        Internals
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-goal" class="md-nav__link">
+    The Goal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-code-lens-anyway" class="md-nav__link">
+    What is a Code Lens, anyway?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-a-new-code-lens-backend" class="md-nav__link">
+    Implementing a New Code Lens Backend
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementing a New Code Lens Backend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-is_default0-callback" class="md-nav__link">
+    The is_default/0 callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-pois1-callback" class="md-nav__link">
+    The pois/1 callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-command3-callback" class="md-nav__link">
+    The command/3 callback
+  </a>
+  
+    <nav class="md-nav" aria-label="The command/3 callback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-command" class="md-nav__link">
+    The Command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-title" class="md-nav__link">
+    The Title
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commandid-and-commandargs" class="md-nav__link">
+    CommandId and CommandArgs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registering-the-code-lens" class="md-nav__link">
+    Registering the code lens
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-tests" class="md-nav__link">
+    Adding tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-test-module" class="md-nav__link">
+    Creating a test module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registering-the-new-testing-module" class="md-nav__link">
+    Registering the new testing module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-a-testcase" class="md-nav__link">
+    Writing a testcase
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-callbacks" class="md-nav__link">
+    Optional Callbacks
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional Callbacks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-init1-callback" class="md-nav__link">
+    The init/1 callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-precondition1-callback" class="md-nav__link">
+    The precondition/1 callback
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="how-to-code-lenses">How To: Code Lenses</h1>
+<p>In our <a href="../tutorial-implementing-diagnostics/">previous tutorial</a> we
+learned how to implement a <em>diagnostics</em> backend for the Erlang
+Language Server. This time we will dig into the world of <em>Code
+Lenses</em>.</p>
+<h2 id="the-goal">The Goal</h2>
+<p>Given an Erlang module containing a number of function defintions, we
+want to display the number of references to each function above its
+respective definition. Here is how the code lens will look like in <em>VS
+Code</em>.</p>
+<p><img alt="code-lens-example" src="../../images/code-lens-example.png?raw=true" title="A Code Lens Example" /></p>
+<p>At the end of this tutorial you will:</p>
+<ul>
+<li>Know what a code lens is</li>
+<li>Learn how to implement a code lens in Erlang LS</li>
+<li>Move a step closer to becoming an Erlang LS contributor</li>
+</ul>
+<p>Without further ado, let's start.</p>
+<h2 id="what-is-a-code-lens-anyway">What is a Code Lens, anyway?</h2>
+<p>A <em>Code Lens</em> is defined by <a href="https://code.visualstudio.com/blogs/2017/02/12/code-lens-roundup">Wade
+Anderson</a>
+as:</p>
+<blockquote>
+<p>an actionable contextual information interspersed in your source code</p>
+</blockquote>
+<p>That's a very fancy way to say that a <em>code lens</em> is an arbitrary
+piece of text which appears in the <em>IDE</em>, next to your code. The text
+often provides <em>insights</em> about a portion of the code, as in the example
+we just saw above.</p>
+<p>Code lenses can also be <em>actionable</em>. The user can activate a lens by
+clicking on it or by using a keyboard shortcut, to perform an
+action. The triggered action can be anything. Here is an Emacs code
+lens which allows the user to execute a given <em>Common Test</em> testcase:</p>
+<p><img alt="code-lens-ct" src="../../images/code-lens-ct.png?raw=true" title="A Code Lens to run a CT testcase" /></p>
+<p>Code lenses are <em>contextual</em>, meaning that they are aware of the
+surrounding <em>context</em>. In the above example, the <em>Run test</em> lens is
+aware of which specific testcase should be executed on click.</p>
+<p>Now that we understand what a code lens is, let's implement one in Erlang LS.</p>
+<h2 id="implementing-a-new-code-lens-backend">Implementing a New Code Lens Backend</h2>
+<p>Erlang LS provides a framework to make development of code lenses as
+simple as possible. To create our new code lens, the first thing we
+need to do is to decide a <em>name</em> for it and to create a new Erlang
+module implementing the <code>els_code_lens</code> behaviour. Let's call the new
+code lens <em>function_references</em>.</p>
+<pre><code>-module(els_code_lens_function_references).
+-behaviour(els_code_lens).
+</code></pre>
+<p>The <code>els_code_lens</code> behaviour requires <strong>three</strong> callback functions to
+be implemented:</p>
+<pre><code>-callback is_default() -&gt; boolean().
+-callback pois(els_dt_document:item()) -&gt; [poi()].
+-callback command(els_dt_document:item(), poi(), state()) -&gt; els_command:command().
+</code></pre>
+<p>We will see in a second what each callback function is supposed to
+do. For now, let's add the following exports to our
+<code>els_code_lens_function_references</code> module:</p>
+<pre><code>-export([ is_default/0
+        , pois/1
+        , command/3
+        ]).
+</code></pre>
+<p>Now we can focus on each individual callback function.</p>
+<h3 id="the-is_default0-callback">The <code>is_default/0</code> callback</h3>
+<p>The <code>is_default/0</code> callback is used to specify if the current backend
+should be enabled by default or not. In our case, we want the new
+backend to be enabled by default, so we say:</p>
+<pre><code>is_default() -&gt; true.
+</code></pre>
+<p>Should the end user decide to disable this backend, she can just add
+to her <code>erlang_ls.config</code> the following option:</p>
+<pre><code>lenses:
+  disabled:
+    function_references
+</code></pre>
+<h3 id="the-pois1-callback">The <code>pois/1</code> callback</h3>
+<p>In Erlang LS jargon, <em>POI</em> stands for <em>Point of Interest</em>. The term
+refers to the <em>interesting</em> bits that are part of a code base. Points
+of Interest are indexed by Erlang LS and stored in an in-memory
+database. A <em>POI</em> could refer to a <em>function definition</em>, a <em>macro
+definition</em>, a <em>record usage</em>, you name it. Erlang LS provides a set
+of utilities that allow for easy search and manipulation of <em>Points Of
+Interest</em>.</p>
+<p>The <code>pois/1</code> function takes a single argument, the current
+<em>document</em>. Its return value is the list of <em>POIs</em> for which the lens
+should be activated for. In our case, we want our lens to be visible
+next to each <em>function definition</em>. Therefore, we write:</p>
+<pre><code>pois(Document) -&gt;
+  els_dt_document:pois(Document, [function]).
+</code></pre>
+<h3 id="the-command3-callback">The <code>command/3</code> callback</h3>
+<p>The last mandatory callback we need to implement is the <code>command/3</code>
+one. The callback takes three arguments: the current <em>Document</em>, a
+specific <em>POI</em> and a <em>State</em>. For the sake of this tutorial, we will
+ignore the <code>State</code> and focus on the first two arguments only.</p>
+<h4 id="the-command">The Command</h4>
+<p>The function needs to return a <em>command</em>. A command is an <a href="https://microsoft.github.io/language-server-protocol/specifications/specification-current/#command">LSP data
+structure</a>
+which contains:</p>
+<ul>
+<li>A <em>title</em> - the text which is rendered next to each
+selected <em>POI</em></li>
+<li>A <em>CommandId</em> - an identifier for the command that gets executed on click</li>
+<li>The <em>CommandArgs</em> - the list of arguments to pass to the command</li>
+</ul>
+<p>Erlang LS provides an helper function to create such a data structure: the <code>els_command:make_command/3</code> function.
+Then, our <code>command/3</code> function will look something like this:</p>
+<pre><code>command(Document, POI, _State) -&gt;
+  Title = title(Document, POI),
+  CommandId = command_id(),
+  CommandArgs = command_args(),
+  els_command:make_command(Title, CommandId, CommandArgs).
+</code></pre>
+<p>We will now describe each paramater in detail and learn how to compute
+them, starting from the <code>Title</code>.</p>
+<h4 id="the-title">The Title</h4>
+<p>The <code>Title</code> is the text that we want to present in the text editor,
+next to our <em>Point of Interest</em> (a.k.a. the <em>POI</em>). In our case, we want
+to display the following text:</p>
+<blockquote>
+<p>Used [N] times</p>
+</blockquote>
+<p>To be able to compute the number <code>N</code>, we need to know how many
+references to the current function are spread across our code base. We
+can therefore query the Erlang LS database via the
+<code>els_dt_references:find_by_id/2</code> helper function:</p>
+<pre><code>title(Document, POI) -&gt;
+
+  %% Extract the module name from the current document
+  #{uri := Uri} = Document,
+  M = els_uri:module(Uri),
+
+  %% Extract the function name and arity from the current POI
+  #{id := {F, A}} = POI,
+
+  %% Query the Erlang LS DB for references to the current function
+  {ok, References} = els_dt_references:find_by_id(function, {M, F, A}),
+
+  %% Calculate the number of references
+  N = length(References),
+
+  %% Format the title for the code lens
+  unicode:characters_to_binary(io_lib:format(&quot;Used ~p times&quot;, [N])).
+</code></pre>
+<p>The <code>els_dt_references:find_by_id/2</code> function takes two arguments: the
+<code>Kind</code> of references we are looking for (<code>function</code> in our case) and
+the fully qualified <code>Id</code> of the current <em>Point of Interest</em>. For a
+function definition, the fully qualified identifier is a <code>{M, F, A}</code>
+tuple, representing the <em>Module</em>, the <em>Function Name</em> and the <em>Arity</em>
+of our function. As you can see above, we can extract the module <code>M</code>
+from the <code>Document</code> and the <code>F</code> and <code>A</code> from the current <code>POI</code>.</p>
+<h4 id="commandid-and-commandargs">CommandId and CommandArgs</h4>
+<p>The <code>CommandId</code> is an arbitrary identifier for the command we want to
+run when the user clicks on our code lens. In our case, this action
+will be a <em>no-op</em>, but we still need to pick a name for our
+command. Let's call it <code>function-references</code>:</p>
+<pre><code>command_id() -&gt; &lt;&lt;&quot;function-references&quot;&gt;&gt;.
+</code></pre>
+<p>Since our command will be a <em>no-op</em> (we do not want anything to happen
+if the user clicks on the lens), our command will not require any
+arguments:</p>
+<pre><code>command_args() -&gt; [].
+</code></pre>
+<p>We are essentially done. Here is our full
+<code>els_code_lens_function_references</code> module, for completeness:</p>
+<pre><code>-module(els_code_lens_function_references).
+
+-behaviour(els_code_lens).
+-export([ is_default/0
+        , pois/1
+        , command/3
+        ]).
+
+is_default() -&gt;
+  true.
+
+pois(Document) -&gt;
+  els_dt_document:pois(Document, [function]).
+
+command(Document, POI, _State) -&gt;
+  Title = title(Document, POI),
+  CommandId = command_id(),
+  CommandArgs = command_args(),
+  els_command:make_command(Title, CommandId, CommandArgs).
+
+title(Document, POI) -&gt;
+  #{uri := Uri} = Document,
+  M = els_uri:module(Uri),
+  #{id := {F, A}} = POI,
+  {ok, References} = els_dt_references:find_by_id(function, {M, F, A}),
+  N = length(References),
+  unicode:characters_to_binary(io_lib:format(&quot;Used ~p times&quot;, [N])).
+
+command_id() -&gt;
+  &lt;&lt;&quot;function-references&quot;&gt;&gt;.
+
+command_args() -&gt;
+  [].
+</code></pre>
+<h2 id="registering-the-code-lens">Registering the code lens</h2>
+<p>There is one more thing that we need to do before we can use our new
+shiny code lens: we need to tell Erlang LS that it exists. That can be
+achieved by adding our new code lens to the list of <code>available_lenses</code>
+in the <code>els_code_lens</code> module:</p>
+<pre><code>available_lenses() -&gt;
+  [ ...
+  , &lt;&lt;&quot;function-references&quot;&gt;&gt;
+  ].
+</code></pre>
+<p>That's all.</p>
+<h2 id="adding-tests">Adding tests</h2>
+<p>Our code lens at this point should be functional, but we cannot be
+sure until we write a test for it!  Erlang LS provides a testing
+framework which can be used for this purpose. In this section we will
+assume that you have a bit of familiarity with the Erlang LS testing
+framework already. If you would like a more gentle introduction to
+<em>testing in Erlang LS</em>, please refer to the previous <a href="../tutorial-implementing-diagnostics/">Diagnostics
+Tutorial</a>.</p>
+<h3 id="creating-a-test-module">Creating a test module</h3>
+<p>Let's create a test module named <code>code_lens_function_references</code>
+within the <code>code_navigation</code> test application:</p>
+<pre><code>$ cat apps/els_lsp/priv/code_navigation/src/code_lens_function_references.erl
+-module(code_lens_function_references).
+
+-export([ a/0 ]).
+
+-spec a() -&gt; ok.
+a() -&gt;
+  b(),
+  c().
+
+-spec b() -&gt; ok.
+b() -&gt;
+  c().
+
+-spec c() -&gt; ok.
+c() -&gt;
+  ok.
+</code></pre>
+<h3 id="registering-the-new-testing-module">Registering the new testing module</h3>
+<p>Simply open the <code>els_test_utils</code> module and add the new module to the
+list of <em>sources</em>. This will ensure the new module is properly indexed
+and some helper functions are available for it.</p>
+<pre><code>sources() -&gt;
+  [ ...
+  , code_lens_function_references
+  , ...
+  ].
+</code></pre>
+<h3 id="writing-a-testcase">Writing a testcase</h3>
+<p>Let's then open the <code>els_code_lens_SUITE</code> module and add a testcase,
+where we check whether the new code lens works as expected in the new
+module.</p>
+<pre><code>function_references(Config) -&gt;
+  Uri = ?config(code_lens_function_references_uri, Config),
+  #{result := Result} = els_client:document_codelens(Uri),
+  Expected = [ lens(5, 0) # First lens on line 5, 0 references
+             , lens(10, 1) # Second lens on line 10, 1 reference
+             , lens(14, 2) # Third lens on line 14, 2 references
+             ],
+  ?assertEqual(Expected, Result),
+  ok.
+</code></pre>
+<p>In the above testcase, we are fetching the <code>Uri</code> of the newly added
+test module by leveraging the Erlang LS testing framework. We then use
+the <code>els_client</code> to invoke the <code>document_codelens</code> method for the
+given <code>Uri</code> and we finally ensure that we receive the expected list of code
+lenses. <code>lens/2</code> is an auxiliary function which constructs the data
+structure expected by the <em>LSP</em> protocol as follows:</p>
+<pre><code>lens(Line, Usages) -&gt;
+  Title = unicode:characters_to_binary(
+            io_lib:format(&quot;Used ~p times&quot;, [Usages])),
+  #{ command =&gt;
+       #{ arguments =&gt; []
+        , command =&gt; els_command:with_prefix(&lt;&lt;&quot;function-references&quot;&gt;&gt;)
+        , title =&gt; Title
+        }
+   , data =&gt; []
+   , range =&gt;
+       #{ 'end' =&gt; #{character =&gt; 1, line =&gt; Line}
+        , start =&gt; #{character =&gt; 0, line =&gt; Line}
+        }
+   }.
+</code></pre>
+<p>Let's run the test and ensure it passes.</p>
+<pre><code>$ rebar3 ct --suite apps/els_lsp/test/els_code_lens_SUITE --case function_references --group tcp
+[...]
+===&gt; Running Common Test suites...
+%%% els_code_lens_SUITE: .
+All 1 tests passed.
+</code></pre>
+<p>It looks like we are done here.</p>
+<h2 id="optional-callbacks">Optional Callbacks</h2>
+<p>Even if they are not needed for this tutorial, it is worth mentioning
+that two more <em>optional</em> callback functions are available as part of
+the <code>els_code_lens</code> behaviour:</p>
+<pre><code>-callback init(els_dt_document:item()) -&gt; state().
+-callback precondition(els_dt_document:item()) -&gt; boolean().
+</code></pre>
+<p>Let's describe them for completeness.</p>
+<h3 id="the-init1-callback">The <code>init/1</code> callback</h3>
+<p>The <code>init/1</code> callback allows us to perform some computation <em>once</em> per
+file and to pass around the computed values in the form a <em>State</em> to
+subsequent callback functions (remember the <code>State</code> argument which we
+ignored in the <code>command/3</code> callback?). This is used, for example, in
+the <code>suggest_spec</code> code lens to run <code>TypEr</code> once for each Erlang
+module and to still be able to display one lens for each function.</p>
+<h3 id="the-precondition1-callback">The <code>precondition/1</code> callback</h3>
+<p>The <code>precondition/1</code> callback allows us to only enable a given lens
+for a specific type of <em>documents</em>. For example, the following
+implementation enables the <code>ct_run_test</code> lens only for <em>Common Test</em>
+suites, identified by the presence of an <code>include_lib</code> directive for the
+<code>ct.hrl</code> file:</p>
+<pre><code>precondition(Document) -&gt;
+  Includes = els_dt_document:pois(Document, [include_lib]),
+  case [POI || #{id := &quot;common_test/include/ct.hrl&quot;} = POI &lt;- Includes] of
+    [] -&gt;
+      false;
+    _ -&gt;
+      true
+  end.
+</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>At this point you should be able to try out your new code lens. The
+above code lens is already available in Erlang LS. You can see the
+whole contribution at:</p>
+<p><a href="https://github.com/erlang-ls/erlang_ls/pull/947">https://github.com/erlang-ls/erlang_ls/pull/947</a></p>
+<p>I hope this tutorial helped you to get a better understanding about
+code lenses in general and how to implement one in Erlang LS. Looking
+forward to the wonderful lenses you will implement!</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../../talks/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Talks
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../tutorial-implementing-diagnostics/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              How To: Diagnostics
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      
+    
+  </body>
+</html>
