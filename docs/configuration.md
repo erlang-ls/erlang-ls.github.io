@@ -50,6 +50,7 @@ The following customizations are possible:
 | otp\_apps\_exclude | List of OTP applications that will not be indexed (default: megaco, diameter, snmp, wx)                                                   |
 | otp\_path          | Path to the OTP installation                                                                                                              |
 | plt\_path          | Path to the dialyzer PLT file. When none is provided the dialyzer diagnostics will not be available.                                      |
+| code\_path\_extra\_dirs| List of wildcard Paths erlang\_ls will add with code:add\_path/1                                                                           |
 
 ### Diagnostics
 
