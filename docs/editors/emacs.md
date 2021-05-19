@@ -20,7 +20,7 @@ may need to prune or amend this file if you change your mind about
 blacklisting a project or if you erroneously select a project
 root. For more information about the `lsp-session-file` and
 `emacs-lsp` in general, please refer to the [official
-documentation](https://github.com/emacs-lsp/lsp-mode/blob/master/README.org).
+documentation](https://emacs-lsp.github.io/lsp-mode/).
 
 Remember that the Erlang Language Server requires Erlang/OTP 21 or
 higher to run, so ensure that OTP 21+ is available in your `PATH`.
