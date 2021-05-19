@@ -14,3 +14,5 @@ static website which gets automatically deployed to _GitHub pages_
 whenever a Pull Request is merged to the `mkdocs` branch.
 
 To try the changes locally, simply: `mkdocs serve`
+
+- Note: you might have to [install Material for MkDocs](https://squidfunk.github.io/mkdocs-material/getting-started/)
