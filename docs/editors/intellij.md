@@ -2,7 +2,7 @@
 
 ## Setup
 
-> **WARNING**: The current version of the IntelliJ LSP plugin (1.5.4)
+> **WARNING**: The current version of the IntelliJ LSP plugin (1.6.1)
 > is quite limited, so not all of the Erlang Language Server
 > capabilities are available in IntelliJ.
 
