@@ -20,13 +20,21 @@ may need to prune or amend this file if you change your mind about
 blacklisting a project or if you erroneously select a project
 root. For more information about the `lsp-session-file` and
 `emacs-lsp` in general, please refer to the [official
-documentation](https://github.com/emacs-lsp/lsp-mode/blob/master/README.org).
+documentation](https://emacs-lsp.github.io/lsp-mode/).
 
 Remember that the Erlang Language Server requires Erlang/OTP 21 or
 higher to run, so ensure that OTP 21+ is available in your `PATH`.
 This can be achieved, for example, by using the
 [exec-path-from-shell](https://github.com/purcell/exec-path-from-shell)
 Emacs package.
+
+## Restarting the language server
+
+You may want to quickly restart the language server for a given
+workspace (e.g. after an update or in case of a server crash). To do
+so:
+
+    M-x lsp-workspace-restart
 
 ## Troubleshooting
 
