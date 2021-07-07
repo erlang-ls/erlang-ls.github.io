@@ -68,6 +68,10 @@ Finally, to enable logging on the client-side, just:
 (setq lsp-log-io t)
 ```
 
+You can then follow the client logs for the current workspace by doing:
+
+    M-x lsp-workspace-show-log
+
 ## Tips and Tricks
 
 ### Shortcuts for code lenses and quick actions
