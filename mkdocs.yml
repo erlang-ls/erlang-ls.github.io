@@ -1,4 +1,5 @@
 site_name: Erlang LS
+site_url: https://erlang-ls.github.io
 repo_name: erlang-ls/erlang_ls
 repo_url: https://github.com/erlang-ls/erlang_ls
 edit_uri: ''

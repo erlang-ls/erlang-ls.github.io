@@ -28,6 +28,14 @@ This can be achieved, for example, by using the
 [exec-path-from-shell](https://github.com/purcell/exec-path-from-shell)
 Emacs package.
 
+## Restarting the language server
+
+You may want to quickly restart the language server for a given
+workspace (e.g. after an update or in case of a server crash). To do
+so:
+
+    M-x lsp-workspace-restart
+
 ## Troubleshooting
 
 If things do not work as expected, we advise you to start Emacs with
