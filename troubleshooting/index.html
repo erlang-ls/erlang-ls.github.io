@@ -594,17 +594,30 @@
 the <a href="#logs">logs</a> or by running <code>epmd -names</code>. It will look something like:</p>
 <pre><code>$ epmd -names
 epmd: up and running on port 4369 with data:
-name erlang_ls_62880311918 at port 50819
+name erlang_ls_projectname_62880311918 at port 50819
 </code></pre>
 <p>And you can connect to it via:</p>
-<pre><code>erl -sname debug -remsh erlang_ls_62880311918@`HOSTNAME`
+<pre><code>$ erl -sname debug -remsh erlang_ls_projectname_62880311918@`HOSTNAME`
+</code></pre>
+<p>If you see this error like this:</p>
+<pre><code>*** ERROR: Shell process terminated! (^G to start new job) ***
+=ERROR REPORT==== 5-Jun-2020::15:53:07.270087 ===
+** System NOT running to use fully qualified hostnames **
+** Hostname Host-Name-Here.local is illegal **
+</code></pre>
+<p>Then try running the command without the <code>@HOSTNAME</code> at the end,
+like so:</p>
+<pre><code>$ erl -sname debug -remsh erlang_ls_projectname_62880311918
 </code></pre>
 <p>The <a href="https://github.com/massemanet/redbug">redbug</a> application is
 included in the escript, so feel free to use it.</p>
 <h2 id="logging">Logging</h2>
 <p>Logs are written to your platform's log directory (i.e. the return
-value from <code>filename:basedir(user_log, "erlang_ls")</code>), in a file named
-<code>server.log</code>.</p>
+value from <code>filename:basedir(user_log, "erlang_ls").</code>), in a file
+named <code>server.log</code>. For example on a Mac, the default location is
+<code>/Users/USERNAME/Library/Logs/erlang_ls/PROJECTDIR/server.log</code>, where
+USERNAME and PROJECTDIR are your operating system's user account name
+and the project folder that logs were generated for, respectively.</p>
 <p>It's possible to customize the logging directory by using the
 <code>--log-dir</code> option when starting the server.</p>
 <p>It's also possible to specify the verbosity of the logs by using the
