@@ -45,7 +45,7 @@ The following customizations are possible:
 | deps\_dirs         | List of directories containing dependencies. It supports wildcards.                                                                       |
 | diagnostics        | Customize the list of active diagnostics                                                                                                  |
 | include\_dirs      | List of directories provided to the compiler as include dirs. It supports wildcards.                                                      |
-| incremental_sync   | Whether or not to support incremental synchronization of text changes in the client. Disabled by default.                                 |
+| incremental\_sync  | Whether or not to support incremental synchronization of text changes in the client. Disabled by default.                                 |
 | lenses             | Customize the list of active code lenses                                                                                                  |
 | macros             | List of cusom macros to be passed to the compiler, expressed as a name/value pair. If the value is omitted or is invalid, 'true' is used. |
 | otp\_apps\_exclude | List of OTP applications that will not be indexed (default: megaco, diameter, snmp, wx)                                                   |
