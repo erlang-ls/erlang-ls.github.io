@@ -14,3 +14,14 @@ Look for the `erlang-ls` extension and install it. That's it.
 
 Remember that the Erlang Language Server requires Erlang/OTP 21 or
 higher to run, so ensure that OTP 21+ is available in your `PATH`.
+
+## Restarting the language server
+
+You may want to quickly restart the language server for a given
+workspace (e.g. after an update or in case of a server crash). To do
+so:
+
+    View -> Command Palette... -> Developer: Reload Window
+
+On Mac OS you can use the `Cmd+Shift+P` shortcut to quickly access the
+command palette.
