@@ -16,11 +16,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://erlang-ls.github.io/internals/</loc>
-         <lastmod>2021-07-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://erlang-ls.github.io/talks/</loc>
          <lastmod>2021-07-07</lastmod>
          <changefreq>daily</changefreq>
