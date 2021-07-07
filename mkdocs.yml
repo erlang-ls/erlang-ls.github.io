@@ -10,15 +10,16 @@ theme:
     accent: 'red'
 nav:
   - Overview: index.md
+  - Getting Started:
+      - Overview: getting-started/overview.md
+      - Emacs: getting-started/emacs.md
+      - Spacemacs: getting-started/spacemacs.md
+      - VSCode: getting-started/vscode.md
+      - Sublime Text 3: getting-started/sublime3.md
+      - IntelliJ: getting-started/intellij.md
+      - Vim: getting-started/vim.md
+      - Theia IDE: getting-started/theia.md
   - Features: features.md
-  - Editors:
-      - Emacs: editors/emacs.md
-      - Spacemacs: editors/spacemacs.md
-      - VSCode: editors/vscode.md
-      - Sublime Text 3: editors/sublime3.md
-      - IntelliJ: editors/intellij.md
-      - Vim: editors/vim.md
-      - Theia IDE: editors/theia.md
   - Configuration: configuration.md
   - Talks: talks.md
   - Articles:
