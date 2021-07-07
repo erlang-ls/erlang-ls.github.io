@@ -7,7 +7,7 @@
 To install Erlang LS:
 
 ```
-git clone https://github.com/erlang-ls
+git clone https://github.com/erlang-ls/erlang_ls
 cd erlang_ls
 rebar3 escriptize
 ```
