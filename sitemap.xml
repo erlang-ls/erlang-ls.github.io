@@ -51,37 +51,42 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://erlang-ls.github.io/editors/emacs/</loc>
+         <loc>https://erlang-ls.github.io/getting-started/emacs/</loc>
          <lastmod>2021-07-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://erlang-ls.github.io/editors/intellij/</loc>
+         <loc>https://erlang-ls.github.io/getting-started/intellij/</loc>
          <lastmod>2021-07-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://erlang-ls.github.io/editors/spacemacs/</loc>
+         <loc>https://erlang-ls.github.io/getting-started/overview/</loc>
          <lastmod>2021-07-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://erlang-ls.github.io/editors/sublime3/</loc>
+         <loc>https://erlang-ls.github.io/getting-started/spacemacs/</loc>
          <lastmod>2021-07-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://erlang-ls.github.io/editors/theia/</loc>
+         <loc>https://erlang-ls.github.io/getting-started/sublime3/</loc>
          <lastmod>2021-07-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://erlang-ls.github.io/editors/vim/</loc>
+         <loc>https://erlang-ls.github.io/getting-started/theia/</loc>
          <lastmod>2021-07-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://erlang-ls.github.io/editors/vscode/</loc>
+         <loc>https://erlang-ls.github.io/getting-started/vim/</loc>
+         <lastmod>2021-07-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://erlang-ls.github.io/getting-started/vscode/</loc>
          <lastmod>2021-07-07</lastmod>
          <changefreq>daily</changefreq>
     </url>

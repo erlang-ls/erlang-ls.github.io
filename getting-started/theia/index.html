@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://erlang-ls.github.io/editors/intellij/">
+        <link rel="canonical" href="https://erlang-ls.github.io/getting-started/theia/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
     
     
       
-        <title>IntelliJ - Erlang LS</title>
+        <title>Theia IDE - Erlang LS</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#intellij" class="md-skip">
+        <a href="#theia-ide" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              IntelliJ
+              Theia IDE
             
           </span>
         </div>
@@ -216,21 +216,6 @@
 
   
   
-  
-    <li class="md-nav__item">
-      <a href="../../features/" class="md-nav__link">
-        Features
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
     
   
   
@@ -238,18 +223,30 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
-      <label class="md-nav__link" for="__nav_3">
-        Editors
+      <label class="md-nav__link" for="__nav_2">
+        Getting Started
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Editors" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
-          Editors
+          Getting Started
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
           
             
   
@@ -302,6 +299,30 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="../intellij/" class="md-nav__link">
+        IntelliJ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim/" class="md-nav__link">
+        Vim
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -314,12 +335,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          IntelliJ
+          Theia IDE
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        IntelliJ
+        Theia IDE
       </a>
       
         
@@ -343,13 +364,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    Troubleshooting
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -358,32 +372,23 @@
   
 
           
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../vim/" class="md-nav__link">
-        Vim
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../theia/" class="md-nav__link">
-        Theia IDE
-      </a>
-    </li>
-  
-
-          
         </ul>
       </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        Features
+      </a>
     </li>
   
 
@@ -555,13 +560,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    Troubleshooting
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -575,56 +573,16 @@
               
                 
                 
-                <h1 id="intellij">IntelliJ</h1>
+                <h1 id="theia-ide">Theia IDE</h1>
 <h2 id="setup">Setup</h2>
-<blockquote>
-<p><strong>WARNING</strong>: The current version of the IntelliJ LSP plugin (1.6.1)
-is quite limited, so not all of the Erlang Language Server
-capabilities are available in IntelliJ.</p>
-</blockquote>
-<p>First of all, ensure you have the <a href="https://github.com/gtache/intellij-lsp">LSP
-Support</a> plugin installed. If
-you don't, you can simply navigate to:</p>
-<pre><code>Preferences &gt; Plugins &gt; Browse Repositories
-</code></pre>
-<p>Search for "LSP Support" and install the respective plugin.</p>
-<p>Restart IntelliJ, then navigate to:</p>
-<pre><code>Preferences &gt; Languages and Frameworks &gt; Language Server Protocol &gt; Server Definitions
-</code></pre>
-<p>There you can instruct IntelliJ on how to start the server. Select
-<code>Raw Command</code>, set <code>erl;hrl</code> as the extension, then add as the
-command:</p>
-<pre><code>/ABSOLUTE/PATH/TO/erlang_ls/_build/default/bin/erlang_ls --transport stdio
-</code></pre>
-<p>Ensure you use an absolute path. The plugin does not seem to
-understand the <code>~</code> symbol. For the above command to work, IntelliJ
-requires the <code>PATH</code> variable to be correctly configured to include
-Erlang 20+. To circumvent this issues on Mac OS, the best way is to
-start IntelliJ from the terminal (i.e. via the <code>idea</code> command) and not
-via Spotlight.</p>
-<p>To visualize documentation and type specs while hovering a function,
-ensure the <em>Show quick documentation on mouse move</em> option is enabled
-in your IntelliJ preferences:</p>
-<pre><code>Preferences &gt; Editor &gt; General
-</code></pre>
-<p>There, you can also set a delay in milliseconds.</p>
-<p>For more information about how to configure the IntelliJ LSP Client,
-please refer to the project <a href="https://github.com/gtache/intellij-lsp">GitHub
-page</a>.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p>In some cases, the IntelliJ LSP client may not be able to connect to
-the server. In such cases, the first step is to enable logging:</p>
-<pre><code>Preferences &gt; Languages and Frameworks &gt; Language Server Protocol
-</code></pre>
-<p>Check the <em>Log servers communications</em> check-box there.</p>
-<p>After restarting IntelliJ, you will notice an extra <code>lsp</code> directory
-created inside your Erlang project. This directory contains the
-<code>error</code> and <code>output</code> logs, which should give you a hint about what is
-going on.</p>
-<p>An alternative source of information is represented by the IntelliJ
-logs:</p>
-<pre><code>Help &gt; Show Logs
-</code></pre>
+<p>It is possible to use Erlang LS in Theia IDE by including Erlang/OTP
+in your running instance and installing the
+<a href="https://marketplace.visualstudio.com/items?itemName=erlang-ls.erlang-ls">VSCode extension</a>.</p>
+<p>If you want to give it a try by using GitPod click
+<a href="https://gitpod.io/#https://github.com/erlang-ls/erlang_ls">here</a>.
+To use this same setup with your Erlang project (hosted in GitHub or
+Gitlab) you can find the GitPod configuration in
+<a href="https://github.com/erlang-ls/erlang_ls/blob/master/.gitpod.yml"><code>.gitpod.yml</code></a>.</p>
                 
               
               
@@ -644,7 +602,7 @@ logs:</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../sublime3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sublime Text 3" rel="prev">
+        <a href="../vim/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Vim" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -653,20 +611,20 @@ logs:</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Sublime Text 3
+              Vim
             </div>
           </div>
         </a>
       
       
         
-        <a href="../vim/" class="md-footer__link md-footer__link--next" aria-label="Next: Vim" rel="next">
+        <a href="../../features/" class="md-footer__link md-footer__link--next" aria-label="Next: Features" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Vim
+              Features
             </div>
           </div>
           <div class="md-footer__button md-icon">

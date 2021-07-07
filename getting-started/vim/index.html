@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://erlang-ls.github.io/editors/vscode/">
+        <link rel="canonical" href="https://erlang-ls.github.io/getting-started/vim/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
     
     
       
-        <title>VSCode - Erlang LS</title>
+        <title>Vim - Erlang LS</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vscode" class="md-skip">
+        <a href="#vim-neovim" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VSCode
+              Vim
             
           </span>
         </div>
@@ -216,21 +216,6 @@
 
   
   
-  
-    <li class="md-nav__item">
-      <a href="../../features/" class="md-nav__link">
-        Features
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
     
   
   
@@ -238,18 +223,30 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
-      <label class="md-nav__link" for="__nav_3">
-        Editors
+      <label class="md-nav__link" for="__nav_2">
+        Getting Started
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Editors" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
-          Editors
+          Getting Started
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
           
             
   
@@ -278,58 +275,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          VSCode
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../vscode/" class="md-nav__link">
         VSCode
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#restarting-the-language-server" class="md-nav__link">
-    Restarting the language server
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -361,11 +311,71 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../vim/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Vim
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Vim
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-coc-with-vim-plug" class="md-nav__link">
+    Installing Coc with vim-plug
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Coc with vim-plug">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coc-plugin-configuration" class="md-nav__link">
+    Coc plugin configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -384,6 +394,21 @@
           
         </ul>
       </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        Features
+      </a>
     </li>
   
 
@@ -556,9 +581,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#restarting-the-language-server" class="md-nav__link">
-    Restarting the language server
+  <a href="#installing-coc-with-vim-plug" class="md-nav__link">
+    Installing Coc with vim-plug
   </a>
+  
+    <nav class="md-nav" aria-label="Installing Coc with vim-plug">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coc-plugin-configuration" class="md-nav__link">
+    Coc plugin configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -575,25 +613,48 @@
               
                 
                 
-                <h1 id="vscode">VSCode</h1>
+                <h1 id="vim-neovim">Vim / NeoVim</h1>
+<blockquote>
+<p><strong>NOTE</strong>: Neovim has recently included a <a href="https://neovim.io/doc/user/lsp.html">native Language
+Server</a>, though it is not yet available
+over in many distributed versions (e.g. <code>brew</code>). Once the native solution is
+verified to work well, we will update this documentation to reflect the setup.</p>
+</blockquote>
 <h2 id="setup">Setup</h2>
-<p>The Erlang Language Server is available in VSCode via a <a href="https://github.com/erlang-ls/vscode">dedicated
-extension</a>.</p>
-<p>To try it out, simply open VSCode and install the extension via the
-Marketplace:</p>
-<pre><code>Preferences &gt; Extensions
+<p>The following instructions should enable Erlang language server integration via
+the <a href="https://github.com/neoclide/coc.nvim">Coc system</a> (an intellisense engine
+for both Vim and Neovim).</p>
+<h2 id="installing-coc-with-vim-plug">Installing Coc with vim-plug</h2>
+<p>For <a href="https://github.com/junegunn/vim-plug">vim-plug</a> users with nodejs &gt;= 10.12
+installed, installing the plugin is just:</p>
+<pre><code class="language-vim">&quot; Use release branch (Recommended)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 </code></pre>
-<p>Look for the <code>erlang-ls</code> extension and install it. That's it.</p>
-<p>Remember that the Erlang Language Server requires Erlang/OTP 21 or
-higher to run, so ensure that OTP 21+ is available in your <code>PATH</code>.</p>
-<h2 id="restarting-the-language-server">Restarting the language server</h2>
-<p>You may want to quickly restart the language server for a given
-workspace (e.g. after an update or in case of a server crash). To do
-so:</p>
-<pre><code>View -&gt; Command Palette... -&gt; Developer: Reload Window
+<p>To make the plugin aware of erlang_ls however, it needs configuration.</p>
+<h3 id="coc-plugin-configuration">Coc plugin configuration</h3>
+<p>Coc is configured through <code>coc-settings.json</code>, which can be opened in vim by 
+issuing the command:</p>
+<pre><code class="language-vim">:CocConfig
 </code></pre>
-<p>On Mac OS you can use the <code>Cmd+Shift+P</code> shortcut to quickly access the
-command palette.</p>
+<p>If <code>erlang_ls</code> is present in your <code>$PATH</code> variable then the following config
+should suffice:</p>
+<pre><code class="language-vim">{
+  &quot;languageserver&quot;: {
+    &quot;erlang&quot;: {
+      &quot;command&quot;: &quot;erlang_ls&quot;,
+      &quot;filetypes&quot;: [&quot;erlang&quot;]
+    }
+  }
+}
+</code></pre>
+<p>When vim starts editing a file of filetype <code>erlang</code>, if the erlang_ls server
+can be started and connected to, you should see something like the following
+message from Coc:</p>
+<pre><code class="language-vim">[coc.nvim] Erlang LS (in erlang_ls), version: X.Y.Z+build.REF
+</code></pre>
+<p>For suggestions on configuring Coc and possible key-bindings see its <a href="https://github.com/neoclide/coc.nvim#example-vim-configuration">example
+configuration
+documentation</a>.</p>
                 
               
               
@@ -613,7 +674,7 @@ command palette.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../spacemacs/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Spacemacs" rel="prev">
+        <a href="../intellij/" class="md-footer__link md-footer__link--prev" aria-label="Previous: IntelliJ" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -622,20 +683,20 @@ command palette.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Spacemacs
+              IntelliJ
             </div>
           </div>
         </a>
       
       
         
-        <a href="../sublime3/" class="md-footer__link md-footer__link--next" aria-label="Next: Sublime Text 3" rel="next">
+        <a href="../theia/" class="md-footer__link md-footer__link--next" aria-label="Next: Theia IDE" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Sublime Text 3
+              Theia IDE
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://erlang-ls.github.io/editors/vim/">
+        <link rel="canonical" href="https://erlang-ls.github.io/getting-started/emacs/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
     
     
       
-        <title>Vim - Erlang LS</title>
+        <title>Emacs - Erlang LS</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vim-neovim" class="md-skip">
+        <a href="#emacs" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vim
+              Emacs
             
           </span>
         </div>
@@ -216,21 +216,6 @@
 
   
   
-  
-    <li class="md-nav__item">
-      <a href="../../features/" class="md-nav__link">
-        Features
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
     
   
   
@@ -238,16 +223,16 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
-      <label class="md-nav__link" for="__nav_3">
-        Editors
+      <label class="md-nav__link" for="__nav_2">
+        Getting Started
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Editors" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
-          Editors
+          Getting Started
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -256,9 +241,95 @@
   
   
     <li class="md-nav__item">
-      <a href="../emacs/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Emacs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Emacs
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restarting-the-language-server" class="md-nav__link">
+    Restarting the language server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-and-tricks" class="md-nav__link">
+    Tips and Tricks
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips and Tricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shortcuts-for-code-lenses-and-quick-actions" class="md-nav__link">
+    Shortcuts for code lenses and quick actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -314,71 +385,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Vim
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../vim/" class="md-nav__link">
         Vim
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installing-coc-with-vim-plug" class="md-nav__link">
-    Installing Coc with vim-plug
-  </a>
-  
-    <nav class="md-nav" aria-label="Installing Coc with vim-plug">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#coc-plugin-configuration" class="md-nav__link">
-    Coc plugin configuration
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -397,6 +408,21 @@
           
         </ul>
       </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        Features
+      </a>
     </li>
   
 
@@ -569,16 +595,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-coc-with-vim-plug" class="md-nav__link">
-    Installing Coc with vim-plug
+  <a href="#restarting-the-language-server" class="md-nav__link">
+    Restarting the language server
   </a>
   
-    <nav class="md-nav" aria-label="Installing Coc with vim-plug">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-and-tricks" class="md-nav__link">
+    Tips and Tricks
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips and Tricks">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#coc-plugin-configuration" class="md-nav__link">
-    Coc plugin configuration
+  <a href="#shortcuts-for-code-lenses-and-quick-actions" class="md-nav__link">
+    Shortcuts for code lenses and quick actions
   </a>
   
 </li>
@@ -601,48 +641,69 @@
               
                 
                 
-                <h1 id="vim-neovim">Vim / NeoVim</h1>
-<blockquote>
-<p><strong>NOTE</strong>: Neovim has recently included a <a href="https://neovim.io/doc/user/lsp.html">native Language
-Server</a>, though it is not yet available
-over in many distributed versions (e.g. <code>brew</code>). Once the native solution is
-verified to work well, we will update this documentation to reflect the setup.</p>
-</blockquote>
+                <h1 id="emacs">Emacs</h1>
 <h2 id="setup">Setup</h2>
-<p>The following instructions should enable Erlang language server integration via
-the <a href="https://github.com/neoclide/coc.nvim">Coc system</a> (an intellisense engine
-for both Vim and Neovim).</p>
-<h2 id="installing-coc-with-vim-plug">Installing Coc with vim-plug</h2>
-<p>For <a href="https://github.com/junegunn/vim-plug">vim-plug</a> users with nodejs &gt;= 10.12
-installed, installing the plugin is just:</p>
-<pre><code class="language-vim">&quot; Use release branch (Recommended)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-</code></pre>
-<p>To make the plugin aware of erlang_ls however, it needs configuration.</p>
-<h3 id="coc-plugin-configuration">Coc plugin configuration</h3>
-<p>Coc is configured through <code>coc-settings.json</code>, which can be opened in vim by 
-issuing the command:</p>
-<pre><code class="language-vim">:CocConfig
-</code></pre>
-<p>If <code>erlang_ls</code> is present in your <code>$PATH</code> variable then the following config
-should suffice:</p>
-<pre><code class="language-vim">{
-  &quot;languageserver&quot;: {
-    &quot;erlang&quot;: {
-      &quot;command&quot;: &quot;erlang_ls&quot;,
-      &quot;filetypes&quot;: [&quot;erlang&quot;]
-    }
-  }
-}
-</code></pre>
-<p>When vim starts editing a file of filetype <code>erlang</code>, if the erlang_ls server
-can be started and connected to, you should see something like the following
-message from Coc:</p>
-<pre><code class="language-vim">[coc.nvim] Erlang LS (in erlang_ls), version: X.Y.Z+build.REF
-</code></pre>
-<p>For suggestions on configuring Coc and possible key-bindings see its <a href="https://github.com/neoclide/coc.nvim#example-vim-configuration">example
-configuration
+<p>The official <code>lsp-mode</code> package includes a client for the Erlang
+Language Server.</p>
+<p><a href="https://github.com/erlang-ls/erlang_ls/blob/master/misc/dotemacs">Here</a>
+you can find a sample Emacs configuration file which installs and
+configures all packages required to get all of the Erlang LS features
+working. Use this configuration file as a starting point for your
+Erlang LS Emacs configuration.</p>
+<p>Whenever opening a project for the first time, you will be prompted by
+<code>emacs-lsp</code> to select the correct project root. In that occasion, you
+also have the opportunity to <em>blacklist</em> projects. Information about
+projects is stored in a file pointed by the <code>lsp-session-file</code>
+variable. Its default location is <code>~/.emacs.d/.lsp-session-v1</code>. You
+may need to prune or amend this file if you change your mind about
+blacklisting a project or if you erroneously select a project
+root. For more information about the <code>lsp-session-file</code> and
+<code>emacs-lsp</code> in general, please refer to the <a href="https://emacs-lsp.github.io/lsp-mode/">official
 documentation</a>.</p>
+<p>Remember that the Erlang Language Server requires Erlang/OTP 21 or
+higher to run, so ensure that OTP 21+ is available in your <code>PATH</code>.
+This can be achieved, for example, by using the
+<a href="https://github.com/purcell/exec-path-from-shell">exec-path-from-shell</a>
+Emacs package.</p>
+<h2 id="restarting-the-language-server">Restarting the language server</h2>
+<p>You may want to quickly restart the language server for a given
+workspace (e.g. after an update or in case of a server crash). To do
+so:</p>
+<pre><code>M-x lsp-workspace-restart
+</code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If things do not work as expected, we advise you to start Emacs with
+only the configuration from the provided sample file, using the
+following command:</p>
+<pre><code>emacs -q -l [PATH-TO-ERLANG-LS]/misc/dotemacs
+</code></pre>
+<p>This will remove from the equation potential incompatibilities with
+other packages or configurations that you may have on your workstation
+and that could conflict with Erlang LS.</p>
+<p>To be sure that you don't have outdated or incompatible packages
+installed, you may also want to rename your <code>~/.emacs.d</code> directory
+while you are troubleshooting your Erlang LS Emacs setup.</p>
+<p>Also, ensure that Erlang (i.e. <code>erl</code>, <code>escript</code> and friends) and the
+<code>erlang_ls</code> executable are all available in your <code>PATH</code>. If they are
+not, you can try the following:</p>
+<pre><code class="language-elisp">;; Ensure your Emacs environment looks like your user's shell one
+(package-require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+</code></pre>
+<p>Finally, to enable logging on the client-side, just:</p>
+<pre><code class="language-elisp">(setq lsp-log-io t)
+</code></pre>
+<p>You can then follow the client logs for the current workspace by doing:</p>
+<pre><code>M-x lsp-workspace-show-log
+</code></pre>
+<h2 id="tips-and-tricks">Tips and Tricks</h2>
+<h3 id="shortcuts-for-code-lenses-and-quick-actions">Shortcuts for code lenses and quick actions</h3>
+<p>You can run <code>M-x lsp-avy-lens</code> to show <em>letters</em> next to code
+lenses. You can then press those letters to trigger the respective
+action.</p>
+<p>If your <code>sideline</code> is enabled (<code>(setq lsp-ui-sideline-enable t)</code>), you
+can also use <code>M-x lsp-execute-code-action</code> to trigger quick-fix
+actions.</p>
                 
               
               
@@ -662,7 +723,7 @@ documentation</a>.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../intellij/" class="md-footer__link md-footer__link--prev" aria-label="Previous: IntelliJ" rel="prev">
+        <a href="../overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -671,20 +732,20 @@ documentation</a>.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              IntelliJ
+              Overview
             </div>
           </div>
         </a>
       
       
         
-        <a href="../theia/" class="md-footer__link md-footer__link--next" aria-label="Next: Theia IDE" rel="next">
+        <a href="../spacemacs/" class="md-footer__link md-footer__link--next" aria-label="Next: Spacemacs" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Theia IDE
+              Spacemacs
             </div>
           </div>
           <div class="md-footer__button md-icon">

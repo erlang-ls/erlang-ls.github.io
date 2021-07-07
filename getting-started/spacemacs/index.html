@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://erlang-ls.github.io/editors/theia/">
+        <link rel="canonical" href="https://erlang-ls.github.io/getting-started/spacemacs/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
     
     
       
-        <title>Theia IDE - Erlang LS</title>
+        <title>Spacemacs - Erlang LS</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#theia-ide" class="md-skip">
+        <a href="#spacemacs" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Theia IDE
+              Spacemacs
             
           </span>
         </div>
@@ -216,21 +216,6 @@
 
   
   
-  
-    <li class="md-nav__item">
-      <a href="../../features/" class="md-nav__link">
-        Features
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
     
   
   
@@ -238,18 +223,30 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
-      <label class="md-nav__link" for="__nav_3">
-        Editors
+      <label class="md-nav__link" for="__nav_2">
+        Getting Started
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Editors" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
-          Editors
+          Getting Started
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
           
             
   
@@ -266,11 +263,51 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../spacemacs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Spacemacs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Spacemacs
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -326,57 +363,32 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Theia IDE
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../theia/" class="md-nav__link">
         Theia IDE
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
           
         </ul>
       </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        Features
+      </a>
     </li>
   
 
@@ -561,16 +573,31 @@
               
                 
                 
-                <h1 id="theia-ide">Theia IDE</h1>
+                <h1 id="spacemacs">Spacemacs</h1>
 <h2 id="setup">Setup</h2>
-<p>It is possible to use Erlang LS in Theia IDE by including Erlang/OTP
-in your running instance and installing the
-<a href="https://marketplace.visualstudio.com/items?itemName=erlang-ls.erlang-ls">VSCode extension</a>.</p>
-<p>If you want to give it a try by using GitPod click
-<a href="https://gitpod.io/#https://github.com/erlang-ls/erlang_ls">here</a>.
-To use this same setup with your Erlang project (hosted in GitHub or
-Gitlab) you can find the GitPod configuration in
-<a href="https://github.com/erlang-ls/erlang_ls/blob/master/.gitpod.yml"><code>.gitpod.yml</code></a>.</p>
+<p>The <code>develop</code> branch includes an Erlang layer with support for the
+Language Server Protocol using Erlang LS as backend.</p>
+<p><a href="https://github.com/syl20bnr/spacemacs/tree/develop/layers/%2Blang/erlang">Here</a>
+you can find information about installation and configuration, as well
+as supported features.</p>
+<p>Both, <code>lsp</code> and <code>erlang-mode</code> variables, can be configured when
+setting up <code>dotspacemacs-configuration-layers</code>, e.g:</p>
+<pre><code class="language-elisp">dotspacemacs-configuration-layers
+'(
+;...
+lsp
+(erlang :variables
+        erlang-backend 'lsp
+        erlang-root-dir &quot;&lt;path to&gt;/otp_22/lib/erlang&quot;
+        erlang-man-root-dir &quot;&lt;path to&gt;/otp_22_kred/lib/erlang/man&quot;
+        erlang-fill-column 100
+        company-minimum-prefix-length 1
+        company-idle-delay 0.3
+        lsp-ui-doc-position 'bottom)
+;...
+)
+
+</code></pre>
                 
               
               
@@ -590,7 +617,7 @@ Gitlab) you can find the GitPod configuration in
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../vim/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Vim" rel="prev">
+        <a href="../emacs/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Emacs" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -599,20 +626,20 @@ Gitlab) you can find the GitPod configuration in
               <span class="md-footer__direction">
                 Previous
               </span>
-              Vim
+              Emacs
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../configuration/" class="md-footer__link md-footer__link--next" aria-label="Next: Configuration" rel="next">
+        <a href="../vscode/" class="md-footer__link md-footer__link--next" aria-label="Next: VSCode" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Configuration
+              VSCode
             </div>
           </div>
           <div class="md-footer__button md-icon">
