@@ -23,6 +23,7 @@ nav:
   - Configuration: configuration.md
   - Talks: talks.md
   - Articles:
+      - "How To: Use the Debugger": articles/tutorial-debugger.md
       - "How To: Code Lenses": articles/tutorial-code-lenses.md
       - "How To: Diagnostics": articles/tutorial-implementing-diagnostics.md
       - Suggesting Type Specs: articles/suggest-type-specs.md
@@ -31,3 +32,5 @@ nav:
   - Troubleshooting: troubleshooting.md
 markdown_extensions:
   - admonition
+  - pymdownx.tabbed
+  - pymdownx.superfences
