@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://erlang-ls.github.io/configuration/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.1fe995fd.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -484,6 +484,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../articles/tutorial-debugger/" class="md-nav__link">
+        How To: Use the Debugger
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../articles/tutorial-code-lenses/" class="md-nav__link">
         How To: Code Lenses
       </a>
@@ -646,29 +658,29 @@ via a configuration file, named <code>erlang_ls.config</code>. The
 <code>erlang_ls.config</code> file should be placed in the root directory of a
 given project to store the configuration for that project.</p>
 <p>A sample <code>erlang_ls.config</code> file would look like the following:</p>
-<pre><code class="language-yaml">otp_path: &quot;/path/to/otp/lib/erlang&quot;
-deps_dirs:
-  - &quot;lib/*&quot;
-diagnostics:
-  enabled:
-    - crossref
-  disabled:
-    - dialyzer
-include_dirs:
-  - &quot;include&quot;
-  - &quot;_build/default/lib&quot;
-lenses:
-  enabled:
-    - ct-run-test
-  disabled:
-    - show-behaviour-usages
-macros:
-  - name: DEFINED_WITH_VALUE
-    value: 42
-  - name: DEFINED_WITHOUT_VALUE
-code_reload:
-  node: node@example
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">otp_path</span><span class="p">:</span> <span class="s">&quot;/path/to/otp/lib/erlang&quot;</span>
+<span class="nt">deps_dirs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;lib/*&quot;</span>
+<span class="nt">diagnostics</span><span class="p">:</span>
+  <span class="nt">enabled</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">crossref</span>
+  <span class="nt">disabled</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">dialyzer</span>
+<span class="nt">include_dirs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;include&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;_build/default/lib&quot;</span>
+<span class="nt">lenses</span><span class="p">:</span>
+  <span class="nt">enabled</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ct-run-test</span>
+  <span class="nt">disabled</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">show-behaviour-usages</span>
+<span class="nt">macros</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DEFINED_WITH_VALUE</span>
+    <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">42</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DEFINED_WITHOUT_VALUE</span>
+<span class="nt">code_reload</span><span class="p">:</span>
+  <span class="nt">node</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node@example</span>
+</code></pre></div>
 <p>The file format is <code>yaml</code>.</p>
 <p>The following customizations are possible:</p>
 <table>
@@ -765,11 +777,11 @@ editor. The following diagnostics are available:</p>
 </table>
 <p>Currently, all of the available diagnostics are enabled by default.</p>
 <p>It is possible to customize diagnostics for a specific project. For example:</p>
-<pre><code>diagnostics:
+<div class="highlight"><pre><span></span><code>diagnostics:
   disabled:
     - dialyzer
     - crossref
-</code></pre>
+</code></pre></div>
 <h2 id="automatic-code-reloading">Automatic Code Reloading</h2>
 <p>The <code>code_reload</code> takes the following options:</p>
 <table>
@@ -816,12 +828,12 @@ are available in Erlang LS:</p>
 <li>show-behaviour-usages</li>
 </ul>
 <p>It is possible to customize lenses for a specific project. For example:</p>
-<pre><code>lenses:
+<div class="highlight"><pre><span></span><code>lenses:
   enabled:
     - ct-run-test
   disabled:
     - show-behaviour-usages
-</code></pre>
+</code></pre></div>
 <h2 id="global-configuration">Global Configuration</h2>
 <p>It is also possible to store a system-wide default configuration in an
 <code>erlang_ls.config</code> file located in the <em>User Config</em> directory. The
@@ -928,7 +940,7 @@ would be <code>/home/USER/.config/erlang_ls/erlang_ls.config</code></p>
     <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      <script src="../assets/javascripts/bundle.ddd52ceb.min.js"></script>
       
     
   </body>

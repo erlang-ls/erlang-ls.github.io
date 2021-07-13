@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://erlang-ls.github.io/articles/otp-23-bring-docs/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1fe995fd.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -412,6 +412,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorial-debugger/" class="md-nav__link">
+        How To: Use the Debugger
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorial-code-lenses/" class="md-nav__link">
         How To: Code Lenses
       </a>
@@ -533,7 +545,7 @@
 23</a> introduces a
 couple of new functions that can be used for displaying documentation
 for modules, functions and types in the Erlang shell:</p>
-<pre><code>1&gt; h(lists).
+<div class="highlight"><pre><span></span><code>1&gt; h(lists).
 
    lists
 
@@ -558,7 +570,7 @@ for modules, functions and types in the Erlang shell:</p>
 
   An example of a typical ordering function is less than or equal
 more (y/n)? (y)
-</code></pre>
+</code></pre></div>
 <p>This is an amazing improvement, but as developers we often spend a
 good portion of our time in our IDE of choice, be it <em>VSCode</em>,
 <em>Emacs</em>, <em>Vim</em> or anything else. Wouldn't it be even more awesome if
@@ -574,9 +586,9 @@ they look in <em>Emacs</em>:</p>
 <p>To get them, ensure you build your Erlang/OTP distribution with
 support for <em>Doc Chunks</em>. If you are using
 <a href="https://github.com/kerl/kerl">kerl</a>, this is as simple as:</p>
-<pre><code>KERL_BUILD_DOCS=yes KERL_DOC_TARGETS=chunks kerl build 23.0.1 23.0.1
+<div class="highlight"><pre><span></span><code>KERL_BUILD_DOCS=yes KERL_DOC_TARGETS=chunks kerl build 23.0.1 23.0.1
 KERL_BUILD_DOCS=yes kerl install 23.0.1 /your/favourite/path/to/23.0.1
-</code></pre>
+</code></pre></div>
 <p>Enjoy!</p>
                 
               
@@ -651,7 +663,7 @@ KERL_BUILD_DOCS=yes kerl install 23.0.1 /your/favourite/path/to/23.0.1
     <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
       
     
   </body>

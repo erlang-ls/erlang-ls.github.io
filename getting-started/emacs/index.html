@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://erlang-ls.github.io/getting-started/emacs/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1fe995fd.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -486,6 +486,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../articles/tutorial-debugger/" class="md-nav__link">
+        How To: Use the Debugger
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../articles/tutorial-code-lenses/" class="md-nav__link">
         How To: Code Lenses
       </a>
@@ -686,13 +698,13 @@ while you are troubleshooting your Erlang LS Emacs setup.</p>
 <p>Also, ensure that Erlang (i.e. <code>erl</code>, <code>escript</code> and friends) and the
 <code>erlang_ls</code> executable are all available in your <code>PATH</code>. If they are
 not, you can try the following:</p>
-<pre><code class="language-elisp">;; Ensure your Emacs environment looks like your user's shell one
-(package-require 'exec-path-from-shell)
-(exec-path-from-shell-initialize)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">;; Ensure your Emacs environment looks like your user&#39;s shell one</span>
+<span class="p">(</span><span class="nv">package-require</span> <span class="ss">&#39;exec-path-from-shell</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">exec-path-from-shell-initialize</span><span class="p">)</span>
+</code></pre></div>
 <p>Finally, to enable logging on the client-side, just:</p>
-<pre><code class="language-elisp">(setq lsp-log-io t)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">setq</span> <span class="nv">lsp-log-io</span> <span class="no">t</span><span class="p">)</span>
+</code></pre></div>
 <p>You can then follow the client logs for the current workspace by doing:</p>
 <pre><code>M-x lsp-workspace-show-log
 </code></pre>
@@ -777,7 +789,7 @@ actions.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
       
     
   </body>

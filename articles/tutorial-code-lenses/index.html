@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://erlang-ls.github.io/articles/tutorial-code-lenses/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1fe995fd.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -406,6 +406,18 @@
           Articles
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-debugger/" class="md-nav__link">
+        How To: Use the Debugger
+      </a>
+    </li>
+  
+
           
             
   
@@ -903,36 +915,36 @@ simple as possible. To create our new code lens, the first thing we
 need to do is to decide a <em>name</em> for it and to create a new Erlang
 module implementing the <code>els_code_lens</code> behaviour. Let's call the new
 code lens <em>function_references</em>.</p>
-<pre><code>-module(els_code_lens_function_references).
+<div class="highlight"><pre><span></span><code>-module(els_code_lens_function_references).
 -behaviour(els_code_lens).
-</code></pre>
+</code></pre></div>
 <p>The <code>els_code_lens</code> behaviour requires <strong>three</strong> callback functions to
 be implemented:</p>
-<pre><code>-callback is_default() -&gt; boolean().
+<div class="highlight"><pre><span></span><code>-callback is_default() -&gt; boolean().
 -callback pois(els_dt_document:item()) -&gt; [poi()].
 -callback command(els_dt_document:item(), poi(), state()) -&gt; els_command:command().
-</code></pre>
+</code></pre></div>
 <p>We will see in a second what each callback function is supposed to
 do. For now, let's add the following exports to our
 <code>els_code_lens_function_references</code> module:</p>
-<pre><code>-export([ is_default/0
+<div class="highlight"><pre><span></span><code>-export([ is_default/0
         , pois/1
         , command/3
         ]).
-</code></pre>
+</code></pre></div>
 <p>Now we can focus on each individual callback function.</p>
 <h3 id="the-is_default0-callback">The <code>is_default/0</code> callback</h3>
 <p>The <code>is_default/0</code> callback is used to specify if the current backend
 should be enabled by default or not. In our case, we want the new
 backend to be enabled by default, so we say:</p>
-<pre><code>is_default() -&gt; true.
-</code></pre>
+<div class="highlight"><pre><span></span><code>is_default() -&gt; true.
+</code></pre></div>
 <p>Should the end user decide to disable this backend, she can just add
 to her <code>erlang_ls.config</code> the following option:</p>
-<pre><code>lenses:
+<div class="highlight"><pre><span></span><code>lenses:
   disabled:
     function_references
-</code></pre>
+</code></pre></div>
 <h3 id="the-pois1-callback">The <code>pois/1</code> callback</h3>
 <p>In Erlang LS jargon, <em>POI</em> stands for <em>Point of Interest</em>. The term
 refers to the <em>interesting</em> bits that are part of a code base. Points
@@ -945,9 +957,9 @@ Interest</em>.</p>
 <em>document</em>. Its return value is the list of <em>POIs</em> for which the lens
 should be activated for. In our case, we want our lens to be visible
 next to each <em>function definition</em>. Therefore, we write:</p>
-<pre><code>pois(Document) -&gt;
+<div class="highlight"><pre><span></span><code>pois(Document) -&gt;
   els_dt_document:pois(Document, [function]).
-</code></pre>
+</code></pre></div>
 <h3 id="the-command3-callback">The <code>command/3</code> callback</h3>
 <p>The last mandatory callback we need to implement is the <code>command/3</code>
 one. The callback takes three arguments: the current <em>Document</em>, a
@@ -965,12 +977,12 @@ selected <em>POI</em></li>
 </ul>
 <p>Erlang LS provides an helper function to create such a data structure: the <code>els_command:make_command/3</code> function.
 Then, our <code>command/3</code> function will look something like this:</p>
-<pre><code>command(Document, POI, _State) -&gt;
+<div class="highlight"><pre><span></span><code>command(Document, POI, _State) -&gt;
   Title = title(Document, POI),
   CommandId = command_id(),
   CommandArgs = command_args(),
   els_command:make_command(Title, CommandId, CommandArgs).
-</code></pre>
+</code></pre></div>
 <p>We will now describe each paramater in detail and learn how to compute
 them, starting from the <code>Title</code>.</p>
 <h4 id="the-title">The Title</h4>
@@ -984,7 +996,7 @@ to display the following text:</p>
 references to the current function are spread across our code base. We
 can therefore query the Erlang LS database via the
 <code>els_dt_references:find_by_id/2</code> helper function:</p>
-<pre><code>title(Document, POI) -&gt;
+<div class="highlight"><pre><span></span><code>title(Document, POI) -&gt;
 
   %% Extract the module name from the current document
   #{uri := Uri} = Document,
@@ -1001,7 +1013,7 @@ can therefore query the Erlang LS database via the
 
   %% Format the title for the code lens
   unicode:characters_to_binary(io_lib:format(&quot;Used ~p times&quot;, [N])).
-</code></pre>
+</code></pre></div>
 <p>The <code>els_dt_references:find_by_id/2</code> function takes two arguments: the
 <code>Kind</code> of references we are looking for (<code>function</code> in our case) and
 the fully qualified <code>Id</code> of the current <em>Point of Interest</em>. For a
@@ -1014,16 +1026,16 @@ from the <code>Document</code> and the <code>F</code> and <code>A</code> from th
 run when the user clicks on our code lens. In our case, this action
 will be a <em>no-op</em>, but we still need to pick a name for our
 command. Let's call it <code>function-references</code>:</p>
-<pre><code>command_id() -&gt; &lt;&lt;&quot;function-references&quot;&gt;&gt;.
-</code></pre>
+<div class="highlight"><pre><span></span><code>command_id() -&gt; &lt;&lt;&quot;function-references&quot;&gt;&gt;.
+</code></pre></div>
 <p>Since our command will be a <em>no-op</em> (we do not want anything to happen
 if the user clicks on the lens), our command will not require any
 arguments:</p>
-<pre><code>command_args() -&gt; [].
-</code></pre>
+<div class="highlight"><pre><span></span><code>command_args() -&gt; [].
+</code></pre></div>
 <p>We are essentially done. Here is our full
 <code>els_code_lens_function_references</code> module, for completeness:</p>
-<pre><code>-module(els_code_lens_function_references).
+<div class="highlight"><pre><span></span><code>-module(els_code_lens_function_references).
 
 -behaviour(els_code_lens).
 -export([ is_default/0
@@ -1056,17 +1068,17 @@ command_id() -&gt;
 
 command_args() -&gt;
   [].
-</code></pre>
+</code></pre></div>
 <h2 id="registering-the-code-lens">Registering the code lens</h2>
 <p>There is one more thing that we need to do before we can use our new
 shiny code lens: we need to tell Erlang LS that it exists. That can be
 achieved by adding our new code lens to the list of <code>available_lenses</code>
 in the <code>els_code_lens</code> module:</p>
-<pre><code>available_lenses() -&gt;
+<div class="highlight"><pre><span></span><code>available_lenses() -&gt;
   [ ...
   , &lt;&lt;&quot;function-references&quot;&gt;&gt;
   ].
-</code></pre>
+</code></pre></div>
 <p>That's all.</p>
 <h2 id="adding-tests">Adding tests</h2>
 <p>Our code lens at this point should be functional, but we cannot be
@@ -1079,7 +1091,7 @@ Tutorial</a>.</p>
 <h3 id="creating-a-test-module">Creating a test module</h3>
 <p>Let's create a test module named <code>code_lens_function_references</code>
 within the <code>code_navigation</code> test application:</p>
-<pre><code>$ cat apps/els_lsp/priv/code_navigation/src/code_lens_function_references.erl
+<div class="highlight"><pre><span></span><code>$ cat apps/els_lsp/priv/code_navigation/src/code_lens_function_references.erl
 -module(code_lens_function_references).
 
 -export([ a/0 ]).
@@ -1096,22 +1108,22 @@ b() -&gt;
 -spec c() -&gt; ok.
 c() -&gt;
   ok.
-</code></pre>
+</code></pre></div>
 <h3 id="registering-the-new-testing-module">Registering the new testing module</h3>
 <p>Simply open the <code>els_test_utils</code> module and add the new module to the
 list of <em>sources</em>. This will ensure the new module is properly indexed
 and some helper functions are available for it.</p>
-<pre><code>sources() -&gt;
+<div class="highlight"><pre><span></span><code>sources() -&gt;
   [ ...
   , code_lens_function_references
   , ...
   ].
-</code></pre>
+</code></pre></div>
 <h3 id="writing-a-testcase">Writing a testcase</h3>
 <p>Let's then open the <code>els_code_lens_SUITE</code> module and add a testcase,
 where we check whether the new code lens works as expected in the new
 module.</p>
-<pre><code>function_references(Config) -&gt;
+<div class="highlight"><pre><span></span><code>function_references(Config) -&gt;
   Uri = ?config(code_lens_function_references_uri, Config),
   #{result := Result} = els_client:document_codelens(Uri),
   Expected = [ lens(5, 0) # First lens on line 5, 0 references
@@ -1120,14 +1132,14 @@ module.</p>
              ],
   ?assertEqual(Expected, Result),
   ok.
-</code></pre>
+</code></pre></div>
 <p>In the above testcase, we are fetching the <code>Uri</code> of the newly added
 test module by leveraging the Erlang LS testing framework. We then use
 the <code>els_client</code> to invoke the <code>document_codelens</code> method for the
 given <code>Uri</code> and we finally ensure that we receive the expected list of code
 lenses. <code>lens/2</code> is an auxiliary function which constructs the data
 structure expected by the <em>LSP</em> protocol as follows:</p>
-<pre><code>lens(Line, Usages) -&gt;
+<div class="highlight"><pre><span></span><code>lens(Line, Usages) -&gt;
   Title = unicode:characters_to_binary(
             io_lib:format(&quot;Used ~p times&quot;, [Usages])),
   #{ command =&gt;
@@ -1137,26 +1149,26 @@ structure expected by the <em>LSP</em> protocol as follows:</p>
         }
    , data =&gt; []
    , range =&gt;
-       #{ 'end' =&gt; #{character =&gt; 1, line =&gt; Line}
+       #{ &#39;end&#39; =&gt; #{character =&gt; 1, line =&gt; Line}
         , start =&gt; #{character =&gt; 0, line =&gt; Line}
         }
    }.
-</code></pre>
+</code></pre></div>
 <p>Let's run the test and ensure it passes.</p>
-<pre><code>$ rebar3 ct --suite apps/els_lsp/test/els_code_lens_SUITE --case function_references --group tcp
+<div class="highlight"><pre><span></span><code>$ rebar3 ct --suite apps/els_lsp/test/els_code_lens_SUITE --case function_references --group tcp
 [...]
 ===&gt; Running Common Test suites...
 %%% els_code_lens_SUITE: .
 All 1 tests passed.
-</code></pre>
+</code></pre></div>
 <p>It looks like we are done here.</p>
 <h2 id="optional-callbacks">Optional Callbacks</h2>
 <p>Even if they are not needed for this tutorial, it is worth mentioning
 that two more <em>optional</em> callback functions are available as part of
 the <code>els_code_lens</code> behaviour:</p>
-<pre><code>-callback init(els_dt_document:item()) -&gt; state().
+<div class="highlight"><pre><span></span><code>-callback init(els_dt_document:item()) -&gt; state().
 -callback precondition(els_dt_document:item()) -&gt; boolean().
-</code></pre>
+</code></pre></div>
 <p>Let's describe them for completeness.</p>
 <h3 id="the-init1-callback">The <code>init/1</code> callback</h3>
 <p>The <code>init/1</code> callback allows us to perform some computation <em>once</em> per
@@ -1171,7 +1183,7 @@ for a specific type of <em>documents</em>. For example, the following
 implementation enables the <code>ct_run_test</code> lens only for <em>Common Test</em>
 suites, identified by the presence of an <code>include_lib</code> directive for the
 <code>ct.hrl</code> file:</p>
-<pre><code>precondition(Document) -&gt;
+<div class="highlight"><pre><span></span><code>precondition(Document) -&gt;
   Includes = els_dt_document:pois(Document, [include_lib]),
   case [POI || #{id := &quot;common_test/include/ct.hrl&quot;} = POI &lt;- Includes] of
     [] -&gt;
@@ -1179,7 +1191,7 @@ suites, identified by the presence of an <code>include_lib</code> directive for 
     _ -&gt;
       true
   end.
-</code></pre>
+</code></pre></div>
 <h2 id="conclusion">Conclusion</h2>
 <p>At this point you should be able to try out your new code lens. The
 above code lens is already available in Erlang LS. You can see the
@@ -1207,7 +1219,7 @@ forward to the wonderful lenses you will implement!</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../talks/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Talks" rel="prev">
+        <a href="../tutorial-debugger/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How To: Use the Debugger" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1216,7 +1228,7 @@ forward to the wonderful lenses you will implement!</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Talks
+              How To: Use the Debugger
             </div>
           </div>
         </a>
@@ -1261,7 +1273,7 @@ forward to the wonderful lenses you will implement!</p>
     <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
       
     
   </body>

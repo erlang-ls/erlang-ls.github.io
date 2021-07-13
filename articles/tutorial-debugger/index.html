@@ -1,0 +1,1120 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://erlang-ls.github.io/articles/tutorial-debugger/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
+    
+    
+      
+        <title>How To: Use the Debugger - Erlang LS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1fe995fd.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-use-the-debugger" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Erlang LS" class="md-header__button md-logo" aria-label="Erlang LS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Erlang LS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              How To: Use the Debugger
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/erlang-ls/erlang_ls" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    erlang-ls/erlang_ls
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Erlang LS" class="md-nav__button md-logo" aria-label="Erlang LS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Erlang LS
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/erlang-ls/erlang_ls" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    erlang-ls/erlang_ls
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Getting Started
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/emacs/" class="md-nav__link">
+        Emacs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/spacemacs/" class="md-nav__link">
+        Spacemacs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/vscode/" class="md-nav__link">
+        VSCode
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/sublime3/" class="md-nav__link">
+        Sublime Text 3
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/intellij/" class="md-nav__link">
+        IntelliJ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/vim/" class="md-nav__link">
+        Vim
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/theia/" class="md-nav__link">
+        Theia IDE
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../talks/" class="md-nav__link">
+        Talks
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      <label class="md-nav__link" for="__nav_6">
+        Articles
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Articles" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Articles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          How To: Use the Debugger
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        How To: Use the Debugger
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-the-debugger" class="md-nav__link">
+    Install the debugger
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-a-sample-project" class="md-nav__link">
+    Setup a sample project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-launch-configuration" class="md-nav__link">
+    Create a launch configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-breakpoint" class="md-nav__link">
+    Add a breakpoint
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-a-debugging-session" class="md-nav__link">
+    Start a debugging session
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-breakpoint-types" class="md-nav__link">
+    Special Breakpoint Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Special Breakpoint Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditional-breakpoints" class="md-nav__link">
+    Conditional Breakpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logpoints" class="md-nav__link">
+    Logpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hitpoints" class="md-nav__link">
+    Hitpoints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-code-lenses/" class="md-nav__link">
+        How To: Code Lenses
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-implementing-diagnostics/" class="md-nav__link">
+        How To: Diagnostics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suggest-type-specs/" class="md-nav__link">
+        Suggesting Type Specs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets-are-here/" class="md-nav__link">
+        Snippets are here
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../otp-23-bring-docs/" class="md-nav__link">
+        OTP 23 Brings Docs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-the-debugger" class="md-nav__link">
+    Install the debugger
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-a-sample-project" class="md-nav__link">
+    Setup a sample project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-launch-configuration" class="md-nav__link">
+    Create a launch configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-breakpoint" class="md-nav__link">
+    Add a breakpoint
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-a-debugging-session" class="md-nav__link">
+    Start a debugging session
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-breakpoint-types" class="md-nav__link">
+    Special Breakpoint Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Special Breakpoint Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditional-breakpoints" class="md-nav__link">
+    Conditional Breakpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logpoints" class="md-nav__link">
+    Logpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hitpoints" class="md-nav__link">
+    Hitpoints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="how-to-use-the-debugger">How To: Use the Debugger</h1>
+<p>Erlang LS provides debugging functionalities via the <a href="https://microsoft.github.io/debug-adapter-protocol/">Debug Adapter
+Protocol</a>, in short <em>DAP</em>. Given the editor-agnostic nature
+of the protocol, debugging is available in all text
+editors and IDEs which support the <em>DAP</em> protocol. Here is what a
+debugging session looks like in Emacs:</p>
+<p><img alt="A Debugging Session in Emacs" src="../../images/dap-emacs-erlang.png" /></p>
+<p>The current underlying implementation is based on the <a href="http://erlang.org/doc/man/int.html">Erlang
+interpeter</a> which comes with Erlang/OTP. Incidentally, the
+official <a href="http://erlang.org/doc/apps/debugger/debugger_chapter.html">OTP Debugger</a> is also powered by the same
+interpreter.</p>
+<p>In this tutorial we will bootstrap a sample project and see how we can
+debug our code using Erlang LS.</p>
+<h2 id="install-the-debugger">Install the debugger</h2>
+<p>Debugging functionalities are provided in Erlang LS via a separate
+executable (an Erlang <a href="https://erlang.org/doc/man/escript.html">escript</a>) named <code>els_dap</code>.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">VS Code</label><div class="tabbed-content">
+<p>The executable is bundled with the Erlang LS extension, so it does
+not require any additional installation steps. You can
+configure the Erlang LS extension to use a custom version of the debugger by
+specifying a different <em>DAP Path</em>:</p>
+<blockquote>
+<p>Extension Settings &gt; DAP Path</p>
+</blockquote>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Emacs</label><div class="tabbed-content">
+<p>If you are using Emacs, chances are that you are building Erlang LS
+from source. To produce the <code>els_dap</code> escript:</p>
+<div class="highlight"><pre><span></span><code>rebar3 as dap escriptize
+</code></pre></div>
+<p>Or simply:</p>
+<div class="highlight"><pre><span></span><code>make
+</code></pre></div>
+<p>You will then find the <code>els_dap</code> escript in:</p>
+<div class="highlight"><pre><span></span><code>_build/dap/bin/els_dap
+</code></pre></div>
+<p>Ensure the produced <code>els_dap</code> escript resides in a <code>PATH</code> known to Emacs.</p>
+<p>The official <a href="https://github.com/emacs-lsp/dap-mode">dap-mode</a> package supports Erlang, so
+require both the package and the Erlang plugin:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;dap-mode</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;dap-erlang</span><span class="p">)</span>
+</code></pre></div>
+<p>You can refer to the official dap-mode <a href="https://emacs-lsp.github.io/dap-mode/">documentation</a> for
+more information on how to install and configure the <code>dap-mode</code> package
+and its plugins.</p>
+</div>
+</div>
+<h2 id="setup-a-sample-project">Setup a sample project</h2>
+<p>To showcase the Erlang LS debugger we will use the <a href="https://github.com/ninenines/cowboy/tree/master/examples/hello_world">Hello World
+example</a> from the Cowboy webserver. Let's start by cloning
+the project:</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/ninenines/cowboy.git
+<span class="nb">cd</span> cowboy/examples/hello_world
+</code></pre></div>
+<p>The project uses the <a href="https://erlang.mk">erlang.mk</a> build system and the
+<a href="https://erlware.github.io/relx/">relx</a> release assembler. To be able to use the debugger with
+our sample project we will need to apply two small modifications to
+the project:</p>
+<ol>
+<li>Include the Erlang <code>debugger</code> as a dependency</li>
+<li>Tell erlang.mk to symlink the <code>hello_world</code> application in the release</li>
+</ol>
+<p>To add the <code>debugger</code> as a dependency, add the following line to the
+project's <code>Makefile</code> just before the <code>include ../../erlang.mk</code> line:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">LOCAL_DEPS</span> <span class="o">=</span> debugger
+</code></pre></div>
+<p>To symlink the application, add the following line to the <code>relx.config</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="n">overrides</span><span class="p">,</span> <span class="p">[{</span><span class="n">hello_world</span><span class="p">,</span> <span class="s">&quot;../hello_world&quot;</span><span class="p">}]}.</span>
+</code></pre></div>
+<p>We can now lunch our web server:</p>
+<div class="highlight"><pre><span></span><code>make run
+</code></pre></div>
+<p>The above should result in a new Erlang node running in the terminal,
+named <code>hello_world_example@[HOSTNAME]</code>.</p>
+<p>We should now be able to point our browser to <code>http://localhost:8080</code>
+to see our glorious <em>Hello world!</em> string.</p>
+<p>Let's keep the server running. Open a new terminal and proceed with
+the following steps.</p>
+<h2 id="create-a-launch-configuration">Create a launch configuration</h2>
+<p>We need to tell the debugger how to connect to the running node. We
+will do so via a <a href="https://code.visualstudio.com/docs/editor/debugging#_launch-configurations">launch configuration</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">About launch configurations</p>
+<p>Despite being a <em>VS Code</em> specific concept, launch configurations can
+now be used with multiple text editors and IDEs, including Emacs.</p>
+</div>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">VS Code</label><div class="tabbed-content">
+<p>Navigate to the <em>Run and Debug</em> panel and click on <em>Create a launch.json file</em>
+link and select the <em>Erlang OTP Debugger</em> option.</p>
+<p><img alt="Create a DAP Launch Configuration in VS Code" src="../../images/dap-vscode-launch.png" /></p>
+<p>This will create a file
+in <code>.vscode/launch.json</code>. Replace the content of the file with the following one:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Existing Erlang Node&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;erlang&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;attach&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;projectnode&quot;</span><span class="p">:</span> <span class="s2">&quot;hello_world_example&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;hello_world_example&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;timeout&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+            <span class="nt">&quot;cwd&quot;</span><span class="p">:</span> <span class="s2">&quot;${workspaceRoot}&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Emacs</label><div class="tabbed-content">
+<p>We need to create a file named <code>launch.json</code> in the top-level
+directory of the project. In our case, the file will reside in
+<code>cowboy/examples/hello_world/launch.json</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Existing Erlang Node&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;erlang&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;attach&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;projectnode&quot;</span><span class="p">:</span> <span class="s2">&quot;hello_world_example&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;hello_world_example&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;timeout&quot;</span><span class="p">:</span> <span class="mi">300</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+<h2 id="add-a-breakpoint">Add a breakpoint</h2>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">VS Code</label><div class="tabbed-content">
+<p>Access the <code>src/toppage_h.erl</code> file and add a breakpoint by clicking
+next to the line number corresponding to the first line of the
+<code>init/2</code> function body.</p>
+<p><img alt="DAP Breakpoint in VS Code" src="../../images/dap-vscode-breakpoint.png" /></p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Emacs</label><div class="tabbed-content">
+<p>Navigate to the <code>src/toppage_h.erl</code>, move to the first line of the
+<code>init/2</code> function body and run:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">M-x</span> <span class="nv">dap-breakpoint-add</span>
+</code></pre></div>
+<p><img alt="DAP Breakpoint in Emacs" src="../../images/dap-emacs-breakpoint.png" /></p>
+</div>
+</div>
+<h2 id="start-a-debugging-session">Start a debugging session</h2>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">VS Code</label><div class="tabbed-content">
+<p>Select the <em>Run and Debug</em> panel, select <em>Existing Erlang Node</em> from
+the dropdown and press the <code>play</code> button:</p>
+<p><img alt="DAP Run" src="../../images/dap-vscode-run.png" /></p>
+<p>Open a new terminal and use the <code>curl</code> command to trigger our new
+breakpoint.</p>
+<div class="highlight"><pre><span></span><code>curl -i http://localhost:8080
+
+HTTP/1.1 <span class="m">200</span> OK
+content-length: <span class="m">12</span>
+content-type: text/plain
+date: Fri, <span class="m">09</span> Jul <span class="m">2021</span> <span class="m">13</span>:35:01 GMT
+server: Cowboy
+
+Hello world!
+</code></pre></div>
+<p>Execution will be paused on the breakpoint. You can then use the standard VS
+Code controls to control execution:</p>
+<p><img alt="DAP Controls in VS Code" src="../../images/dap-vscode-controls.png" /></p>
+<p>On the left hand side it is possible to explore the call stack and the
+variable bindings. For example, we can incrementally expand the
+bindings for the Cowboy input request and verify the value for the
+<em>User Agent</em> header:</p>
+<p><img alt="DAP Bindings in VS Code" src="../../images/dap-vscode-bindings.png" /></p>
+<p>The <em>Debug Console</em> at the bottom can be used as a <em>REPL</em> with the
+current variable bindings available:</p>
+<p><img alt="DAP Debug Console" src="../../images/dap-vscode-debug-console.png" /></p>
+<p>The <em>Watch List</em> on the left can be used to track the value of a
+specific variable (for example, the <code>Opts</code> variable):</p>
+<p><img alt="DAP Watch List" src="../../images/dap-watch.png" /></p>
+<p>And the <em>Debug Console</em> to manipulate those values:</p>
+<p><img alt="DAP Debug Console Modified" src="../../images/dap-vscode-debug-modified.png" /></p>
+<p>VS Code offers extensive debugging functionalities. For more information
+please refer to the <a href="https://code.visualstudio.com/docs/editor/debugging">official VS Code documentation</a>.</p>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Emacs</label><div class="tabbed-content">
+<p>Open the <code>src/toppage_h.erl</code> buffer and run:</p>
+<div class="highlight"><pre><span></span><code>M-x dap-debug
+</code></pre></div>
+<p>You will get prompted for a <em>configuration template</em>. Select <em>Existing
+Erlang Node</em>.</p>
+<p>Open a new terminal and use the <code>curl</code> command to trigger our new
+breakpoint.</p>
+<div class="highlight"><pre><span></span><code>curl -i http://localhost:8080
+
+HTTP/1.1 <span class="m">200</span> OK
+content-length: <span class="m">12</span>
+content-type: text/plain
+date: Fri, <span class="m">09</span> Jul <span class="m">2021</span> <span class="m">13</span>:35:01 GMT
+server: Cowboy
+
+Hello world!
+</code></pre></div>
+<p>Execution will be paused on the breakpoint. You can then use the standard Emacs
+controls to control execution:</p>
+<p><img alt="DAP Controls in Emacs" src="../../images/dap-emacs-controls.png" /></p>
+<p>On the right hand side it is possible to explore the call stack and the
+variable bindings. For example, we can incrementally expand the
+bindings for the Cowboy input request and verify the value for the
+<em>User Agent</em> header:</p>
+<p><img alt="DAP Bindings in Emacs" src="../../images/dap-emacs-bindings.png" /></p>
+<p>You can also open a <em>REPL</em> with the current variable bindings available:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">M-x</span> <span class="nv">dap-eval</span>
+</code></pre></div>
+<p>The <code>dap-mode</code> package offers extensive debugging functionalities. For more information
+please refer to the <a href="https://emacs-lsp.github.io/dap-mode/">official documentation</a>.</p>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Debugging and concurrency</p>
+<p>Due to the nature of Erlang processes, debugging a concurrent system
+could be tricky. As an example, a breakpoint could cause an internal
+timeout to occur and cause a crash as a consequence. Therefore,
+Erlang processes may require to be properly isolated or protected during
+a step-by-step debugging session.</p>
+</div>
+<h2 id="special-breakpoint-types">Special Breakpoint Types</h2>
+<p>The <em>DAP</em> protocol describes a variety of breakpoint types which can
+be used in different situations:</p>
+<ul>
+<li>Conditional breakpoints</li>
+<li>Logpoints</li>
+<li>Hitpoints</li>
+</ul>
+<h3 id="conditional-breakpoints">Conditional Breakpoints</h3>
+<p><em>Conditional breakpoints</em> are only triggered whenever a given
+condition evaluates to <code>true</code>. For example, we may want execution to
+break only when the value of the <em>Host</em> header passed by the client
+contains the string <em>pigeon</em>:</p>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">VS Code</label><div class="tabbed-content">
+<p>To setup a conditional breakpoint, right-click next to a line number
+and select the <em>Add a conditional breakpoint...</em> option. Add the following <em>expression</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="nn">maps</span><span class="p">:</span><span class="nb">get</span><span class="p">(</span><span class="o">&lt;&lt;</span><span class="s">&quot;host&quot;</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="nn">maps</span><span class="p">:</span><span class="nb">get</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="nv">Req0</span><span class="p">))</span> <span class="o">=:=</span> <span class="o">&lt;&lt;</span><span class="s">&quot;pigeon&quot;</span><span class="o">&gt;&gt;</span>
+</code></pre></div>
+<p><img alt="DAP Conditional Breakpoints" src="../../images/dap-vscode-conditional-breakpoint.png" /></p>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Emacs</label><div class="tabbed-content">
+<p>To add a conditional breakpoint, move to an existing breakpoint, then run:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">M-x</span> <span class="nv">dap-breakpoint-condition</span>
+</code></pre></div>
+<p>And add the following <em>expression</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="nn">maps</span><span class="p">:</span><span class="nb">get</span><span class="p">(</span><span class="o">&lt;&lt;</span><span class="s">&quot;host&quot;</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="nn">maps</span><span class="p">:</span><span class="nb">get</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="nv">Req0</span><span class="p">))</span> <span class="o">=:=</span> <span class="o">&lt;&lt;</span><span class="s">&quot;pigeon&quot;</span><span class="o">&gt;&gt;</span>
+</code></pre></div>
+</div>
+</div>
+<p>With the above conditional breakpoint set, the following request will
+not cause execution to break:</p>
+<div class="highlight"><pre><span></span><code>curl -i http://localhost:8080
+</code></pre></div>
+<p>But the following will:</p>
+<div class="highlight"><pre><span></span><code>curl -H <span class="s2">&quot;Host: pigeon&quot;</span> -i http://localhost:8080
+</code></pre></div>
+<h3 id="logpoints">Logpoints</h3>
+<p><em>Logpoints</em> are a special type of breakpoint which do not cause
+execution to break, but they result in a log message to be printed out
+in the <em>Debug Console</em>.</p>
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">VS Code</label><div class="tabbed-content">
+<p>To log the <em>Host</em> header on every request, right-click next to the
+line number and select the <em>Add logpoint...</em> option. Add the following <em>Log Message</em>:</p>
+<div class="highlight"><pre><span></span><code>maps:get<span class="o">(</span>&lt;&lt;<span class="s2">&quot;host&quot;</span>&gt;&gt;, maps:get<span class="o">(</span>headers, Req0<span class="o">))</span>
+</code></pre></div>
+<p>Let's trigger a few requests with different (or default) host headers:</p>
+<div class="highlight"><pre><span></span><code>curl -i http://localhost:8080
+curl -H <span class="s2">&quot;Host: pigeon&quot;</span> -i http://localhost:8080
+</code></pre></div>
+<p>We can then follow the <em>logpoints</em> in the debug console:</p>
+<p><img alt="DAP Logpoints in VS Code" src="../../images/dap-vscode-logpoints.png" /></p>
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Emacs</label><div class="tabbed-content">
+<p>To log the <em>Host</em> header on every request, move to an existing breakpoint, then run:</p>
+<div class="highlight"><pre><span></span><code>M-x dap-breakpoint-log-message
+</code></pre></div>
+<p>Add the following <em>Log Message</em>:</p>
+<div class="highlight"><pre><span></span><code>maps:get<span class="o">(</span>&lt;&lt;<span class="s2">&quot;host&quot;</span>&gt;&gt;, maps:get<span class="o">(</span>headers, Req0<span class="o">))</span>
+</code></pre></div>
+<p>Let's trigger a few requests with different (or default) host headers:</p>
+<div class="highlight"><pre><span></span><code>curl -i http://localhost:8080
+curl -H <span class="s2">&quot;Host: pigeon&quot;</span> -i http://localhost:8080
+</code></pre></div>
+<p>To follow the <em>logpoints</em>, run:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">M-x</span> <span class="nv">dap-go-to-output-buffer</span>
+</code></pre></div>
+<p><img alt="DAP Logpoints in Emacs" src="../../images/dap-emacs-logpoints.png" /></p>
+</div>
+</div>
+<h3 id="hitpoints">Hitpoints</h3>
+<p><em>Hitpoints</em> are a special kind of breakpoint which are triggered every
+<em>Nth</em> time.</p>
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">VS Code</label><div class="tabbed-content">
+<p>Select an existing breakpoint and choose the <em>Hit Count</em> option from the dropdown.
+Specify a number <em>N</em>. The respective breakpoint will be triggered every <em>Nth</em> time.</p>
+</div>
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">Emacs</label><div class="tabbed-content">
+<p>Navigate to an existing breakpoint. Run:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">M-x</span> <span class="nv">dap-breakpoint-hit-condition</span>
+</code></pre></div>
+<p>Specify a number <em>N</em>. The respective breakpoint will be triggered every <em>Nth</em> time.</p>
+</div>
+</div>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If something does not work as expected, have a look to the Erlang LS
+DAP logs. They will most likely point you to the root cause of the issue.
+Logs are available at:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>USER_LOG_DIR<span class="o">]</span>/<span class="o">[</span>PROJECT_NAME<span class="o">]</span>/dap_server.log
+</code></pre></div>
+<p>Where <code>[USER_LOG_DIR]</code> is the output of:</p>
+<div class="highlight"><pre><span></span><code><span class="nn">filename</span><span class="p">:</span><span class="nf">basedir</span><span class="p">(</span><span class="n">user_log</span><span class="p">,</span> <span class="s">&quot;els_dap&quot;</span><span class="p">).</span>
+</code></pre></div>
+<p>For example, on Mac OS, the DAP logs for the <em>hello_world</em> project will be in:</p>
+<div class="highlight"><pre><span></span><code>/Users/<span class="o">[</span>USERNAME<span class="o">]</span>/Library/Logs/els_dap/hello_world/dap_server.log
+</code></pre></div>
+<p>If the DAP logs do not help, feel free to reach out on <a href="https://github.com/erlang-ls/erlang_ls/issues/new/choose">GitHub</a> or <a href="https://klarna.slack.com/app_redirect?channel=erlang-ls">Slack</a>.</p>
+<p>Happy debugging with Erlang LS!</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../talks/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Talks" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Talks
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../tutorial-code-lenses/" class="md-footer__link md-footer__link--next" aria-label="Next: How To: Code Lenses" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              How To: Code Lenses
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+    
+  </body>
+</html>
