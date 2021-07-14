@@ -9,7 +9,7 @@ debugging session looks like in Emacs:
 ![A Debugging Session in Emacs](../images/dap-emacs-erlang.png)
 
 The current underlying implementation is based on the [Erlang
-interpeter][otp-int] which comes with Erlang/OTP. Incidentally, the
+interpreter][otp-int] which comes with Erlang/OTP. Incidentally, the
 official [OTP Debugger][otp-debugger] is also powered by the same
 interpreter.
 
