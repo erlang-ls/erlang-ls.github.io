@@ -175,7 +175,7 @@ To be able to use the major Erlang LS features with the
 should suffice.
 
 ```yaml
-otp_path: "/Users/robert.aloi/otp/23-kred"
+otp_path: "/path/to/otp"
 apps_dirs:
   - "lib/*"
 include_dirs:
