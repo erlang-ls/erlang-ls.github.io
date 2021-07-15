@@ -432,6 +432,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#common-configurations" class="md-nav__link">
+    Common configurations
+  </a>
+  
+    <nav class="md-nav" aria-label="Common configurations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rebar3-project" class="md-nav__link">
+    rebar3 project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebar3-umbrella-project" class="md-nav__link">
+    rebar3 umbrella project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-erlangotp-repository" class="md-nav__link">
+    The erlang/otp repository
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -635,6 +669,40 @@
   <a href="#global-configuration" class="md-nav__link">
     Global Configuration
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-configurations" class="md-nav__link">
+    Common configurations
+  </a>
+  
+    <nav class="md-nav" aria-label="Common configurations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rebar3-project" class="md-nav__link">
+    rebar3 project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebar3-umbrella-project" class="md-nav__link">
+    rebar3 umbrella project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-erlangotp-repository" class="md-nav__link">
+    The erlang/otp repository
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -867,6 +935,43 @@ command on an Erlang shell:</p>
 </table>
 <p>Thus on Linux, for example, the full path to the default configuation file
 would be <code>/home/USER/.config/erlang_ls/erlang_ls.config</code></p>
+<h2 id="common-configurations">Common configurations</h2>
+<p>Many Erlang repositories follow the same structure. We include common
+Erlang LS configurations in this section, for easy reuse.</p>
+<h3 id="rebar3-project"><code>rebar3</code> project</h3>
+<p>The following configuration can be used for most <a href="https://rebar3.org">rebar3</a>
+based projects.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apps_dirs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;_build/default/lib/*&quot;</span>
+<span class="nt">include_dirs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;_build/default/lib/*/include&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;include&quot;</span>
+</code></pre></div>
+<h3 id="rebar3-umbrella-project"><code>rebar3</code> <em>umbrella</em> project</h3>
+<p>If your <code>rebar3</code> project includes multiple application (e.g. in an
+<code>apps</code> folder), you may want to adapt your Erlang LS configuration as
+follows.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apps_dirs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;apps/*&quot;</span>
+<span class="nt">deps_dirs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;_build/default/lib/*&quot;</span>
+<span class="nt">include_dirs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;apps&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;apps/*/include&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;_build/default/lib/&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;_build/default/lib/*/include&quot;</span>
+</code></pre></div>
+<h3 id="the-erlangotp-repository">The <code>erlang/otp</code> repository</h3>
+<p>To be able to use the major Erlang LS features with the
+<a href="https://github.com/erlang/otp">erlang/otp</a> repository, the following minimal configuration
+should suffice.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">otp_path</span><span class="p">:</span> <span class="s">&quot;/Users/robert.aloi/otp/23-kred&quot;</span>
+<span class="nt">apps_dirs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;lib/*&quot;</span>
+<span class="nt">include_dirs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;lib&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;lib/*/include&quot;</span>
+</code></pre></div>
                 
               
               
