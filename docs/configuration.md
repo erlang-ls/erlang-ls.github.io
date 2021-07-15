@@ -132,6 +132,59 @@ Normally, the location of the _User Config_ directory is:
 Thus on Linux, for example, the full path to the default configuation file
 would be `/home/USER/.config/erlang_ls/erlang_ls.config`
 
+## Common configurations
+
+Many Erlang repositories follow the same structure. We include common
+Erlang LS configurations in this section, for easy reuse.
+
+### `rebar3` project
+
+The following configuration can be used for most [rebar3][rebar3]
+based projects.
+
+```yaml
+apps_dirs:
+  - "_build/default/lib/*"
+include_dirs:
+  - "_build/default/lib/*/include"
+  - "include"
+```
+
+### `rebar3` _umbrella_ project
+
+If your `rebar3` project includes multiple application (e.g. in an
+`apps` folder), you may want to adapt your Erlang LS configuration as
+follows.
+
+```yaml
+apps_dirs:
+  - "apps/*"
+deps_dirs:
+  - "_build/default/lib/*"
+include_dirs:
+  - "apps"
+  - "apps/*/include"
+  - "_build/default/lib/"
+  - "_build/default/lib/*/include"
+```
+
+### The `erlang/otp` repository
+
+To be able to use the major Erlang LS features with the
+[erlang/otp][otp] repository, the following minimal configuration
+should suffice.
+
+```yaml
+otp_path: "/Users/robert.aloi/otp/23-kred"
+apps_dirs:
+  - "lib/*"
+include_dirs:
+  - "lib"
+  - "lib/*/include"
+```
+
 [compiler]:https://erlang.org/doc/man/compile.html
 [dialyzer]:http://erlang.org/doc/apps/dialyzer/dialyzer_chapter.html
 [elvis]:https://github.com/inaka/elvis
+[otp]:https://github.com/erlang/otp
+[rebar3]:https://rebar3.org
