@@ -53,6 +53,7 @@ The following customizations are possible:
 | plt\_path               | Path to the dialyzer PLT file. When none is provided the dialyzer diagnostics will not be available.                                      |
 | code\_path\_extra\_dirs | List of wildcard Paths erlang\_ls will add with code:add\_path/1                                                                          |
 | elvis\_config\_path     | Path to the elvis.config file. Defaults to ROOT_DIR/elvis.config                                                                          |
+| exclude\_unused\_includes | List of includes files that are excluded from the `UnusedIncludes` warnings.                                                            |
 
 ### Diagnostics
 
