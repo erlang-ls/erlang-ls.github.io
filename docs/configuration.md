@@ -38,23 +38,23 @@ The file format is `yaml`.
 
 The following customizations are possible:
 
-| Parameter               | Description                                                                                                                               |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| apps\_dirs              | List of directories containing project applications. It supports wildcards.                                                               |
-| code\_reload            | Whether or not an rpc call should be made to a remote node to compile and reload a module                                                 |
-| deps\_dirs              | List of directories containing dependencies. It supports wildcards.                                                                       |
-| diagnostics             | Customize the list of active diagnostics                                                                                                  |
-| include\_dirs           | List of directories provided to the compiler as include dirs. It supports wildcards.                                                      |
-| incremental\_sync       | Whether or not to support incremental synchronization of text changes in the client. Enabled by default.                                 |
-| lenses                  | Customize the list of active code lenses                                                                                                  |
-| macros                  | List of cusom macros to be passed to the compiler, expressed as a name/value pair. If the value is omitted or is invalid, 'true' is used. |
-| otp\_apps\_exclude      | List of OTP applications that will not be indexed (default: megaco, diameter, snmp, wx)                                                   |
-| otp\_path               | Path to the OTP installation                                                                                                              |
-| plt\_path               | Path to the dialyzer PLT file. When none is provided the dialyzer diagnostics will not be available.                                      |
-| code\_path\_extra\_dirs | List of wildcard Paths erlang\_ls will add with code:add\_path/1                                                                          |
-| elvis\_config\_path     | Path to the elvis.config file. Defaults to ROOT_DIR/elvis.config                                                                          |
-| exclude\_unused\_includes | List of includes files that are excluded from the `UnusedIncludes` warnings.                                                            |
-| compiler\_telemetry\_enabled | When enabled, send `telemetry/event` LSP messages containing the `code` field of any diagnostics present in a file. Defaults to false. |
+| Parameter                    | Description                                                                                                                               |
+|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| apps\_dirs                   | List of directories containing project applications. It supports wildcards.                                                               |
+| code\_reload                 | Whether or not an rpc call should be made to a remote node to compile and reload a module                                                 |
+| deps\_dirs                   | List of directories containing dependencies. It supports wildcards.                                                                       |
+| diagnostics                  | Customize the list of active diagnostics. See below for a list of available diagnostics.                                                  |
+| include\_dirs                | List of directories provided to the compiler as include dirs. It supports wildcards.                                                      |
+| incremental\_sync            | Whether or not to support incremental synchronization of text changes in the client. Enabled by default.                                  |
+| lenses                       | Customize the list of active code lenses                                                                                                  |
+| macros                       | List of cusom macros to be passed to the compiler, expressed as a name/value pair. If the value is omitted or is invalid, 'true' is used. |
+| otp\_apps\_exclude           | List of OTP applications that will not be indexed (default: megaco, diameter, snmp, wx)                                                   |
+| otp\_path                    | Path to the OTP installation                                                                                                              |
+| plt\_path                    | Path to the dialyzer PLT file. When none is provided the dialyzer diagnostics will not be available.                                      |
+| code\_path\_extra\_dirs      | List of wildcard Paths erlang\_ls will add with code:add\_path/1                                                                          |
+| elvis\_config\_path          | Path to the elvis.config file. Defaults to ROOT_DIR/elvis.config                                                                          |
+| exclude\_unused\_includes    | List of includes files that are excluded from the `UnusedIncludes` warnings.                                                              |
+| compiler\_telemetry\_enabled | When enabled, send `telemetry/event` LSP messages containing the `code` field of any diagnostics present in a file. Defaults to false.    |
 
 ### Diagnostics
 
@@ -62,14 +62,15 @@ When a file is open or saved, a list of _diagnostics_ are run in the
 background, reporting eventual issues with the code base to the
 editor. The following diagnostics are available:
 
-| Diagnostic Name | Purpose                                                                              |
-|-----------------|--------------------------------------------------------------------------------------|
-| compiler        | Report in-line warnings and errors from the Erlang [compiler][compiler]              |
-| dialyzer        | Use the [dialyzer][dialyzer] static analysis tool to find discrepancies in your code |
-| elvis           | Use [elvis][elvis] to review the style of your Erlang code                           |
-| crossref        | Use information from the Erlang LS Database to find out about undefined functions    |
-
-Currently, all of the available diagnostics are enabled by default.
+| Diagnostic Name         | Purpose                                                                                           | Default  |
+|-------------------------|---------------------------------------------------------------------------------------------------|----------|
+| bound\_var\_in\_pattern | Report already bound variables in patterns (inspired by the [pinning operator][pinning-operator]) | enabled  |
+| compiler                | Report in-line warnings and errors from the Erlang [compiler][compiler]                           | enabled  |
+| crossref                | Use information from the Erlang LS Database to find out about undefined functions                 | disabled |
+| dialyzer                | Use the [dialyzer][dialyzer] static analysis tool to find discrepancies in your code              | enabled  |
+| elvis                   | Use [elvis][elvis] to review the style of your Erlang code                                        | enabled  |
+| unused\_includes        | Warn about header files which are included but not utilized                                       | enabled  |
+| unused\_macros          | Warn about macros which are defined but not utilized                                              | enabled  |
 
 It is possible to customize diagnostics for a specific project. For example:
 
@@ -77,6 +78,7 @@ It is possible to customize diagnostics for a specific project. For example:
 diagnostics:
   disabled:
     - dialyzer
+  enabled:
     - crossref
 ```
 
@@ -190,3 +192,4 @@ include_dirs:
 [elvis]:https://github.com/inaka/elvis
 [otp]:https://github.com/erlang/otp
 [rebar3]:https://rebar3.org
+[pinning-operator]:https://www.erlang.org/erlang-enhancement-proposals/eep-0055.html
