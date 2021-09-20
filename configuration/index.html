@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://erlang-ls.github.io/configuration/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.92558b1b.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -777,7 +777,7 @@ given project to store the configuration for that project.</p>
 </tr>
 <tr>
 <td>diagnostics</td>
-<td>Customize the list of active diagnostics</td>
+<td>Customize the list of active diagnostics. See below for a list of available diagnostics.</td>
 </tr>
 <tr>
 <td>include_dirs</td>
@@ -834,32 +834,52 @@ editor. The following diagnostics are available:</p>
 <tr>
 <th>Diagnostic Name</th>
 <th>Purpose</th>
+<th>Default</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>bound_var_in_pattern</td>
+<td>Report already bound variables in patterns (inspired by the <a href="https://www.erlang.org/erlang-enhancement-proposals/eep-0055.html">pinning operator</a>)</td>
+<td>enabled</td>
+</tr>
+<tr>
 <td>compiler</td>
 <td>Report in-line warnings and errors from the Erlang <a href="https://erlang.org/doc/man/compile.html">compiler</a></td>
-</tr>
-<tr>
-<td>dialyzer</td>
-<td>Use the <a href="http://erlang.org/doc/apps/dialyzer/dialyzer_chapter.html">dialyzer</a> static analysis tool to find discrepancies in your code</td>
-</tr>
-<tr>
-<td>elvis</td>
-<td>Use <a href="https://github.com/inaka/elvis">elvis</a> to review the style of your Erlang code</td>
+<td>enabled</td>
 </tr>
 <tr>
 <td>crossref</td>
 <td>Use information from the Erlang LS Database to find out about undefined functions</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td>dialyzer</td>
+<td>Use the <a href="http://erlang.org/doc/apps/dialyzer/dialyzer_chapter.html">dialyzer</a> static analysis tool to find discrepancies in your code</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>elvis</td>
+<td>Use <a href="https://github.com/inaka/elvis">elvis</a> to review the style of your Erlang code</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>unused_includes</td>
+<td>Warn about header files which are included but not utilized</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>unused_macros</td>
+<td>Warn about macros which are defined but not utilized</td>
+<td>enabled</td>
 </tr>
 </tbody>
 </table>
-<p>Currently, all of the available diagnostics are enabled by default.</p>
 <p>It is possible to customize diagnostics for a specific project. For example:</p>
 <div class="highlight"><pre><span></span><code>diagnostics:
   disabled:
     - dialyzer
+  enabled:
     - crossref
 </code></pre></div>
 <h2 id="automatic-code-reloading">Automatic Code Reloading</h2>
@@ -1054,10 +1074,10 @@ should suffice.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.94ec81fe.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../assets/javascripts/bundle.48dfec6c.min.js"></script>
       
     
   </body>
