@@ -406,6 +406,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#breadcrumbs" class="md-nav__link">
+    Breadcrumbs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#code-completion" class="md-nav__link">
     Code Completion
   </a>
@@ -722,6 +729,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#breadcrumbs" class="md-nav__link">
+    Breadcrumbs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#code-completion" class="md-nav__link">
     Code Completion
   </a>
@@ -840,6 +854,31 @@
                 
                 
                 <h1 id="features">Features</h1>
+<h2 id="breadcrumbs">Breadcrumbs</h2>
+<p>Breadcrumbs display a list of links to the current element and its
+ancestors in the top part of the page.</p>
+<p><img alt="Breadcrumbs" src="../images/lsp-ui-breadcrumbs.png" /></p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">VS Code</label><div class="tabbed-content">
+<p>Breadcrumbs can be enabled or disabled via:</p>
+<blockquote>
+<p>Settings &gt; Workbench &gt; Breadcrumbs</p>
+</blockquote>
+<p>The settings section contains a number of additional preferences to
+tweak what to display exactly (e.g. icons, symbols, complete path to
+the file, etc).</p>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Emacs</label><div class="tabbed-content">
+<p>Breadcrumbs are provided by the
+<a href="https://emacs-lsp.github.io/lsp-mode">lsp-mode</a> package.
+To enable breadcrumbs:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">setq</span> <span class="nv">lsp-headerline-breadcrumb-mode</span> <span class="no">t</span><span class="p">)</span>
+</code></pre></div>
+<p>You can also customize what to display in the breadcrumbs by
+customizing the <code>lsp-headerline-breadcrumb-segments</code> variable. For
+more information please refer to the official <a href="https://emacs-lsp.github.io/lsp-mode/page/main-features/#breadcrumb-on-headerline">lsp-mode
+documentation</a>.</p>
+</div>
+</div>
 <h2 id="code-completion">Code Completion</h2>
 <p>Get context-aware code completions for function names, macros,
 records, variable names and more.</p>
