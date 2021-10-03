@@ -22,6 +22,7 @@ nav:
   - Features: features.md
   - Configuration: configuration.md
   - Talks: talks.md
+  - Papers: papers.md
   - Articles:
       - "How To: Use the Debugger": articles/tutorial-debugger.md
       - "How To: Code Lenses": articles/tutorial-code-lenses.md
