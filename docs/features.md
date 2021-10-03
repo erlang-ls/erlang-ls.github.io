@@ -1,5 +1,37 @@
 # Features
 
+## Breadcrumbs
+
+Breadcrumbs display a list of links to the current element and its
+ancestors in the top part of the page.
+
+![Breadcrumbs](images/lsp-ui-breadcrumbs.png)
+
+=== "VS Code"
+
+    Breadcrumbs can be enabled or disabled via:
+
+    > Settings > Workbench > Breadcrumbs
+
+    The settings section contains a number of additional preferences to
+    tweak what to display exactly (e.g. icons, symbols, complete path to
+    the file, etc).
+
+=== "Emacs"
+
+    Breadcrumbs are provided by the
+    [lsp-mode](https://emacs-lsp.github.io/lsp-mode) package.
+    To enable breadcrumbs:
+
+    ```elisp
+    (setq lsp-headerline-breadcrumb-mode t)
+    ```
+
+    You can also customize what to display in the breadcrumbs by
+    customizing the `lsp-headerline-breadcrumb-segments` variable. For
+    more information please refer to the official [lsp-mode
+    documentation](https://emacs-lsp.github.io/lsp-mode/page/main-features/#breadcrumb-on-headerline).
+
 ## Code Completion
 
 Get context-aware code completions for function names, macros,
