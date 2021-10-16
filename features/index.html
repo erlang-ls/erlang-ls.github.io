@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://erlang-ls.github.io/features/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.1">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.3">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.1c75ef36.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.5143246d.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -517,6 +517,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#call-hierarchy" class="md-nav__link">
+    Call Hierarchy
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -840,6 +847,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#call-hierarchy" class="md-nav__link">
+    Call Hierarchy
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -932,6 +946,34 @@ functions.</p>
 <h2 id="suggest-type-specs">Suggest Type Specs</h2>
 <p>Annotate your Erlang programs with type information.</p>
 <p><img alt="Suggest Specs" src="https://github.com/erlang-ls/docs/raw/master/gif/16-suggest-specs.gif" /></p>
+<h2 id="call-hierarchy">Call Hierarchy</h2>
+<p>The <em>Call Hierarchy</em> feature lets you explore callers of a given
+function (known as <em>incoming calls</em>), as well as show which functions
+are called by a given function (known as <em>outgoing calls</em>).</p>
+<p>For an overview of what Call Hierarchy may look like, have a look to
+this <a href="https://www.youtube.com/watch?v=r5LA7ivUb2c">video</a>.</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">VS Code</label><div class="tabbed-content">
+<p><img alt="Call Hierarchy in VS Code" src="../images/lsp-vscode-call-hierarchy.png" /></p>
+<p>To display the <em>Call Hierarchy</em> panel, right-click on the name of a
+function and select <em>Show Call Hierarchy</em>. You can use the newly
+opened panel to navigate through the hierarchy of calls.</p>
+<p>To switch between <em>incoming calls</em> and <em>outgoing calls</em> simply use the
+<em>phone</em> icon on the top-right corner of the panel.</p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Emacs</label><div class="tabbed-content">
+<p><img alt="Call Hierarchy in Emacs" src="../images/lsp-emacs-call-hierarchy.png" /></p>
+<p>The feature is provided by the
+<a href="https://github.com/emacs-lsp/lsp-treemacs">lsp-treemacs</a> package.</p>
+<p>To show the <em>incoming calls</em> hierarchy:</p>
+<pre><code>M-x lsp-treemacs-call-hierarchy
+</code></pre>
+<p>To show the outgoing calls hierarchy:</p>
+<pre><code>C-u M-x lsp-treemacs-call-hierarchy
+</code></pre>
+<p>For more information please refer to the official <a href="https://github.com/emacs-lsp/lsp-treemacs#lsp-treemacs-call-hierarchy">lsp-treemacs
+documentation</a>.</p>
+</div>
+</div>
                 
               
               
@@ -1004,10 +1046,10 @@ functions.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.e99e714c.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c7d1b464.min.js"></script>
+      <script src="../assets/javascripts/bundle.f89c2efe.min.js"></script>
       
     
   </body>
