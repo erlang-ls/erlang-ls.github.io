@@ -129,3 +129,41 @@ Quickly insert parametrized, reusable pieces of code.
 Annotate your Erlang programs with type information.
 
 ![Suggest Specs](https://github.com/erlang-ls/docs/raw/master/gif/16-suggest-specs.gif)
+
+## Call Hierarchy
+
+The _Call Hierarchy_ feature lets you explore callers of a given
+function (known as _incoming calls_), as well as show which functions
+are called by a given function (known as _outgoing calls_).
+
+For an overview of what Call Hierarchy may look like, have a look to
+this [video](https://www.youtube.com/watch?v=r5LA7ivUb2c).
+
+=== "VS Code"
+
+    ![Call Hierarchy in VS Code](images/lsp-vscode-call-hierarchy.png)
+
+    To display the _Call Hierarchy_ panel, right-click on the name of a
+    function and select _Show Call Hierarchy_. You can use the newly
+    opened panel to navigate through the hierarchy of calls.
+
+    To switch between _incoming calls_ and _outgoing calls_ simply use the
+    _phone_ icon on the top-right corner of the panel.
+
+=== "Emacs"
+
+    ![Call Hierarchy in Emacs](images/lsp-emacs-call-hierarchy.png)
+
+    The feature is provided by the
+    [lsp-treemacs](https://github.com/emacs-lsp/lsp-treemacs) package.
+
+    To show the _incoming calls_ hierarchy:
+
+        M-x lsp-treemacs-call-hierarchy
+
+    To show the outgoing calls hierarchy:
+
+        C-u M-x lsp-treemacs-call-hierarchy
+
+    For more information please refer to the official [lsp-treemacs
+    documentation](https://github.com/emacs-lsp/lsp-treemacs#lsp-treemacs-call-hierarchy).
