@@ -19,6 +19,7 @@ nav:
       - IntelliJ: getting-started/intellij.md
       - Vim: getting-started/vim.md
       - Theia IDE: getting-started/theia.md
+      - Kakoune: getting-started/kakoune.md
   - Features: features.md
   - Configuration: configuration.md
   - Talks: talks.md
