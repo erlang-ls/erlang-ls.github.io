@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://erlang-ls.github.io/getting-started/spacemacs/">
+        <link rel="canonical" href="https://erlang-ls.github.io/getting-started/kakoune/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.5">
     
     
       
-        <title>Spacemacs - Erlang LS</title>
+        <title>Kakoune - Erlang LS</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#spacemacs" class="md-skip">
+        <a href="#kakoune" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Spacemacs
+              Kakoune
             
           </span>
         </div>
@@ -225,14 +225,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       
       
@@ -281,53 +279,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Spacemacs
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../spacemacs/" class="md-nav__link">
         Spacemacs
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -630,9 +586,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
+  <a href="#step-0-use-a-recent-kakoune-installation" class="md-nav__link">
+    Step 0: Use a recent Kakoune installation
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-install-erlang-ls" class="md-nav__link">
+    Step 1: Install Erlang LS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-install-kak-lsp" class="md-nav__link">
+    Step 2: Install kak-lsp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-edit-the-kak-lsp-configuration" class="md-nav__link">
+    Step 3: Edit the kak-lsp configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Edit the kak-lsp configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-the-erlang_ls-executable-is-on-your-path" class="md-nav__link">
+    If the erlang_ls executable is on your $PATH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-the-erlang_ls-executable-is-not-on-your-path" class="md-nav__link">
+    If the erlang_ls executable is not on your $PATH
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -649,30 +646,37 @@
               
                 
                 
-                <h1 id="spacemacs">Spacemacs</h1>
-<h2 id="setup">Setup</h2>
-<p>The <code>develop</code> branch includes an Erlang layer with support for the
-Language Server Protocol using Erlang LS as backend.</p>
-<p><a href="https://github.com/syl20bnr/spacemacs/tree/develop/layers/%2Blang/erlang">Here</a>
-you can find information about installation and configuration, as well
-as supported features.</p>
-<p>Both, <code>lsp</code> and <code>erlang-mode</code> variables, can be configured when
-setting up <code>dotspacemacs-configuration-layers</code>, e.g:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">dotspacemacs-configuration-layers</span>
-<span class="o">&#39;</span><span class="p">(</span>
-<span class="c1">;...</span>
-<span class="nv">lsp</span>
-<span class="p">(</span><span class="nv">erlang</span> <span class="nb">:variables</span>
-        <span class="nv">erlang-backend</span> <span class="ss">&#39;lsp</span>
-        <span class="nv">erlang-root-dir</span> <span class="s">&quot;&lt;path to&gt;/otp_22/lib/erlang&quot;</span>
-        <span class="nv">erlang-man-root-dir</span> <span class="s">&quot;&lt;path to&gt;/otp_22_kred/lib/erlang/man&quot;</span>
-        <span class="nv">erlang-fill-column</span> <span class="mi">100</span>
-        <span class="nv">company-minimum-prefix-length</span> <span class="mi">1</span>
-        <span class="nv">company-idle-delay</span> <span class="mf">0.3</span>
-        <span class="nv">lsp-ui-doc-position</span> <span class="ss">&#39;bottom</span><span class="p">)</span>
-<span class="c1">;...</span>
-<span class="p">)</span>
+                <h1 id="kakoune">Kakoune</h1>
+<p>The <a href="https://kakoune.org/">Kakoune</a> editor provides support for Erlang LS via the <a href="https://github.com/kak-lsp/kak-lsp">Kakoune Language Server Protocol Client (kak-lsp)</a> Kakoune plugin.</p>
+<h3 id="step-0-use-a-recent-kakoune-installation">Step 0: Use a recent Kakoune installation</h3>
+<p>Make sure you have a recent Kakoune installation. Package managers may carry very old versions of Kakoune. </p>
+<p><em>Tips</em>: 
+- Building Kakoune from <a href="https://github.com/mawww/kakoune">source</a> is easy and will give you the latest features
+- If you follow the steps on this page, Erlang LS should work in Kakoune. However you will probably want to see syntax highlighting for Erlang in addition to the features that Erlang LS provides like goto definition etc. That is available only in the <code>Kakoune 2021.10.28</code> tagged release (and later) or on current git sources</p>
+<h3 id="step-1-install-erlang-ls">Step 1: Install Erlang LS</h3>
+<p>Install Erlang LS on your system. You may or may not decide to put the <code>erlang_ls</code> executable on your <code>$PATH</code>.</p>
+<h3 id="step-2-install-kak-lsp">Step 2: Install <code>kak-lsp</code></h3>
+<p>Install or build <code>kak-lsp</code> from source by following instructions on its <a href="https://github.com/kak-lsp/kak-lsp">repository</a>.</p>
+<h3 id="step-3-edit-the-kak-lsp-configuration">Step 3: Edit the <code>kak-lsp</code> configuration</h3>
+<p>Look for <code>kak-lsp.toml</code>. This file has language specific settings for the Kakoune kak-lsp plugin.</p>
+<p>On Linux, configuration for <code>kak-lsp</code> should usually live at <code>$HOME/.config/kak-lsp/kak-lsp.toml</code> where <code>$HOME</code> is your home directory.</p>
+<p>Open <code>kak-lsp.toml</code> in your favorite editor (Kakoune 😄?), look for <code>[language.erlang]</code>. It should look something like this:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[language.erlang]</span>
+<span class="n">filetypes</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;erlang&quot;</span><span class="p">]</span>
+<span class="c1"># See https://github.com/erlang-ls/erlang_ls.git for more information and</span>
+<span class="c1"># how to configure. This default config should work in most cases though.</span>
+<span class="n">roots</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;rebar.config&quot;</span><span class="p">,</span> <span class="s">&quot;erlang.mk&quot;</span><span class="p">,</span> <span class="s">&quot;.git&quot;</span><span class="p">,</span> <span class="s">&quot;.hg&quot;</span><span class="p">]</span>
+<span class="n">command</span> <span class="o">=</span> <span class="s">&quot;erlang_ls&quot;</span>
 </code></pre></div>
+<p><em>Tip:</em> If you don't find <code>[language.erlang]</code> your probably have an older version of <code>kak-lsp</code>. Nevermind, you can add this <code>toml</code> snippet yourself to <code>kak-lsp.toml</code> without any issues</p>
+<h4 id="if-the-erlang_ls-executable-is-on-your-path"><em>If</em> the <code>erlang_ls</code> executable is on your <code>$PATH</code></h4>
+<p>Save <code>kak-lsp.toml</code> if you added the above snippet and restart Kakoune.</p>
+<p>You're done! Erlang LS should work now on Erlang projects and sources!</p>
+<h4 id="if-the-erlang_ls-executable-is-not-on-your-path"><em>If</em> the <code>erlang_ls</code> executable is <em>not</em> on your <code>$PATH</code></h4>
+<p>Change the <code>command</code> line for the <code>[language.erlang]</code> section to:</p>
+<div class="highlight"><pre><span></span><code><span class="n">command</span> <span class="o">=</span> <span class="s">&quot;/the/path/to/erlang_ls&quot;</span>
+</code></pre></div>
+<p>Don't forget to save the file and restart Kakoune!</p>
                 
               
               
@@ -688,41 +692,6 @@ setting up <code>dotspacemacs-configuration-layers</code>, e.g:</p>
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../emacs/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Emacs" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Emacs
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../vscode/" class="md-footer__link md-footer__link--next" aria-label="Next: VSCode" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              VSCode
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
