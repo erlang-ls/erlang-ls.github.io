@@ -98,8 +98,10 @@ are available in Erlang LS:
 | Code Lens Name        | Purpose                                                                              |
 |-----------------------|--------------------------------------------------------------------------------------|
 | ct-run-test           | Display a _run_ button next to a Common Test testcase                                |
+| function-references   | Show the number of references to a function                                          |
 | server-info           | Display some Erlang LS server information on the top of each module. For debug only. |
 | show-behaviour-usages | Show the number of modules implementing a behaviour                                  |
+| suggest-spec          | Use information from dialyzer to suggest a spec                                      |
 
 The following lenses are enabled by default:
 
