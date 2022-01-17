@@ -72,9 +72,7 @@ Add the following setup call to your `init.vim` to make the language server atta
 to Erlang files:
 
 ```vim
-lua << EOF
 lua require'lspconfig'.erlangls.setup{}
-EOF
 ```
 
 Now, when you open an Erlang file you should see a message like this:
