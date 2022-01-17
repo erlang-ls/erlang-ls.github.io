@@ -89,7 +89,7 @@ example on how to set these up in the
 [Keybindings and completion](https://github.com/neovim/nvim-lspconfig#keybindings-and-completion)
 section on the nvim-lspconfig plugin page. The idea is to create a function that
 sets up your keybindings and configuration, which is passed to the setup
-function in the previous section. This function is then called when the erlang
+function in the previous section. This function is then called when the Erlang
 language server is attached. See the
 [Neovim LSP documentation](https://neovim.io/doc/user/lsp.html) for more
 information.
