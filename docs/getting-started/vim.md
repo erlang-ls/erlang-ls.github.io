@@ -68,7 +68,7 @@ Plug 'neovim/nvim-lspconfig'
 
 ### Enable the language server
 
-Add the following setup call to your init.vim to make the language server attach
+Add the following setup call to your `init.vim` to make the language server attach
 to Erlang files:
 
 ```vim
