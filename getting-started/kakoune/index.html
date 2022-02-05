@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://erlang-ls.github.io/getting-started/kakoune/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.0b2">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
     
     
       
@@ -19,10 +19,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0c73cc44.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2b4465f4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
         
           
           
@@ -40,10 +40,9 @@
       
     
     
-    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../..":"../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -754,12 +753,12 @@
 <p>Look for <code>kak-lsp.toml</code>. This file has language specific settings for the Kakoune kak-lsp plugin.</p>
 <p>On Linux, configuration for <code>kak-lsp</code> should usually live at <code>$HOME/.config/kak-lsp/kak-lsp.toml</code> where <code>$HOME</code> is your home directory.</p>
 <p>Open <code>kak-lsp.toml</code> in your favorite editor (Kakoune 😄?), look for <code>[language.erlang]</code>. It should look something like this:</p>
-<div class="highlight"><pre><span></span><code><span class="k">[language.erlang]</span>
-<span class="n">filetypes</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;erlang&quot;</span><span class="p">]</span>
-<span class="c1"># See https://github.com/erlang-ls/erlang_ls.git for more information and</span>
-<span class="c1"># how to configure. This default config should work in most cases though.</span>
-<span class="n">roots</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;rebar.config&quot;</span><span class="p">,</span> <span class="s">&quot;erlang.mk&quot;</span><span class="p">,</span> <span class="s">&quot;.git&quot;</span><span class="p">,</span> <span class="s">&quot;.hg&quot;</span><span class="p">]</span>
-<span class="n">command</span> <span class="o">=</span> <span class="s">&quot;erlang_ls&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="k">[language.erlang]</span><span class="w"></span>
+<span class="n">filetypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;erlang&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="c1"># See https://github.com/erlang-ls/erlang_ls.git for more information and</span><span class="w"></span>
+<span class="c1"># how to configure. This default config should work in most cases though.</span><span class="w"></span>
+<span class="n">roots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;rebar.config&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;erlang.mk&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.git&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.hg&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;erlang_ls&quot;</span><span class="w"></span>
 </code></pre></div>
 <p><em>Tip:</em> If you don't find <code>[language.erlang]</code> your probably have an older version of <code>kak-lsp</code>. Nevermind, you can add this <code>toml</code> snippet yourself to <code>kak-lsp.toml</code> without any issues</p>
 <h4 id="if-the-erlang_ls-executable-is-on-your-path"><em>If</em> the <code>erlang_ls</code> executable is on your <code>$PATH</code></h4>
@@ -767,7 +766,7 @@
 <p>You're done! Erlang LS should work now on Erlang projects and sources!</p>
 <h4 id="if-the-erlang_ls-executable-is-not-on-your-path"><em>If</em> the <code>erlang_ls</code> executable is <em>not</em> on your <code>$PATH</code></h4>
 <p>Change the <code>command</code> line for the <code>[language.erlang]</code> section to:</p>
-<div class="highlight"><pre><span></span><code><span class="n">command</span> <span class="o">=</span> <span class="s">&quot;/the/path/to/erlang_ls&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/the/path/to/erlang_ls&quot;</span><span class="w"></span>
 </code></pre></div>
 <p>Don't forget to save the file and restart Kakoune!</p>
 
@@ -835,10 +834,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.01824240.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="../../assets/javascripts/bundle.0885dc41.min.js"></script>
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
       
     
   </body>

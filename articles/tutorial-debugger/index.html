@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://erlang-ls.github.io/articles/tutorial-debugger/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.0b2">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
     
     
       
@@ -19,10 +19,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.0c73cc44.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2b4465f4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
         
           
           
@@ -40,10 +40,9 @@
       
     
     
-    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../..":"../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -862,7 +861,7 @@ project's <code>Makefile</code> just before the <code>include ../../erlang.mk</c
 <div class="highlight"><pre><span></span><code><span class="nv">LOCAL_DEPS</span> <span class="o">=</span> debugger
 </code></pre></div>
 <p>To symlink the application, add the following line to the <code>relx.config</code> file:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="n">overrides</span><span class="p">,</span> <span class="p">[{</span><span class="n">hello_world</span><span class="p">,</span> <span class="s">&quot;../hello_world&quot;</span><span class="p">}]}.</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="n">overrides</span><span class="p">,</span><span class="w"> </span><span class="p">[{</span><span class="n">hello_world</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;../hello_world&quot;</span><span class="p">}]}.</span><span class="w"></span>
 </code></pre></div>
 <p>We can now lunch our web server:</p>
 <div class="highlight"><pre><span></span><code>make run
@@ -887,39 +886,39 @@ link and select the <em>Erlang OTP Debugger</em> option.</p>
 <p><img alt="Create a DAP Launch Configuration in VS Code" src="../../images/dap-vscode-launch.png" /></p>
 <p>This will create a file
 in <code>.vscode/launch.json</code>. Replace the content of the file with the following one:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Existing Erlang Node&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;erlang&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;attach&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;projectnode&quot;</span><span class="p">:</span> <span class="s2">&quot;hello_world_example&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;hello_world_example&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;timeout&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
-            <span class="nt">&quot;cwd&quot;</span><span class="p">:</span> <span class="s2">&quot;${workspaceRoot}&quot;</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Existing Erlang Node&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;erlang&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;attach&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;projectnode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello_world_example&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;cookie&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello_world_example&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceRoot}&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Emacs</label><div class="tabbed-content">
 <p>We need to create a file named <code>launch.json</code> in the top-level
 directory of the project. In our case, the file will reside in
 <code>cowboy/examples/hello_world/launch.json</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Existing Erlang Node&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;erlang&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;attach&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;projectnode&quot;</span><span class="p">:</span> <span class="s2">&quot;hello_world_example&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;hello_world_example&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;timeout&quot;</span><span class="p">:</span> <span class="mi">300</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Existing Erlang Node&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;erlang&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;attach&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;projectnode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello_world_example&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;cookie&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello_world_example&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -1031,7 +1030,7 @@ contains the string <em>pigeon</em>:</p>
 <div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">VS Code</label><div class="tabbed-content">
 <p>To setup a conditional breakpoint, right-click next to a line number
 and select the <em>Add a conditional breakpoint...</em> option. Add the following <em>expression</em>:</p>
-<div class="highlight"><pre><span></span><code><span class="nn">maps</span><span class="p">:</span><span class="nb">get</span><span class="p">(</span><span class="o">&lt;&lt;</span><span class="s">&quot;host&quot;</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="nn">maps</span><span class="p">:</span><span class="nb">get</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="nv">Req0</span><span class="p">))</span> <span class="o">=:=</span> <span class="o">&lt;&lt;</span><span class="s">&quot;pigeon&quot;</span><span class="o">&gt;&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nn">maps</span><span class="p">:</span><span class="nb">get</span><span class="p">(</span><span class="o">&lt;&lt;</span><span class="s">&quot;host&quot;</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="nn">maps</span><span class="p">:</span><span class="nb">get</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span><span class="w"> </span><span class="nv">Req0</span><span class="p">))</span><span class="w"> </span><span class="o">=:=</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="s">&quot;pigeon&quot;</span><span class="o">&gt;&gt;</span><span class="w"></span>
 </code></pre></div>
 <p><img alt="DAP Conditional Breakpoints" src="../../images/dap-vscode-conditional-breakpoint.png" /></p>
 </div>
@@ -1040,7 +1039,7 @@ and select the <em>Add a conditional breakpoint...</em> option. Add the followin
 <div class="highlight"><pre><span></span><code><span class="nv">M-x</span> <span class="nv">dap-breakpoint-condition</span>
 </code></pre></div>
 <p>And add the following <em>expression</em>:</p>
-<div class="highlight"><pre><span></span><code><span class="nn">maps</span><span class="p">:</span><span class="nb">get</span><span class="p">(</span><span class="o">&lt;&lt;</span><span class="s">&quot;host&quot;</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="nn">maps</span><span class="p">:</span><span class="nb">get</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="nv">Req0</span><span class="p">))</span> <span class="o">=:=</span> <span class="o">&lt;&lt;</span><span class="s">&quot;pigeon&quot;</span><span class="o">&gt;&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nn">maps</span><span class="p">:</span><span class="nb">get</span><span class="p">(</span><span class="o">&lt;&lt;</span><span class="s">&quot;host&quot;</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="nn">maps</span><span class="p">:</span><span class="nb">get</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span><span class="w"> </span><span class="nv">Req0</span><span class="p">))</span><span class="w"> </span><span class="o">=:=</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="s">&quot;pigeon&quot;</span><span class="o">&gt;&gt;</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -1105,7 +1104,7 @@ Logs are available at:</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>USER_LOG_DIR<span class="o">]</span>/<span class="o">[</span>PROJECT_NAME<span class="o">]</span>/dap_server.log
 </code></pre></div>
 <p>Where <code>[USER_LOG_DIR]</code> is the output of:</p>
-<div class="highlight"><pre><span></span><code><span class="nn">filename</span><span class="p">:</span><span class="nf">basedir</span><span class="p">(</span><span class="n">user_log</span><span class="p">,</span> <span class="s">&quot;els_dap&quot;</span><span class="p">).</span>
+<div class="highlight"><pre><span></span><code><span class="nn">filename</span><span class="p">:</span><span class="nf">basedir</span><span class="p">(</span><span class="n">user_log</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;els_dap&quot;</span><span class="p">).</span><span class="w"></span>
 </code></pre></div>
 <p>For example, on Mac OS, the DAP logs for the <em>hello_world</em> project will be in:</p>
 <div class="highlight"><pre><span></span><code>/Users/<span class="o">[</span>USERNAME<span class="o">]</span>/Library/Logs/els_dap/hello_world/dap_server.log
@@ -1177,10 +1176,10 @@ Logs are available at:</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.01824240.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="../../assets/javascripts/bundle.0885dc41.min.js"></script>
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
       
     
   </body>

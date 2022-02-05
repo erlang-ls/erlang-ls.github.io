@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://erlang-ls.github.io/configuration/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.0b2">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
     
     
       
@@ -19,10 +19,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.0c73cc44.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.2b4465f4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.9204c3b2.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
         
           
           
@@ -40,10 +40,9 @@
       
     
     
-    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"..":".."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -798,28 +797,28 @@ via a configuration file, named <code>erlang_ls.config</code>. The
 <code>erlang_ls.config</code> file should be placed in the root directory of a
 given project to store the configuration for that project.</p>
 <p>A sample <code>erlang_ls.config</code> file would look like the following:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">otp_path</span><span class="p">:</span> <span class="s">&quot;/path/to/otp/lib/erlang&quot;</span>
-<span class="nt">deps_dirs</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;lib/*&quot;</span>
-<span class="nt">diagnostics</span><span class="p">:</span>
-  <span class="nt">enabled</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">crossref</span>
-  <span class="nt">disabled</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">dialyzer</span>
-<span class="nt">include_dirs</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;include&quot;</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;_build/default/lib&quot;</span>
-<span class="nt">lenses</span><span class="p">:</span>
-  <span class="nt">enabled</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ct-run-test</span>
-  <span class="nt">disabled</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">show-behaviour-usages</span>
-<span class="nt">macros</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DEFINED_WITH_VALUE</span>
-    <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">42</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DEFINED_WITHOUT_VALUE</span>
-<span class="nt">code_reload</span><span class="p">:</span>
-  <span class="nt">node</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node@example</span>
+<div class="highlight"><pre><span></span><code><span class="nt">otp_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/otp/lib/erlang&quot;</span><span class="w"></span>
+<span class="nt">deps_dirs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;lib/*&quot;</span><span class="w"></span>
+<span class="nt">diagnostics</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">crossref</span><span class="w"></span>
+<span class="w">  </span><span class="nt">disabled</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dialyzer</span><span class="w"></span>
+<span class="nt">include_dirs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;include&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;_build/default/lib&quot;</span><span class="w"></span>
+<span class="nt">lenses</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ct-run-test</span><span class="w"></span>
+<span class="w">  </span><span class="nt">disabled</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show-behaviour-usages</span><span class="w"></span>
+<span class="nt">macros</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFINED_WITH_VALUE</span><span class="w"></span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFINED_WITHOUT_VALUE</span><span class="w"></span>
+<span class="nt">code_reload</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node@example</span><span class="w"></span>
 </code></pre></div>
 <p>The file format is <code>yaml</code>.</p>
 <p>The following customizations are possible:</p>
@@ -1049,36 +1048,36 @@ Erlang LS configurations in this section, for easy reuse.</p>
 <h3 id="rebar3-project"><code>rebar3</code> project</h3>
 <p>The following configuration can be used for most <a href="https://rebar3.org">rebar3</a>
 based projects.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apps_dirs</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;_build/default/lib/*&quot;</span>
-<span class="nt">include_dirs</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;_build/default/lib/*/include&quot;</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;include&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apps_dirs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;_build/default/lib/*&quot;</span><span class="w"></span>
+<span class="nt">include_dirs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;_build/default/lib/*/include&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;include&quot;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="rebar3-umbrella-project"><code>rebar3</code> <em>umbrella</em> project</h3>
 <p>If your <code>rebar3</code> project includes multiple application (e.g. in an
 <code>apps</code> folder), you may want to adapt your Erlang LS configuration as
 follows.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apps_dirs</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;apps/*&quot;</span>
-<span class="nt">deps_dirs</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;_build/default/lib/*&quot;</span>
-<span class="nt">include_dirs</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;apps&quot;</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;apps/*/include&quot;</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;_build/default/lib/&quot;</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;_build/default/lib/*/include&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apps_dirs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;apps/*&quot;</span><span class="w"></span>
+<span class="nt">deps_dirs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;_build/default/lib/*&quot;</span><span class="w"></span>
+<span class="nt">include_dirs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;apps&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;apps/*/include&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;_build/default/lib/&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;_build/default/lib/*/include&quot;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="the-erlangotp-repository">The <code>erlang/otp</code> repository</h3>
 <p>To be able to use the major Erlang LS features with the
 <a href="https://github.com/erlang/otp">erlang/otp</a> repository, the following minimal configuration
 should suffice.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">otp_path</span><span class="p">:</span> <span class="s">&quot;/path/to/otp&quot;</span>
-<span class="nt">apps_dirs</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;lib/*&quot;</span>
-<span class="nt">include_dirs</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;lib&quot;</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;lib/*/include&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">otp_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/path/to/otp&quot;</span><span class="w"></span>
+<span class="nt">apps_dirs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;lib/*&quot;</span><span class="w"></span>
+<span class="nt">include_dirs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;lib&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;lib/*/include&quot;</span><span class="w"></span>
 </code></pre></div>
 
               
@@ -1145,10 +1144,10 @@ should suffice.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.01824240.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.0885dc41.min.js"></script>
+      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
       
     
   </body>
