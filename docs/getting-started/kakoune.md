@@ -4,11 +4,12 @@ The [Kakoune](https://kakoune.org/) editor provides support for Erlang LS via th
 
 ### Step 0: Use a recent Kakoune installation
 
-Make sure you have a recent Kakoune installation. Package managers may carry very old versions of Kakoune. 
+Make sure you have a recent Kakoune installation. Package managers may carry very old versions of Kakoune.
 
-_Tips_: 
-- Building Kakoune from [source](https://github.com/mawww/kakoune) is easy and will give you the latest features
-- If you follow the steps on this page, Erlang LS should work in Kakoune. However you will probably want to see syntax highlighting for Erlang in addition to the features that Erlang LS provides like goto definition etc. That is available only in the `Kakoune 2021.10.28` tagged release (and later) or on current git sources
+_Tips_:
+
+* Building Kakoune from [source](https://github.com/mawww/kakoune) is easy and will give you the latest features
+* If you follow the steps on this page, Erlang LS should work in Kakoune. However you will probably want to see syntax highlighting for Erlang in addition to the features that Erlang LS provides like goto definition etc. That is available only in the `Kakoune 2021.10.28` tagged release (and later) or on current git sources
 
 ### Step 1: Install Erlang LS
 
