@@ -66,6 +66,12 @@ Install using, for example, [vim-plug](https://github.com/junegunn/vim-plug):
 Plug 'neovim/nvim-lspconfig'
 ```
 
+Alternatively, using [packer.nvim](https://github.com/wbthomason/packer.nvim):
+
+```lua
+use 'neovim/nvim-lspconfig'
+```
+
 ### Enable the language server
 
 Add the following setup call to your `init.vim` to make the language server attach
@@ -93,6 +99,8 @@ function in the previous section. This function is then called when the Erlang
 language server is attached. See the
 [Neovim LSP documentation](https://neovim.io/doc/user/lsp.html) for more
 information.
+
+A minimal config for example: [nvim_erlang_ls_example](https://github.com/haoxianhan/nvim_erlang_ls_example).
 
 ### Tips and tricks
 
