@@ -167,3 +167,18 @@ this [video](https://www.youtube.com/watch?v=r5LA7ivUb2c).
 
     For more information please refer to the official [lsp-treemacs
     documentation](https://github.com/emacs-lsp/lsp-treemacs#lsp-treemacs-call-hierarchy).
+
+## Code Actions
+
+Code Actions are a mechanism providing the user with possible
+corrective actions right next to an error or warning. If actions are
+available, a light bulb or similar icon appears next to the error or
+warning. When the user clicks the light bulb (or hits a shortcut), a
+list of available code actions is presented.
+
+Currently Erlang LS support code actions for:
+
+* Exporting unused functions
+* Prepending an underscore (`_`) to an unused variable
+* Correct a mistyped name for an unbound variable
+* Fix a module name to match the corresponding filename
