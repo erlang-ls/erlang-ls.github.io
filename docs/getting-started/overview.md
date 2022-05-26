@@ -15,5 +15,6 @@ not work as expected.
 * [VS Code](vscode.md)
 * [Sublime Text 3](sublime3.md)
 * [IntelliJ](intellij.md)
+* [Kakoune](kakoune.md)
 * [Vim](vim.md)
 * [Theia IDE](theia.md)
