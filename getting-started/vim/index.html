@@ -422,6 +422,19 @@
     Configuration
   </a>
   
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -752,6 +765,19 @@
     Configuration
   </a>
   
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -844,6 +870,70 @@ function in the previous section. This function is then called when the Erlang
 language server is attached. See the
 <a href="https://neovim.io/doc/user/lsp.html">Neovim LSP documentation</a> for more
 information.</p>
+<h4 id="example">Example</h4>
+<div class="highlight"><pre><span></span><code><span class="c">&quot; init.vim</span>
+...
+<span class="k">lua</span> require<span class="s1">&#39;lspconfig&#39;</span>.erlangls.setup{}
+
+<span class="k">lua</span> <span class="p">&lt;&lt;</span> EOF
+local nvim_lsp <span class="p">=</span> require<span class="p">(</span><span class="s1">&#39;lspconfig&#39;</span><span class="p">)</span>
+local on_attach <span class="p">=</span> <span class="k">function</span><span class="p">(</span>client<span class="p">,</span> bufnr<span class="p">)</span>
+  local <span class="k">function</span> buf_set_keymap<span class="p">(</span>...<span class="p">)</span> <span class="k">vim</span>.api.nvim_buf_set_keymap<span class="p">(</span>bufnr<span class="p">,</span> ...<span class="p">)</span> <span class="k">end</span>
+  local <span class="k">function</span> buf_set_option<span class="p">(</span>...<span class="p">)</span> <span class="k">vim</span>.api.nvim_buf_set_option<span class="p">(</span>bufnr<span class="p">,</span> ...<span class="p">)</span> <span class="k">end</span>
+
+  buf_set_option<span class="p">(</span><span class="s1">&#39;omnifunc&#39;</span><span class="p">,</span> <span class="s1">&#39;v:lua.vim.lsp.omnifunc&#39;</span><span class="p">)</span>
+
+  <span class="p">--</span> Mappings.
+  local opts <span class="p">=</span> { <span class="nb">noremap</span><span class="p">=</span>true<span class="p">,</span> <span class="k">silent</span><span class="p">=</span>true }
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;gD&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.buf.declaration()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;gd&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.buf.definition()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.buf.hover()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;gi&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.buf.implementation()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;C-k&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.buf.signature_help()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;space&gt;wa&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.buf.add_workspace_folder()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;space&gt;wr&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.buf.remove_workspace_folder()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;space&gt;wl&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;space&gt;D&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.buf.type_definition()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;space&gt;rn&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.buf.rename()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;space&gt;ca&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.buf.code_action()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;gr&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.buf.references()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;space&gt;e&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.diagnostic.show_line_diagnostics()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;[d&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.diagnostic.goto_prev()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;]d&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.diagnostic.goto_next()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+  buf_set_keymap<span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;space&gt;q&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;cmd&gt;lua vim.lsp.diagnostic.set_loclist()&lt;CR&gt;&#39;</span><span class="p">,</span> opts<span class="p">)</span>
+
+  <span class="p">--</span> Set some keybinds conditional <span class="k">on</span> server capabilities
+  <span class="k">if</span> client.resolved_capabilities.document_formatting then
+    buf_set_keymap<span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;space&gt;f&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;cmd&gt;lua vim.lsp.buf.formatting()&lt;CR&gt;&quot;</span><span class="p">,</span> opts<span class="p">)</span>
+  <span class="k">end</span>
+  <span class="k">if</span> client.resolved_capabilities.document_range_formatting then
+    buf_set_keymap<span class="p">(</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;space&gt;f&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;cmd&gt;lua vim.lsp.buf.range_formatting()&lt;CR&gt;&quot;</span><span class="p">,</span> opts<span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="p">--</span> Set autocommands conditional <span class="k">on</span> server_capabilities
+  <span class="k">if</span> client.resolved_capabilities.document_highlight then
+    <span class="k">vim</span>.api.nvim_exec<span class="p">(</span>[[
+      <span class="k">hi</span> LspReferenceRead cterm<span class="p">=</span><span class="nb">bold</span> ctermbg<span class="p">=</span>Grey guibg<span class="p">=</span>LightYellow
+      <span class="k">hi</span> LspReferenceText cterm<span class="p">=</span><span class="nb">bold</span> ctermbg<span class="p">=</span>Grey guibg<span class="p">=</span>LightYellow
+      <span class="k">hi</span> LspReferenceWrite cterm<span class="p">=</span><span class="nb">bold</span> ctermbg<span class="p">=</span>Grey guibg<span class="p">=</span>LightYellow
+      augroup lsp_document_highlight
+        autocmd<span class="p">!</span> * <span class="p">&lt;</span>buffer<span class="p">&gt;</span>
+        autocmd <span class="nb">CursorHold</span> <span class="p">&lt;</span>buffer<span class="p">&gt;</span> <span class="k">lua</span> <span class="k">vim</span>.<span class="nb">lsp</span>.<span class="k">buf</span>.document_highlight<span class="p">()</span>
+        autocmd <span class="nb">CursorMoved</span> <span class="p">&lt;</span>buffer<span class="p">&gt;</span> <span class="k">lua</span> <span class="k">vim</span>.<span class="nb">lsp</span>.<span class="k">buf</span>.clear_references<span class="p">()</span>
+      augroup END
+    ]]<span class="p">,</span> false<span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+ <span class="p">--</span> Use <span class="k">a</span> loop <span class="k">to</span> conveniently both setup defined servers 
+ <span class="p">--</span> and map buffer local keybindings when the <span class="k">language</span> server attaches
+ local servers <span class="p">=</span> { <span class="s2">&quot;erlangls&quot;</span> }
+ <span class="k">for</span> _<span class="p">,</span> <span class="nb">lsp</span> <span class="k">in</span> ipairs<span class="p">(</span>servers<span class="p">)</span> <span class="k">do</span>
+  nvim_lsp[<span class="nb">lsp</span>].setup { on_attach <span class="p">=</span> on_attach }
+ <span class="k">end</span>
+
+EOF
+</code></pre></div>
 <h3 id="tips-and-tricks">Tips and tricks</h3>
 <p>Run <code>:h vim.diagnostic.config</code> inside Neovim for instructions on how to display
 diagnostics. <code>:h vim.lsp.codelens.refresh</code> describes how to show code lenses.</p>
