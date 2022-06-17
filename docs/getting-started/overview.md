@@ -18,3 +18,4 @@ not work as expected.
 * [Kakoune](kakoune.md)
 * [Vim](vim.md)
 * [Theia IDE](theia.md)
+* [Helix](helix.md)
