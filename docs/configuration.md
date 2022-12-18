@@ -32,6 +32,9 @@ macros:
   - name: DEFINED_WITHOUT_VALUE
 code_reload:
   node: node@example
+providers:
+  enabled:
+    - signature-help
 ```
 
 The file format is `yaml`.
@@ -55,6 +58,7 @@ The following customizations are possible:
 | elvis\_config\_path          | Path to the elvis.config file. Defaults to ROOT_DIR/elvis.config                                                                          |
 | exclude\_unused\_includes    | List of includes files that are excluded from the `UnusedIncludes` warnings.                                                              |
 | compiler\_telemetry\_enabled | When enabled, send `telemetry/event` LSP messages containing the `code` field of any diagnostics present in a file. Defaults to false.    |
+| providers                    | Which LSP providers should be advertised to clients                                                                                       |
 
 ### Diagnostics
 
@@ -109,12 +113,50 @@ The following lenses are enabled by default:
 
 It is possible to customize lenses for a specific project. For example:
 
-```
+```yaml
 lenses:
   enabled:
     - ct-run-test
   disabled:
     - show-behaviour-usages
+```
+
+## Providers
+
+Which LSP Providers are advertised to the client may be configured.
+The following providers are available in Erlang LS:
+
+| Provider Name               | Purpose                                                                       | Default  |
+|-----------------------------|-------------------------------------------------------------------------------|----------|
+| text-document-sync          | Synchronize the document state between client and server                      | enabled  |
+| hover                       | Provide docmuentation for the symbol under the cursor on hover                | enabled  |
+| completion                  | Provide auto-completion candidates for partial symbols                        | enabled  |
+| signature-help              | Provide documentation for the current function and parameters on-type         | disabled |
+| definition                  | Jump to the definition of a given symbol                                      | enabled  |
+| references                  | Jump to references of a given symbol                                          | enabled  |
+| document-highlight          | Highlight all other references to a symbol in scope                           | enabled  |
+| document-symbol             | Provide all positions of a symbol in the current document                     | enabled  |
+| workspace-symbol            | Provide all positions of a symbol across the workspace                        | enabled  |
+| code-action                 | Find commands to execute                                                      | enabled  |
+| execute-command             | Execute code-action commands, returning edits to the client                   | enabled  |
+| document-formatting         | Format an entire document                                                     | enabled  |
+| document-range-formatting   | Format a given range of a document                                            | disabled |
+| document-on-type-formatting | Format parts of a document while typing                                       | disabled |
+| folding-range               | Return all folding ranges in a document                                       | enabled  |
+| implementation              | Jump to the implementations of a callback                                     | enabled  |
+| code-lens                   | Provide reference text and a command for position of interest in a document   | enabled  |
+| rename                      | Rename a symbol across a workspace                                            | enabled  |
+| call-hierarchy              | Find the incoming and outgoing calls of the given position                    | enabled  |
+| semantic-token              | Add additional highlighting information based on context-specific information | enabled  |
+
+Providers may be customized with the `providers` key. For example:
+
+```yaml
+providers:
+  enabled:
+    - signature-help
+  disabled:
+    - hover
 ```
 
 ## Global Configuration
