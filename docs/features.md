@@ -182,3 +182,11 @@ Currently Erlang LS support code actions for:
 * Prepending an underscore (`_`) to an unused variable
 * Correct a mistyped name for an unbound variable
 * Fix a module name to match the corresponding filename
+
+## Refactoring via Wrangler
+
+Erlang LS can offer refactoring capabilities such as _fold
+expression_, _extract function_, _rename variable_ and many more via the
+_Wrangler_ extension. For details on how to enable Wrangler for Erlang LS, please
+refer to the [official
+documentation](https://refactoringtools.github.io/docs/wrangler/wls/wrangler_language_server).
