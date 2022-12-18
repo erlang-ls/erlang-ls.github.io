@@ -467,6 +467,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#providers" class="md-nav__link">
+    Providers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#global-configuration" class="md-nav__link">
     Global Configuration
   </a>
@@ -739,6 +746,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#providers" class="md-nav__link">
+    Providers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#global-configuration" class="md-nav__link">
     Global Configuration
   </a>
@@ -823,6 +837,9 @@ given project to store the configuration for that project.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFINED_WITHOUT_VALUE</span><span class="w"></span>
 <span class="nt">code_reload</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node@example</span><span class="w"></span>
+<span class="nt">providers</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">signature-help</span><span class="w"></span>
 </code></pre></div>
 <p>The file format is <code>yaml</code>.</p>
 <p>The following customizations are possible:</p>
@@ -893,6 +910,10 @@ given project to store the configuration for that project.</p>
 <tr>
 <td>compiler_telemetry_enabled</td>
 <td>When enabled, send <code>telemetry/event</code> LSP messages containing the <code>code</code> field of any diagnostics present in a file. Defaults to false.</td>
+</tr>
+<tr>
+<td>providers</td>
+<td>Which LSP providers should be advertised to clients</td>
 </tr>
 </tbody>
 </table>
@@ -1007,11 +1028,132 @@ are available in Erlang LS:</p>
 <li>show-behaviour-usages</li>
 </ul>
 <p>It is possible to customize lenses for a specific project. For example:</p>
-<div class="highlight"><pre><span></span><code>lenses:
-  enabled:
-    - ct-run-test
-  disabled:
-    - show-behaviour-usages
+<div class="highlight"><pre><span></span><code><span class="nt">lenses</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ct-run-test</span><span class="w"></span>
+<span class="w">  </span><span class="nt">disabled</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show-behaviour-usages</span><span class="w"></span>
+</code></pre></div>
+<h2 id="providers">Providers</h2>
+<p>Which LSP Providers are advertised to the client may be configured.
+The following providers are available in Erlang LS:</p>
+<table>
+<thead>
+<tr>
+<th>Provider Name</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text-document-sync</td>
+<td>Synchronize the document state between client and server</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>hover</td>
+<td>Provide docmuentation for the symbol under the cursor on hover</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>Provide auto-completion candidates for partial symbols</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>signature-help</td>
+<td>Provide documentation for the current function and parameters on-type</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td>definition</td>
+<td>Jump to the definition of a given symbol</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>references</td>
+<td>Jump to references of a given symbol</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>document-highlight</td>
+<td>Highlight all other references to a symbol in scope</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>document-symbol</td>
+<td>Provide all positions of a symbol in the current document</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>workspace-symbol</td>
+<td>Provide all positions of a symbol across the workspace</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>code-action</td>
+<td>Find commands to execute</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>execute-command</td>
+<td>Execute code-action commands, returning edits to the client</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>document-formatting</td>
+<td>Format an entire document</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>document-range-formatting</td>
+<td>Format a given range of a document</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td>document-on-type-formatting</td>
+<td>Format parts of a document while typing</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td>folding-range</td>
+<td>Return all folding ranges in a document</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>implementation</td>
+<td>Jump to the implementations of a callback</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>code-lens</td>
+<td>Provide reference text and a command for position of interest in a document</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>rename</td>
+<td>Rename a symbol across a workspace</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>call-hierarchy</td>
+<td>Find the incoming and outgoing calls of the given position</td>
+<td>enabled</td>
+</tr>
+<tr>
+<td>semantic-token</td>
+<td>Add additional highlighting information based on context-specific information</td>
+<td>enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Providers may be customized with the <code>providers</code> key. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">providers</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">signature-help</span><span class="w"></span>
+<span class="w">  </span><span class="nt">disabled</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hover</span><span class="w"></span>
 </code></pre></div>
 <h2 id="global-configuration">Global Configuration</h2>
 <p>It is also possible to store a system-wide default configuration in an
