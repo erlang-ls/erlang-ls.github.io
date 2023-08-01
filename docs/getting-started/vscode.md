@@ -12,8 +12,8 @@ Marketplace:
 
 Look for the `erlang-ls` extension and install it. That's it.
 
-Remember that the Erlang Language Server requires Erlang/OTP 21 or
-higher to run, so ensure that OTP 21+ is available in your `PATH`.
+Remember that the Erlang Language Server requires Erlang/OTP 22 or
+higher to run, so ensure that OTP 22+ is available in your `PATH`.
 
 ## Restarting the language server
 
